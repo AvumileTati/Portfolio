@@ -5,35 +5,135 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avumile Tati | Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <h1>Avumile Tati</h1>
-        <p>ICT Graduate | Web Developer | Tech Enthusiast</p>
-    </header>
+    <nav class="navbar">
+        <div class="nav-brand">AT</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <img src="profile-image.jpg" alt="Avumile Tati" class="profile-image">
+            <h1>Avumile Tati</h1>
+            <p class="title">Web Developer | ICT Graduate</p>
+            <p class="tagline">Building digital solutions with passion and precision</p>
+            <a href="#projects" class="btn">View My Work</a>
+            <a href="#contact" class="btn secondary">Contact Me</a>
+        </div>
+    </section>
 
     <div class="container">
-        <section id="about">
+        <section id="about" class="about-section">
             <h2>About Me</h2>
-            <p>I am a passionate ICT graduate specializing in web development, programming, and technology training.</p>
-            <a href="https://dynamicduotechsolutions.netlify.app/" class="btn" target="_blank">Visit My Website</a>
+            <div class="about-grid">
+                <div class="about-content">
+                    <p class="lead">I am a passionate ICT graduate specializing in web development, programming, and technology training.</p>
+                    <h3>Education</h3>
+                    <p>Diploma in Information Communication Technology</p>
+                    <ul class="skills-list">
+                        <li>Programming Fundamentals</li>
+                        <li>Artificial Intelligence</li>
+                        <li>Database Management</li>
+                        <li>Web Development</li>
+                    </ul>
+                </div>
+                <div class="skills-content">
+                    <h3>Technical Skills</h3>
+                    <div class="skills-grid">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Git</span>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section id="projects">
+        <section id="projects" class="projects-section">
             <h2>Projects</h2>
-            <p>Here are some of the projects I've worked on:</p>
-            <ul>
-                <li>📱 <strong>Mobile Learning App</strong> - A platform for accessing learning materials.</li>
-                <li>🌍 <strong>Dynamic Duo Tech Solutions</strong> - Providing IT solutions & training.</li>
-                <li>💻 <strong>Portfolio Website</strong> - My personal website showcasing my skills.</li>
-            </ul>
+            <div class="project-grid">
+                <article class="project-card">
+                    <img src="mobile-app.jpg" alt="Mobile Learning App">
+                    <div class="project-content">
+                        <h3>Mobile Learning App</h3>
+                        <p>A platform for accessing learning materials and downloading certificates.</p>
+                        <div class="tech-stack">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn small">Live Demo</a>
+                            <a href="#" class="btn small secondary">GitHub</a>
+                        </div>
+                    </div>
+                </article>
+                <!-- Add more project cards here -->
+            </div>
         </section>
 
-        <section id="contact">
+        <section id="experience" class="experience-section">
+            <h2>Experience & Training</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2023</div>
+                    <div class="timeline-content">
+                        <h3>Sales Assistant</h3>
+                        <h4>Black Ink Promotions</h4>
+                        <p>Managed customer relations and sales operations</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2023</div>
+                    <div class="timeline-content">
+                        <h3>Samsung Innovation Program</h3>
+                        <h4>Basic Coding & AI</h4>
+                        <p>Completed intensive training in coding fundamentals and AI concepts</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
             <h2>Contact Me</h2>
-            <p>📧 Email: your.email@example.com</p>
-            <p>🌐 LinkedIn: <a href="https://www.linkedin.com/in/your-profile" target="_blank">Your Profile</a></p>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>avumile.tati@example.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <a href="https://linkedin.com/in/your-profile">LinkedIn Profile</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <a href="https://github.com/your-profile">GitHub Profile</a>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn primary">Send Message</button>
+                </form>
+            </div>
         </section>
     </div>
+
+    <footer>
+        <p>&copy; 2024 Avumile Tati. All rights reserved.</p>
+    </footer>
 </body>
 </html>
