@@ -573,6 +573,18 @@ section {
     margin-top: 0.2rem;
 }
 
+.info-box li div p {
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.info-box li div p:first-of-type {
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
 @media (max-width: 768px) {
     .info-boxes {
         grid-template-columns: 1fr;
