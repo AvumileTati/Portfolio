@@ -35,7 +35,7 @@ body {
 
 /* Updated Navigation Styles */
 .navbar {
-    height: 60px;
+    height: 70px;  /* Increased height slightly */
     background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
@@ -170,13 +170,14 @@ body {
 /* Hero Section */
 .hero {
     padding: 2rem 1rem 2rem;
-    min-height: 85vh;
+    min-height: calc(85vh - 70px); /* Adjust hero height to account for navbar */
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     align-items: center;
     max-width: 1250px;
     margin: 0 auto;
+    padding-top: 1rem; /* Reduce top padding since we have margin */
 }
 
 .hero h1 {
@@ -351,6 +352,11 @@ body {
 }
 
 /* Layout Adjustments */
+main.container {
+    margin-top: 70px;  /* Add top margin equal to navbar height */
+    padding-top: 2rem; /* Add some breathing room */
+}
+
 .container {
     max-width: 1250px;
     margin: 0 auto;
@@ -1217,4 +1223,14 @@ section {
 [data-theme="dark"] .contact-item {
     background: var(--bg);
     border-color: var(--border);
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        height: 60px;
+    }
+    
+    main.container {
+        margin-top: 60px;
+    }
 }
