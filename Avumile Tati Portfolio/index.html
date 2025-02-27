@@ -3,38 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avumile Tati | Portfolio</title>
+    <title>Avumile Tati | Developer</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <meta name="theme-color" content="#6c63ff">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 <body>
     <nav class="navbar">
-        <ul class="nav-menu">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <div class="container nav-content">
+            <a href="#" class="logo">AT</a>
+            <div class="nav-menu">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
     </nav>
 
-    <main>
-        <section id="home" class="hero">
+    <main class="container">
+        <section class="hero">
             <div class="hero-content">
-                <h1>Avumile Tati</h1>
-                <p class="title">Full Stack Web Developer</p>
-                <p class="intro">Building digital solutions with modern technologies</p>
-                <div class="cta-buttons">
-                    <a href="cv.pdf" class="btn" download>Download CV</a>
-                    <div class="social-links">
-                        <a href="https://linkedin.com/in/your-profile" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/your-profile" target="_blank"><i class="fab fa-github"></i></a>
-                    </div>
+                <p class="greeting">Hi all,</p>
+                <h1>I'm Avumile Tati</h1>
+                <p class="title">ICT Graduate | Web Developer | Tech Enthusiast</p>
+                <div class="btn-container">
+                    <a href="#contact" class="btn-primary">Hire Me</a>
+                    <a href="cv.pdf" download class="btn-secondary">Download CV</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -43,78 +38,175 @@
         </section>
 
         <section id="about">
-            <h2><i class="fas fa-user"></i> About Me</h2>
+            <div class="section-header">
+                <h2>About Me</h2>
+            </div>
             <div class="about-content">
-                <img src="MyPic.jpg" alt="Profile picture" class="about-image">
-                <div class="about-stats">
-                    <div class="stat-item">
-                        <i class="fas fa-briefcase"></i>
-                        <h3>Experience</h3>
-                        <p>ICT Graduate with hands-on training</p>
+                <p>I'm a passionate Full Stack Developer with a background in ICT (Applications Development) and certifications in AI & Basic Coding from Samsung Innovation Program. I specialize in web development, app creation, and tech support, always looking to explore new technologies and build solutions that make an impact.</p>
+                <p>My goal? To bridge the digital divide by empowering communities with tech education through my initiative, Dynamic Duo Tech Solutions. Whether it's developing sleek websites, mobile applications, or training learners in rural areas, I'm all about creating opportunities through technology.</p>
+                <p>💡 Fun fact: I love pasta, but I’m still working on my cooking skills! 🍝😅</p>
+                
+                <div class="info-boxes">
+                    <div class="info-box">
+                        <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                        <ul>
+                            <li>
+                                <i class="fas fa-award"></i>
+                                <div>
+                                    <strong>Diploma in ICT</strong>
+                                    <p>Applications Development</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-certificate"></i>
+                                <div>
+                                    <strong>Samsung Innovation Program</strong>
+                                    <p>AI & Basic Coding Certifications</p>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="stat-item">
-                        <i class="fas fa-graduation-cap"></i>
-                        <h3>Education</h3>
-                        <p>Diploma in Information Communication Technology</p>
+                    
+                    <div class="info-box">
+                        <h3><i class="fas fa-briefcase"></i> Experience</h3>
+                        <ul>
+                            <li>
+                                <i class="fas fa-building"></i>
+                                <div>
+                                    <strong>Dynamic Duo Tech Solutions</strong>
+                                    <p>Founder | Teaching digital skills</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-laptop-code"></i>
+                                <div>
+                                    <strong>AppSheet Project</strong>
+                                    <p>Designed tables for learners & teachers</p>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <p class="about-text">
-                    As an ICT graduate, I specialize in web development, programming, and technology training. My journey includes completing the Samsung Innovation Program, where I gained expertise in coding and AI. I am passionate about creating digital solutions and providing tech support to enhance accessibility and efficiency.
-                </p>
             </div>
         </section>
 
         <section id="skills">
-            <h2><i class="fas fa-code"></i> Skills</h2>
+            <h2>What I Do</h2>
             <div class="skills-container">
                 <div class="skills-category">
-                    <h3>Frontend Development</h3>
+                    <h3><i class="fas fa-code"></i> FULL STACK DEVELOPER WHO LOVES TO EXPLORE TECH</h3>
                     <div class="skill-items">
-                        <!-- Add your frontend skills here -->
+                        <p><i class="fas fa-laptop-code"></i> Frontend Development</p>
+                        <p><i class="fas fa-server"></i> Backend Development</p>
+                        <p><i class="fas fa-mobile-alt"></i> Mobile App Development</p>
+                        <p><i class="fas fa-chart-bar"></i> Data Analysis</p>
+                        <p><i class="fas fa-tools"></i> Tech Support</p>
                     </div>
                 </div>
                 <div class="skills-category">
-                    <h3>Backend Development</h3>
+                    <h3><i class="fas fa-toolbox"></i> Tech Stack & Tools</h3>
                     <div class="skill-items">
-                        <!-- Add your backend skills here -->
+                        <p><i class="fab fa-html5"></i> HTML/CSS/JS</p>
+                        <p><i class="fab fa-react"></i> ReactJS</p>
+                        <p><i class="fab fa-node-js"></i> Node.js</p>
+                        <p><i class="fas fa-database"></i> SQL/Firebase</p>
+                        <p><i class="fab fa-aws"></i> AWS/Cloud</p>
+                    </div>
+                </div>
+                <div class="skills-category">
+                    <h3>Proficiency</h3>
+                    <div class="skill-items">
+                        <p>Frontend / UI Design – Crafting modern, responsive websites</p>
+                        <p>Backend Development – Building efficient APIs & databases</p>
+                        <p>Mobile Development – Creating apps for learning & accessibility</p>
+                        <p>Cloud & DevOps – Deploying and managing web solutions</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="projects">
-            <h2><i class="fas fa-project-diagram"></i> Projects</h2>
-            <div class="projects-grid">
-                <!-- Project cards will be added here -->
+        <section id="projects" class="projects-section">
+            <h2>Featured Projects</h2>
+            <div class="projects-container">
+                <div class="projects-track">
+                    <div class="project-card">
+                        <img src="projects/tech-support-1.jpg" alt="Tech Support Website">
+                        <div class="project-info">
+                            <h3>Tech Support Platform</h3>
+                            <p>A web platform helping users troubleshoot IT issues</p>
+                            <div class="project-links">
+                                <a href="projects.html#tech-support" class="btn-view">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Duplicate cards for continuous flow -->
+                    <!-- Add at least 6-8 project cards for smooth scrolling -->
+                </div>
             </div>
         </section>
 
-        <section id="contact">
-            <h2><i class="fas fa-envelope"></i> Contact Me</h2>
-            <form class="contact-form">
-                <input type="text" placeholder="Full name" required>
-                <input type="email" placeholder="Email" required>
-                <textarea placeholder="Write me a message" required></textarea>
-                <button type="submit" class="btn">Send Message</button>
-            </form>
+        <section id="achievements">
+            <h2>Achievements & Certifications</h2>
+            <div class="achievements-container">
+                <div class="achievement-card">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Samsung Innovation Program</h3>
+                    <p>Successfully completed AI & Basic Coding certification</p>
+                </div>
+                
+                <div class="achievement-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>4-Month Coding Course</h3>
+                    <p>Intensive training in modern web technologies</p>
+                </div>
+                
+                <div class="achievement-card">
+                    <i class="fas fa-award"></i>
+                    <h3>Web Development</h3>
+                    <p>Built & deployed multiple production web applications</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>tatiavumile@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Location</h3>
+                            <p>Cape Town, South Africa</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-cta">
+                    <p>Let's work together!</p>
+                    <a href="mailto:tatiavumile@gmail.com" class="btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </a>
+                </div>
+            </div>
         </section>
     </main>
 
-    <footer>
-        <p>copyright © 2024 Avumile Tati all rights reserved.</p>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-social">
+                <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://twitter.com/yourusername" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>Designed & Built by Avumile Tati | © 2024</p>
+        </div>
     </footer>
-
-    <script>
-        // Add smooth scrolling for mobile
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
-    <script src="script.js"></script>
 </body>
 </html>
