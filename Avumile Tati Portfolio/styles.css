@@ -1073,6 +1073,20 @@ section {
     padding: 2rem 0;
     margin: 2rem 0;
     overflow: hidden;
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 5%,
+        black 95%,
+        transparent
+    );
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 5%,
+        black 95%,
+        transparent
+    );
 }
 
 .projects-track {
@@ -1080,6 +1094,7 @@ section {
     gap: 2rem;
     animation: scroll 30s linear infinite;
     width: max-content;
+    padding: 1rem;
 }
 
 .project-card {
@@ -1139,8 +1154,13 @@ section {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(calc(-350px * 4 - 8rem)); /* Adjust based on number of cards */
+        transform: translateX(calc(-350px * 3 - 6rem)); /* Adjust based on 3 cards */
     }
+}
+
+/* Smooth animation on hover */
+.projects-container:hover .projects-track {
+    animation-play-state: paused;
 }
 
 /* Add hover pause */
