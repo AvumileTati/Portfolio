@@ -68,7 +68,14 @@ body {
 
 .logo-image {
     height: 40px;
-    width: auto;
+    width: 40px; /* Make it square */
+    border-radius: 50%; /* Make it round */
+    object-fit: cover; /* Ensure image fills the space */
+    transition: transform 0.3s ease;
+}
+
+.logo-image:hover {
+    transform: scale(1.1);
 }
 
 .nav-menu {
