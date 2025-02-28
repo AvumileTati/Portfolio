@@ -170,10 +170,10 @@ body {
 /* Mobile Navigation */
 @media (max-width: 768px) {
     .nav-menu {
-        display: none; /* Change from flex to none by default */
+        display: flex !important; /* Force display flex */
         position: fixed;
         top: 0;
-        left: 0; /* Change from right to left */
+        left: -100%; /* Change initial position */
         width: 100%;
         height: 100vh;
         background: var(--bg);
@@ -184,15 +184,12 @@ body {
         transition: 0.3s ease;
         margin: 0;
         z-index: 999;
+        transform: translateX(-100%); /* Start off-screen */
     }
 
     .nav-menu.active {
-        display: flex; /* Show as flex when active */
-    }
-
-    .nav-menu a {
-        font-size: 1.2rem;
-        color: var(--text);
+        left: 0;
+        transform: translateX(0); /* Slide in */
     }
 
     .theme-toggle {
