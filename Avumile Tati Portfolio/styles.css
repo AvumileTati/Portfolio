@@ -1277,7 +1277,7 @@ section {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(calc(-350px * 3 - 6rem)); /* Adjust based on 3 cards */
+        transform: translateX(calc(-350px * 5 - 10rem)); /* Updated for more cards */
     }
 }
 
