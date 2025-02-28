@@ -1,4 +1,4 @@
-ject// Theme toggle functionality
+// Theme toggle functionality
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
 
@@ -18,11 +18,12 @@ themeToggle.addEventListener('click', () => {
         : '<i class="fas fa-moon"></i>';
 });
 
-// Mobile Menu Functionality
+// Enhanced Mobile Menu Functionality
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
-hamburger.addEventListener('click', () => {
+hamburger.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent click from bubbling
     hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
     body.style.overflow = body.style.overflow === 'hidden' ? '' : 'hidden';
