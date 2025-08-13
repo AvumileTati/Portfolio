@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avumile Tati - Full Stack Developer & Tech Enthusiast</title>
+    <meta name="description" content="Full Stack Developer specializing in web development, mobile apps, and tech solutions. ICT Graduate with AI & Basic Coding certifications.">
+    <meta property="og:title" content="Avumile Tati - Full Stack Developer">
+    <meta property="og:description" content="Passionate Full Stack Developer bridging the digital divide through tech education and innovative solutions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://avumiletati.netlify.app/">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'dark': {
+                            900: '#0F172A',
+                            800: '#1E293B',
+                            700: '#334155',
+                            600: '#475569'
+                        },
+                        'accent': {
+                            blue: '#3B82F6',
+                            cyan: '#06B6D4',
+                            purple: '#8B5CF6'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'fade-in': 'fadeIn 0.6s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        glow: {
+                            'from': { boxShadow: '0 0 20px #3B82F6' },
+                            'to': { boxShadow: '0 0 30px #06B6D4, 0 0 40px #06B6D4' }
+                        },
+                        fadeIn: {
+                            'from': { opacity: '0', transform: 'translateY(30px)' },
+                            'to': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideUp: {
+                            'from': { transform: 'translateY(100px)', opacity: '0' },
+                            'to': { transform: 'translateY(0)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-dark-900 text-slate-50 font-inter overflow-x-hidden">
+    
+    <!-- Navigation -->
+    <!-- @COMPONENT: Navigation [fixed navigation with backdrop blur] -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-dark-900/80 backdrop-blur-lg border-b border-dark-700">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <span class="text-xl font-bold bg-gradient-to-r from-accent-blue to-accent-cyan bg-clip-text text-transparent">
+                        Avumile Tati
+                    </span>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="nav-link text-slate-300 hover:text-accent-blue transition-colors duration-300">Home</a>
+                        <a href="#about" class="nav-link text-slate-300 hover:text-accent-blue transition-colors duration-300">About</a>
+                        <a href="#skills" class="nav-link text-slate-300 hover:text-accent-blue transition-colors duration-300">Skills</a>
+                        <a href="#projects" class="nav-link text-slate-300 hover:text-accent-blue transition-colors duration-300">Projects</a>
+                        <a href="#contact" class="nav-link text-slate-300 hover:text-accent-blue transition-colors duration-300">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-dark-800/95 backdrop-blur-lg">
+            <div class="px-6 pt-2 pb-6 space-y-2">
+                <a href="#home" class="block px-3 py-2 text-slate-300 hover:text-accent-blue transition-colors">Home</a>
+                <a href="#about" class="block px-3 py-2 text-slate-300 hover:text-accent-blue transition-colors">About</a>
+                <a href="#skills" class="block px-3 py-2 text-slate-300 hover:text-accent-blue transition-colors">Skills</a>
+                <a href="#projects" class="block px-3 py-2 text-slate-300 hover:text-accent-blue transition-colors">Projects</a>
+                <a href="#contact" class="block px-3 py-2 text-slate-300 hover:text-accent-blue transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: Navigation -->
+
+    <!-- Hero Section -->
+    <!-- @COMPONENT: HeroSection [main landing section with animated elements] -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+        <!-- Animated background elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-72 h-72 bg-accent-blue/10 rounded-full blur-3xl animate-float"></div>
+            <div class="absolute -bottom-10 -left-10 w-96 h-96 bg-accent-cyan/10 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+            <div class="text-center space-y-8 animate-fade-in">
+                <!-- Profile Image -->
+                <!-- Professional headshot of Avumile Tati in business casual attire -->
+                <div class="relative inline-block">
+                    <div class="w-32 h-32 mx-auto rounded-full border-4 border-accent-blue/50 p-1 animate-glow">
+                        <img src="https://avumiletati.netlify.app/MyPic.jpg" 
+                             alt="Avumile Tati - Full Stack Developer" 
+                             class="w-full h-full rounded-full object-cover" 
+                             data-mock="true">
+                    </div>
+                </div>
+                
+                <div class="space-y-4">
+                    <p class="text-accent-cyan text-lg font-medium">Hi all, I'm</p>
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-white via-accent-blue to-accent-cyan bg-clip-text text-transparent">
+                        Avumile Tati
+                    </h1>
+                    <p class="text-xl sm:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+                        <span class="text-accent-blue">ICT Graduate</span> | 
+                        <span class="text-accent-cyan">Full Stack Developer</span> | 
+                        <span class="text-accent-purple">Tech Enthusiast</span>
+                    </p>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
+                    <a href="#contact" 
+                       class="px-8 py-4 bg-gradient-to-r from-accent-blue to-accent-cyan rounded-lg font-semibold text-white hover:shadow-lg hover:shadow-accent-blue/25 transform hover:-translate-y-1 transition-all duration-300">
+                        <i class="fas fa-paper-plane mr-2"></i>
+                        Hire Me
+                    </a>
+                    <a href="https://drive.google.com/file/d/13sC683Uc-ZKKbptjM3nQeHUAtEDCl39v/view?usp=drive_link" 
+                       target="_blank"
+                       class="px-8 py-4 border-2 border-accent-blue text-accent-blue rounded-lg font-semibold hover:bg-accent-blue hover:text-white transform hover:-translate-y-1 transition-all duration-300">
+                        <i class="fas fa-download mr-2"></i>
+                        View CV
+                    </a>
+                </div>
+                
+                <!-- Social Links -->
+                <div class="flex justify-center space-x-6 pt-6">
+                    <a href="https://github.com/avumiletati" target="_blank" class="text-slate-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/avumiletati" target="_blank" class="text-slate-400 hover:text-accent-blue transition-colors duration-300 transform hover:scale-110">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                    </a>
+                    <a href="mailto:tatiavumile@gmail.com" class="text-slate-400 hover:text-accent-cyan transition-colors duration-300 transform hover:scale-110">
+                        <i class="fas fa-envelope text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-slate-400 hover:text-accent-blue transition-colors">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: HeroSection -->
+
+    <!-- About Section -->
+    <!-- @COMPONENT: AboutSection [detailed about information with cards] -->
+    <section id="about" class="py-20 bg-dark-800/50">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">About Me</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-accent-blue to-accent-cyan mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <p class="text-lg text-slate-300 leading-relaxed">
+                        I'm a passionate Full Stack Developer with a background in ICT (Applications Development) and certifications in AI & Basic Coding from Samsung Innovation Program. I specialize in web development, app creation, and tech support, always looking to explore new technologies and build solutions that make an impact.
+                    </p>
+                    <p class="text-lg text-slate-300 leading-relaxed">
+                        My goal? To bridge the digital divide by empowering communities with tech education through my initiative, <span class="text-accent-cyan font-semibold">Dynamic Duo Tech Solutions</span>. Whether it's developing sleek websites, mobile applications, or training learners in rural areas, I'm all about creating opportunities through technology.
+                    </p>
+                    
+                    <!-- Quick Stats -->
+                    <div class="grid grid-cols-2 gap-6 pt-8">
+                        <div class="text-center p-4 bg-dark-700/50 rounded-lg border border-dark-600">
+                            <div class="text-3xl font-bold text-accent-blue">5+</div>
+                            <div class="text-slate-400">Projects Completed</div>
+                        </div>
+                        <div class="text-center p-4 bg-dark-700/50 rounded-lg border border-dark-600">
+                            <div class="text-3xl font-bold text-accent-cyan">2+</div>
+                            <div class="text-slate-400">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <!-- Education Card -->
+                    <div class="bg-dark-700/50 border border-dark-600 rounded-xl p-6 hover:border-accent-blue/50 transition-colors duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-accent-blue/20 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-graduation-cap text-accent-blue text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-white">Education</h3>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <h4 class="font-semibold text-accent-blue">Diploma in ICT</h4>
+                                <p class="text-slate-400">Applications Development</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-accent-cyan">Samsung Innovation Program</h4>
+                                <p class="text-slate-400">AI & Basic Coding Certifications</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience Card -->
+                    <div class="bg-dark-700/50 border border-dark-600 rounded-xl p-6 hover:border-accent-cyan/50 transition-colors duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-accent-cyan/20 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-briefcase text-accent-cyan text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-white">Experience</h3>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <h4 class="font-semibold text-accent-cyan">Dynamic Duo Tech Solutions</h4>
+                                <p class="text-slate-400">Founder | IT Services & Support Provider</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-accent-blue">Pre-phones Skills Project</h4>
+                                <p class="text-slate-400">Web Development Skills Demonstration</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: AboutSection -->
+
+    <!-- Skills Section -->
+    <!-- @COMPONENT: SkillsSection [interactive skill bars and tech stack] -->
+    <section id="skills" class="py-20">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Skills & Expertise</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-accent-blue to-accent-cyan mx-auto rounded-full"></div>
+                <p class="text-slate-400 mt-6 max-w-2xl mx-auto">
+                    Full Stack Developer who loves to explore tech
+                </p>
+            </div>
+            
+            <!-- Skills Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <!-- @MAP: skills.map(skill => ( -->
+                <div class="bg-dark-800/50 border border-dark-600 rounded-xl p-6 hover:border-accent-blue/50 transition-all duration-300 hover:transform hover:scale-105">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-accent-blue/20 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-code text-accent-blue text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white">Frontend Development</h3>
+                    </div>
+                    <p class="text-slate-400 mb-4">Crafting modern, responsive websites</p>
+                    <!-- @STATE: skillLevel:number = 90 -->
+                    <div class="w-full bg-dark-600 rounded-full h-2">
+                        <div class="bg-gradient-to-r from-accent-blue to-accent-cyan h-2 rounded-full skill-bar" data-width="90%"></div>
+                    </div>
+                    <span class="text-sm text-slate-500 mt-1">90%</span>
+                </div>
+                
+                <div class="bg-dark-800/50 border border-dark-600 rounded-xl p-6 hover:border-accent-cyan/50 transition-all duration-300 hover:transform hover:scale-105">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-accent-cyan/20 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-server text-accent-cyan text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white">Backend Development</h3>
+                    </div>
+                    <p class="text-slate-400 mb-4">Building efficient APIs & databases</p>
+                    <div class="w-full bg-dark-600 rounded-full h-2">
+                        <div class="bg-gradient-to-r from-accent-cyan to-accent-purple h-2 rounded-full skill-bar" data-width="85%"></div>
+                    </div>
+                    <span class="text-sm text-slate-500 mt-1">85%</span>
+                </div>
+                
+                <div class="bg-dark-800/50 border border-dark-600 rounded-xl p-6 hover:border-accent-purple/50 transition-all duration-300 hover:transform hover:scale-105">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-accent-purple/20 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-mobile-alt text-accent-purple text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white">Mobile App Development</h3>
+                    </div>
+                    <p class="text-slate-400 mb-4">Creating apps for learning & accessibility</p>
+                    <div class="w-full bg-dark-600 rounded-full h-2">
+                        <div class="bg-gradient-to-r from-accent-purple to-accent-blue h-2 rounded-full skill-bar" data-width="80%"></div>
+                    </div>
+                    <span class="text-sm text-slate-500 mt-1">80%</span>
+                </div>
+                
+                <div class="bg-dark-800/50 border border-dark-600 rounded-xl p-6 hover:border-accent-blue/50 transition-all duration-300 hover:transform hover:scale-105">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-accent-blue/20 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-chart-line text-accent-blue text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white">Data Analysis</h3>
+                    </div>
+                    <p class="text-slate-400 mb-4">Extracting insights from complex data</p>
+                    <div class="w-full bg-dark-600 rounded-full h-2">
+                        <div class="bg-gradient-to-r from-accent-blue to-accent-cyan h-2 rounded-full skill-bar" data-width="75%"></div>
+                    </div>
+                    <span class="text-sm text-slate-500 mt-1">75%</span>
+                </div>
+                
+                <div class="bg-dark-800/50 border border-dark-600 rounded-xl p-6 hover:border-accent-cyan/50 transition-all duration-300 hover:transform hover:scale-105">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-accent-cyan/20 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-cloud text-accent-cyan text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white">Cloud & DevOps</h3>
+                    </div>
+                    <p class="text-slate-400 mb-4">Deploying and managing web solutions</p>
+                    <div class="w-full bg-dark-600 rounded-full h-2">
+                        <div class="bg-gradient-to-r from-accent-cyan to-accent-purple h-2 rounded-full skill-bar" data-width="82%"></div>
+                    </div>
+                    <span class="text-sm text-slate-500 mt-1">82%</span>
+                </div>
+                
+                <div class="bg-dark-800/50 border border-dark-600 rounded-xl p-6 hover:border-accent-purple/50 transition-all duration-300 hover:transform hover:scale-105">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-accent-purple/20 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-palette text-accent-purple text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white">UI/UX Design</h3>
+                    </div>
+                    <p class="text-slate-400 mb-4">Creating user-centered design solutions</p>
+                    <div class="w-full bg-dark-600 rounded-full h-2">
+                        <div class="bg-gradient-to-r from-accent-purple to-accent-blue h-2 rounded-full skill-bar" data-width="88%"></div>
+                    </div>
+                    <span class="text-sm text-slate-500 mt-1">88%</span>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+            
+            <!-- Tech Stack -->
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-semibold text-white mb-8">Tech Stack & Tools</h3>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <div class="bg-dark-700/30 border border-dark-600 rounded-lg p-4 text-center hover:border-accent-blue/50 transition-colors duration-300">
+                    <i class="fab fa-html5 text-orange-500 text-3xl mb-2"></i>
+                    <p class="text-slate-300 text-sm">HTML/CSS/JS</p>
+                </div>
+                <div class="bg-dark-700/30 border border-dark-600 rounded-lg p-4 text-center hover:border-accent-cyan/50 transition-colors duration-300">
+                    <i class="fas fa-database text-green-500 text-3xl mb-2"></i>
+                    <p class="text-slate-300 text-sm">SQL/Firebase</p>
+                </div>
+                <div class="bg-dark-700/30 border border-dark-600 rounded-lg p-4 text-center hover:border-accent-blue/50 transition-colors duration-300">
+                    <i class="fab fa-aws text-yellow-500 text-3xl mb-2"></i>
+                    <p class="text-slate-300 text-sm">AWS/Cloud</p>
+                </div>
+                <div class="bg-dark-700/30 border border-dark-600 rounded-lg p-4 text-center hover:border-accent-purple/50 transition-colors duration-300">
+                    <i class="fab fa-figma text-purple-500 text-3xl mb-2"></i>
+                    <p class="text-slate-300 text-sm">Figma UI/UX</p>
+                </div>
+                <div class="bg-dark-700/30 border border-dark-600 rounded-lg p-4 text-center hover:border-accent-cyan/50 transition-colors duration-300">
+                    <i class="fab fa-react text-blue-500 text-3xl mb-2"></i>
+                    <p class="text-slate-300 text-sm">React/Node.js</p>
+                </div>
+                <div class="bg-dark-700/30 border border-dark-600 rounded-lg p-4 text-center hover:border-accent-blue/50 transition-colors duration-300">
+                    <i class="fab fa-git-alt text-red-500 text-3xl mb-2"></i>
+                    <p class="text-slate-300 text-sm">Git/DevOps</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: SkillsSection -->
+
+    <!-- Projects Section -->
+    <!-- @COMPONENT: ProjectsSection [portfolio showcase with filters] -->
+    <section id="projects" class="py-20 bg-dark-800/50">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Featured Projects</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-accent-blue to-accent-cyan mx-auto rounded-full"></div>
+                <p class="text-slate-400 mt-6 max-w-2xl mx-auto">
+                    Showcasing my latest work in web development, mobile apps, and UI/UX design
+                </p>
+            </div>
+            
+            <!-- Project Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- @MAP: projects.map(project => ( -->
+                <div class="bg-dark-700/50 border border-dark-600 rounded-xl overflow-hidden hover:border-accent-blue/50 transition-all duration-300 hover:transform hover:-translate-y-2 group">
+                    <div class="relative overflow-hidden">
+                        <!-- Professional website homepage showing modern design and branding for Dynamic Duo Tech Solutions -->
+                        <img src="https://avumiletati.netlify.app/Images/Ddtsolutions.png" 
+                             alt="Dynamic Duo Tech Solutions website homepage" 
+                             class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                             data-mock="true">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <div class="flex space-x-2">
+                                    <a href="https://ddtsolutions.co.za/" target="_blank" 
+                                       class="px-3 py-1 bg-accent-blue rounded-lg text-sm font-medium hover:bg-accent-blue/80 transition-colors">
+                                        <i class="fas fa-external-link-alt mr-1"></i>
+                                        Live Demo
+                                    </a>
+                                    <a href="#" target="_blank" 
+                                       class="px-3 py-1 bg-dark-600 border border-dark-500 rounded-lg text-sm font-medium hover:border-accent-cyan transition-colors">
+                                        <i class="fab fa-github mr-1"></i>
+                                        Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-white mb-2">Dynamic Duo Tech Solutions</h3>
+                        <p class="text-slate-400 mb-4 text-sm">Professional IT services including support, cloud solutions, security, and web design</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-accent-blue/20 text-accent-blue rounded-full text-xs">Web Development</span>
+                            <span class="px-2 py-1 bg-accent-cyan/20 text-accent-cyan rounded-full text-xs">Business</span>
+                            <span class="px-2 py-1 bg-accent-purple/20 text-accent-purple rounded-full text-xs">IT Services</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-dark-700/50 border border-dark-600 rounded-xl overflow-hidden hover:border-accent-cyan/50 transition-all duration-300 hover:transform hover:-translate-y-2 group">
+                    <div class="relative overflow-hidden">
+                        <!-- Figma prototype interface showing mobile app design for SRD registration system -->
+                        <img src="https://avumiletati.netlify.app/Images/figma.png" 
+                             alt="SRD Registration System Figma prototype interface" 
+                             class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                             data-mock="true">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <div class="flex space-x-2">
+                                    <a href="https://www.figma.com/proto/g6lfoZvSpSPmxNIDKIij84/Untitled?node-id=0-1&t=PAjooG4pZz9oZ6ox-1" target="_blank" 
+                                       class="px-3 py-1 bg-accent-cyan rounded-lg text-sm font-medium hover:bg-accent-cyan/80 transition-colors">
+                                        <i class="fas fa-external-link-alt mr-1"></i>
+                                        View Prototype
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-white mb-2">SRD Registration System</h3>
+                        <p class="text-slate-400 mb-4 text-sm">Youth-focused web application for SRD R350 grant registration</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-accent-cyan/20 text-accent-cyan rounded-full text-xs">UI/UX Design</span>
+                            <span class="px-2 py-1 bg-accent-blue/20 text-accent-blue rounded-full text-xs">Figma</span>
+                            <span class="px-2 py-1 bg-accent-purple/20 text-accent-purple rounded-full text-xs">Government</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-dark-700/50 border border-dark-600 rounded-xl overflow-hidden hover:border-accent-purple/50 transition-all duration-300 hover:transform hover:-translate-y-2 group">
+                    <div class="relative overflow-hidden">
+                        <!-- Brand identity design showcase displaying logos and visual branding elements -->
+                        <img src="https://avumiletati.netlify.app/Images/graphic1.png" 
+                             alt="Brand identity design portfolio showcasing modern logos and branding" 
+                             class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                             data-mock="true">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <div class="flex space-x-2">
+                                    <a href="https://drive.google.com/file/d/1AjA8Mx1OdYsT3xG-LGZkDralk7bHU8JQ/view?usp=drive_link" target="_blank" 
+                                       class="px-3 py-1 bg-accent-purple rounded-lg text-sm font-medium hover:bg-accent-purple/80 transition-colors">
+                                        <i class="fas fa-external-link-alt mr-1"></i>
+                                        View Project
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-white mb-2">Brand Identity Design</h3>
+                        <p class="text-slate-400 mb-4 text-sm">Creative branding and visual identity design for modern businesses</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-accent-purple/20 text-accent-purple rounded-full text-xs">Graphic Design</span>
+                            <span class="px-2 py-1 bg-accent-blue/20 text-accent-blue rounded-full text-xs">Branding</span>
+                            <span class="px-2 py-1 bg-accent-cyan/20 text-accent-cyan rounded-full text-xs">Creative</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-dark-700/50 border border-dark-600 rounded-xl overflow-hidden hover:border-accent-blue/50 transition-all duration-300 hover:transform hover:-translate-y-2 group">
+                    <div class="relative overflow-hidden">
+                        <!-- Marketing materials design showing print and digital promotional content -->
+                        <img src="https://avumiletati.netlify.app/Images/graphic2.png" 
+                             alt="Marketing design materials including brochures and digital advertising" 
+                             class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                             data-mock="true">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <div class="flex space-x-2">
+                                    <a href="https://drive.google.com/file/d/1AwQ6FDzqE8kralNGStsiOQmoq-gsA0g7/view?usp=drive_link" target="_blank" 
+                                       class="px-3 py-1 bg-accent-blue rounded-lg text-sm font-medium hover:bg-accent-blue/80 transition-colors">
+                                        <i class="fas fa-external-link-alt mr-1"></i>
+                                        View Project
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-white mb-2">Marketing Design</h3>
+                        <p class="text-slate-400 mb-4 text-sm">Print and digital marketing materials designed for impact</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-accent-blue/20 text-accent-blue rounded-full text-xs">Marketing</span>
+                            <span class="px-2 py-1 bg-accent-cyan/20 text-accent-cyan rounded-full text-xs">Print Design</span>
+                            <span class="px-2 py-1 bg-accent-purple/20 text-accent-purple rounded-full text-xs">Digital</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-dark-700/50 border border-dark-600 rounded-xl overflow-hidden hover:border-accent-cyan/50 transition-all duration-300 hover:transform hover:-translate-y-2 group">
+                    <div class="relative overflow-hidden">
+                        <!-- Google Sites webpage showing mobile device testing and review platform -->
+                        <img src="https://avumiletati.netlify.app/Images/prephone.png" 
+                             alt="Pre-phones project testing platform built with Google Sites" 
+                             class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                             data-mock="true">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <div class="flex space-x-2">
+                                    <a href="https://sites.google.com/view/prephones/home" target="_blank" 
+                                       class="px-3 py-1 bg-accent-cyan rounded-lg text-sm font-medium hover:bg-accent-cyan/80 transition-colors">
+                                        <i class="fas fa-external-link-alt mr-1"></i>
+                                        Visit Website
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-white mb-2">Pre-phones Skills Project</h3>
+                        <p class="text-slate-400 mb-4 text-sm">Web development skills demonstration using Google Sites platform</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-accent-cyan/20 text-accent-cyan rounded-full text-xs">Web Development</span>
+                            <span class="px-2 py-1 bg-accent-blue/20 text-accent-blue rounded-full text-xs">Google Sites</span>
+                            <span class="px-2 py-1 bg-accent-purple/20 text-accent-purple rounded-full text-xs">Demonstration</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+            
+            <!-- View All Projects Button -->
+            <div class="text-center mt-12">
+                <a href="#contact" 
+                   class="inline-block px-8 py-4 bg-gradient-to-r from-accent-blue to-accent-cyan rounded-lg font-semibold text-white hover:shadow-lg hover:shadow-accent-blue/25 transform hover:-translate-y-1 transition-all duration-300">
+                    <i class="fas fa-folder-open mr-2"></i>
+                    View All Projects
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ProjectsSection -->
+
+    <!-- Achievements Section -->
+    <!-- @COMPONENT: AchievementsSection [certifications and accomplishments] -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Achievements & Certifications</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-accent-blue to-accent-cyan mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-dark-700/50 border border-dark-600 rounded-xl p-6 text-center hover:border-accent-blue/50 transition-colors duration-300">
+                    <div class="w-16 h-16 bg-accent-blue/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-award text-accent-blue text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Samsung Innovation Program</h3>
+                    <p class="text-slate-400 text-sm">Successfully completed AI & Basic Coding certification</p>
+                </div>
+                
+                <div class="bg-dark-700/50 border border-dark-600 rounded-xl p-6 text-center hover:border-accent-cyan/50 transition-colors duration-300">
+                    <div class="w-16 h-16 bg-accent-cyan/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-code text-accent-cyan text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">4-Month Coding Course</h3>
+                    <p class="text-slate-400 text-sm">Intensive training in modern web technologies</p>
+                </div>
+                
+                <div class="bg-dark-700/50 border border-dark-600 rounded-xl p-6 text-center hover:border-accent-purple/50 transition-colors duration-300">
+                    <div class="w-16 h-16 bg-accent-purple/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-rocket text-accent-purple text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Web Development</h3>
+                    <p class="text-slate-400 text-sm">Built & deployed multiple production web applications</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: AchievementsSection -->
+
+    <!-- Contact Section -->
+    <!-- @COMPONENT: ContactSection [contact form and information] -->
+    <section id="contact" class="py-20 bg-dark-800/50">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Get In Touch</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-accent-blue to-accent-cyan mx-auto rounded-full"></div>
+                <p class="text-slate-400 mt-6 max-w-2xl mx-auto">
+                    Let's work together! I'm always interested in new opportunities and exciting projects.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Info -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-white mb-6">Contact Information</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-accent-blue/20 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-accent-blue"></i>
+                                </div>
+                                <div>
+                                    <p class="text-slate-400 text-sm">Email</p>
+                                    <p class="text-white" data-bind="user.email">tatiavumile@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-accent-cyan/20 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-map-marker-alt text-accent-cyan"></i>
+                                </div>
+                                <div>
+                                    <p class="text-slate-400 text-sm">Location</p>
+                                    <p class="text-white" data-bind="user.location">Cape Town, South Africa</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-accent-purple/20 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-clock text-accent-purple"></i>
+                                </div>
+                                <div>
+                                    <p class="text-slate-400 text-sm">Response Time</p>
+                                    <p class="text-white">Usually within 24 hours</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div>
+                        <h4 class="text-lg font-semibold text-white mb-4">Connect with me</h4>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/avumiletati" target="_blank" 
+                               class="w-12 h-12 bg-dark-600 border border-dark-500 rounded-lg flex items-center justify-center hover:border-accent-blue hover:bg-accent-blue/10 transition-all duration-300 transform hover:scale-110">
+                                <i class="fab fa-github text-white"></i>
+                            </a>
+                            <a href="https://linkedin.com/in/avumiletati" target="_blank" 
+                               class="w-12 h-12 bg-dark-600 border border-dark-500 rounded-lg flex items-center justify-center hover:border-accent-blue hover:bg-accent-blue/10 transition-all duration-300 transform hover:scale-110">
+                                <i class="fab fa-linkedin text-white"></i>
+                            </a>
+                            <a href="mailto:tatiavumile@gmail.com" 
+                               class="w-12 h-12 bg-dark-600 border border-dark-500 rounded-lg flex items-center justify-center hover:border-accent-cyan hover:bg-accent-cyan/10 transition-all duration-300 transform hover:scale-110">
+                                <i class="fas fa-envelope text-white"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="bg-dark-700/50 border border-dark-600 rounded-xl p-8">
+                    <h3 class="text-2xl font-semibold text-white mb-6">Send a Message</h3>
+                    <form class="space-y-6" data-event="submit:handleContactForm">
+                        <!-- @STATE: formData:object = {name:'', email:'', subject:'', message:''} -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-slate-300 mb-2">Name</label>
+                                <input type="text" id="name" name="name" required
+                                       class="w-full px-4 py-3 bg-dark-600 border border-dark-500 rounded-lg text-white placeholder-slate-400 focus:border-accent-blue focus:ring-1 focus:ring-accent-blue focus:outline-none transition-colors duration-300"
+                                       placeholder="Your Name" data-bind="formData.name">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-slate-300 mb-2">Email</label>
+                                <input type="email" id="email" name="email" required
+                                       class="w-full px-4 py-3 bg-dark-600 border border-dark-500 rounded-lg text-white placeholder-slate-400 focus:border-accent-blue focus:ring-1 focus:ring-accent-blue focus:outline-none transition-colors duration-300"
+                                       placeholder="your.email@example.com" data-bind="formData.email">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-slate-300 mb-2">Subject</label>
+                            <input type="text" id="subject" name="subject" required
+                                   class="w-full px-4 py-3 bg-dark-600 border border-dark-500 rounded-lg text-white placeholder-slate-400 focus:border-accent-blue focus:ring-1 focus:ring-accent-blue focus:outline-none transition-colors duration-300"
+                                   placeholder="Project Discussion" data-bind="formData.subject">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-slate-300 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" required
+                                      class="w-full px-4 py-3 bg-dark-600 border border-dark-500 rounded-lg text-white placeholder-slate-400 focus:border-accent-blue focus:ring-1 focus:ring-accent-blue focus:outline-none transition-colors duration-300 resize-none"
+                                      placeholder="Tell me about your project..." data-bind="formData.message"></textarea>
+                        </div>
+                        
+                        <button type="submit" 
+                                class="w-full px-8 py-4 bg-gradient-to-r from-accent-blue to-accent-cyan rounded-lg font-semibold text-white hover:shadow-lg hover:shadow-accent-blue/25 transform hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-dark-700"
+                                data-implementation="Should validate form before submission">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ContactSection -->
+
+    <!-- Footer -->
+    <!-- @COMPONENT: Footer [copyright and additional links] -->
+    <footer class="bg-dark-800 border-t border-dark-700 py-8">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-slate-400 text-sm">
+                    © 2024 Avumile Tati. All rights reserved.
+                </div>
+                <div class="flex items-center space-x-4 mt-4 md:mt-0">
+                    <span class="text-slate-500 text-sm">Built with passion for tech</span>
+                    <div class="flex space-x-3">
+                        <a href="https://github.com/avumiletati" target="_blank" class="text-slate-400 hover:text-white transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/avumiletati" target="_blank" class="text-slate-400 hover:text-accent-blue transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:tatiavumile@gmail.com" class="text-slate-400 hover:text-accent-cyan transition-colors">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <!-- Scripts -->
+    <script>
+        (function() {
+            // Mobile menu functionality
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        
+                        // Close mobile menu if open
+                        if (mobileMenu) {
+                            mobileMenu.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+            
+            // Animate skill bars on scroll
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            
+            const skillBarObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const skillBars = entry.target.querySelectorAll('.skill-bar');
+                        skillBars.forEach(bar => {
+                            const width = bar.getAttribute('data-width');
+                            setTimeout(() => {
+                                bar.style.width = width;
+                                bar.style.transition = 'width 1.5s ease-out';
+                            }, 200);
+                        });
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe skills section
+            const skillsSection = document.getElementById('skills');
+            if (skillsSection) {
+                skillBarObserver.observe(skillsSection);
+            }
+            
+            // Form handling placeholder
+            const contactForm = document.querySelector('form[data-event="submit:handleContactForm"]');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // TODO: Implement form submission logic
+                    const formData = new FormData(this);
+                    console.log('Form submitted with:', Object.fromEntries(formData));
+                    
+                    // Show success message (placeholder)
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i>Message Sent!';
+                    submitBtn.disabled = true;
+                    
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        this.reset();
+                    }, 3000);
+                });
+            }
+            
+            // Add scroll-based animations
+            const fadeInElements = document.querySelectorAll('.animate-fade-in, .animate-slide-up');
+            const fadeInObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            fadeInElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                fadeInObserver.observe(element);
+            });
+            
+            // Initialize skill bars with 0 width
+            document.querySelectorAll('.skill-bar').forEach(bar => {
+                bar.style.width = '0%';
+            });
+            
+        })();
+    </script>
+</body>
+</html>
