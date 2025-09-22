@@ -14,23 +14,23 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="Images/logo.ico">
+    <link rel="stylesheet" href="styles.css">
     
     <style>
         :root {
             /* Colors */
-            --dark-900: hsl(222, 84%, 4%);
-            --dark-800: hsl(223, 47%, 11%);
-            --dark-700: hsl(223, 39%, 15%);
-            --dark-600: hsl(224, 24%, 25%);
-            --dark-500: hsl(225, 13%, 35%);
+            --dark-900: hsl(210, 40%, 98%); /* Light Gray */
+            --dark-800: hsl(0, 0%, 100%); /* White */
+            --dark-700: hsl(0, 0%, 100%); /* White */
+            --dark-600: hsl(210, 14%, 89%); /* Light Gray Border */
+            --dark-500: hsl(210, 9%, 61%); /* Medium Gray */
             
-            --accent-blue: hsl(213, 94%, 68%);
-            --accent-cyan: hsl(180, 100%, 70%);
-            --accent-purple: hsl(270, 95%, 75%);
+            --accent-blue: hsl(213, 94%, 58%);
+            --accent-cyan: hsl(180, 100%, 40%);
+            --accent-purple: hsl(270, 95%, 65%);
             
             /* Typography */
             --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
@@ -46,7 +46,7 @@
         body {
             font-family: var(--font-sans);
             background: var(--dark-900);
-            color: #e2e8f0;
+            color: hsl(223, 47%, 23%);
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -149,7 +149,7 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(15, 23, 42, 0.95);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--dark-600);
             z-index: 1000;
@@ -175,7 +175,7 @@
         }
 
         .nav-links a {
-            color: #94a3b8;
+            color: #475569;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
@@ -225,7 +225,7 @@
             right: -2.5rem;
             width: 18rem;
             height: 18rem;
-            background: rgba(59, 130, 246, 0.1);
+            background: rgba(59, 130, 246, 0.15);
             border-radius: 50%;
             filter: blur(3rem);
             animation: float 6s ease-in-out infinite;
@@ -238,7 +238,7 @@
             left: -2.5rem;
             width: 24rem;
             height: 24rem;
-            background: rgba(34, 211, 238, 0.1);
+            background: rgba(34, 211, 238, 0.15);
             border-radius: 50%;
             filter: blur(3rem);
             animation: float 6s ease-in-out infinite;
@@ -294,7 +294,7 @@
             border-radius: 50%;
             border: 4px solid rgba(59, 130, 246, 0.5);
             padding: 0.25rem;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(34, 211, 238, 0.2));
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(34, 211, 238, 0.1));
             animation: glow 2s ease-in-out infinite;
         }
 
@@ -303,7 +303,7 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
 
         .status-indicator {
@@ -313,7 +313,7 @@
             width: 1.5rem;
             height: 1.5rem;
             background: #10b981;
-            border: 4px solid var(--dark-800);
+            border: 4px solid var(--dark-900);
             border-radius: 50%;
             animation: pulse 2s infinite;
         }
@@ -422,7 +422,7 @@
 
         .hero-subtitle {
             font-size: 1.125rem;
-            color: #cbd5e1;
+            color: #475569;
             margin-bottom: 2rem;
             max-width: 48rem;
             margin-left: auto;
@@ -469,18 +469,18 @@
         }
 
         .social-links a {
-            color: #94a3b8;
+            color: #475569;
             transition: all 0.3s ease;
         }
 
         .social-links a:hover {
-            color: white;
+            color: var(--accent-blue);
             transform: scale(1.1);
         }
 
         /* Terminal Animation */
         .terminal {
-            background: rgba(15, 23, 42, 0.9);
+            background: var(--dark-800);
             border: 1px solid var(--dark-600);
             border-radius: 0.5rem;
             overflow: hidden;
@@ -498,7 +498,7 @@
             display: flex;
             align-items: center;
             padding: 0.5rem 1rem;
-            background: var(--dark-800);
+            background: #f1f5f9;
             border-bottom: 1px solid var(--dark-600);
         }
 
@@ -522,7 +522,7 @@
             align-items: center;
             gap: 0.5rem;
             margin-left: 1rem;
-            color: #94a3b8;
+            color: #475569;
             font-size: 0.875rem;
             font-family: var(--font-mono);
         }
@@ -545,7 +545,7 @@
         }
 
         .terminal-command {
-            color: #e2e8f0;
+            color: #1e293b;
         }
 
         .terminal-output {
@@ -566,7 +566,7 @@
         .section-title {
             font-size: 2.5rem;
             font-weight: 700;
-            color: white;
+            color: #1e293b;
             margin-bottom: 1rem;
         }
 
@@ -579,7 +579,7 @@
         }
 
         .section-subtitle {
-            color: #94a3b8;
+            color: #475569;
             margin-top: 1.5rem;
             max-width: 32rem;
             margin-left: auto;
@@ -588,7 +588,7 @@
 
         /* Card Styles */
         .card {
-            background: rgba(51, 65, 85, 0.5);
+            background: var(--dark-800);
             border: 1px solid var(--dark-600);
             border-radius: 0.5rem;
             padding: 1.5rem;
@@ -637,7 +637,7 @@
         .skill-card {
             text-align: center;
             padding: 1rem;
-            background: rgba(51, 65, 85, 0.3);
+            background: var(--dark-800);
             border: 1px solid var(--dark-600);
             border-radius: 0.5rem;
             transition: all 0.3s ease;
@@ -654,14 +654,14 @@
         }
 
         .skill-name {
-            color: #e2e8f0;
+            color: #1e293b;
             font-size: 0.75rem;
             font-weight: 500;
         }
 
         /* Projects Section */
         .project-card {
-            background: rgba(51, 65, 85, 0.5);
+            background: var(--dark-800);
             border: 1px solid var(--dark-600);
             border-radius: 0.5rem;
             overflow: hidden;
@@ -684,14 +684,14 @@
         }
 
         .project-title {
-            color: white;
+            color: #1e293b;
             font-size: 1.25rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
         }
 
         .project-description {
-            color: #94a3b8;
+            color: #475569;
             font-size: 0.875rem;
             margin-bottom: 1rem;
         }
@@ -743,8 +743,8 @@
 
         .project-link-secondary {
             background: transparent;
-            border: 1px solid var(--dark-500);
-            color: #94a3b8;
+            border: 1px solid var(--dark-600);
+            color: #475569;
         }
 
         .project-link-secondary:hover {
@@ -764,7 +764,7 @@
 
         .form-label {
             display: block;
-            color: white;
+            color: #1e293b;
             font-weight: 500;
             margin-bottom: 0.5rem;
         }
@@ -773,10 +773,10 @@
         .form-textarea {
             width: 100%;
             padding: 0.75rem;
-            background: var(--dark-700);
+            background: var(--dark-800);
             border: 1px solid var(--dark-600);
             border-radius: 0.5rem;
-            color: white;
+            color: #1e293b;
             transition: border-color 0.3s ease;
         }
 
@@ -793,7 +793,7 @@
 
         /* Footer */
         footer {
-            background: rgba(15, 23, 42, 0.9);
+            background: #f1f5f9;
             border-top: 1px solid var(--dark-600);
             padding: 3rem 0;
         }
@@ -813,13 +813,13 @@
 
         .footer-section h3,
         .footer-section h4 {
-            color: white;
+            color: #1e293b;
             font-weight: 600;
             margin-bottom: 1rem;
         }
 
         .footer-section p {
-            color: #94a3b8;
+            color: #475569;
             font-size: 0.875rem;
             line-height: 1.6;
             margin-bottom: 1rem;
@@ -844,18 +844,18 @@
         .footer-social a {
             width: 2.5rem;
             height: 2.5rem;
-            background: var(--dark-700);
+            background: var(--dark-900);
             border: 1px solid var(--dark-600);
             border-radius: 0.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #94a3b8;
+            color: #475569;
             transition: all 0.3s ease;
         }
 
         .footer-social a:hover {
-            color: white;
+            color: var(--accent-blue);
             border-color: var(--accent-blue);
             transform: scale(1.05);
         }
@@ -869,7 +869,7 @@
         }
 
         .footer-links a {
-            color: #94a3b8;
+            color: #475569;
             text-decoration: none;
             font-size: 0.875rem;
             transition: color 0.3s ease;
@@ -894,11 +894,11 @@
 
         .footer-tech span {
             padding: 0.25rem 0.75rem;
-            background: var(--dark-700);
+            background: var(--dark-900);
             border: 1px solid var(--dark-600);
             border-radius: 9999px;
             font-size: 0.75rem;
-            color: #cbd5e1;
+            color: #475569;
             transition: border-color 0.3s ease;
         }
 
@@ -907,7 +907,7 @@
         }
 
         .footer-bottom {
-            border-top: 1px solid var(--dark-700);
+            border-top: 1px solid var(--dark-600);
             padding-top: 2rem;
             display: flex;
             flex-direction: column;
@@ -923,7 +923,7 @@
         }
 
         .footer-bottom p {
-            color: #94a3b8;
+            color: #475569;
             font-size: 0.875rem;
         }
 
@@ -933,7 +933,7 @@
             bottom: 2rem;
             left: 50%;
             transform: translateX(-50%);
-            color: #94a3b8;
+            color: #475569;
             transition: color 0.3s ease;
             animation: bounce 2s infinite;
             background: none;
@@ -959,7 +959,7 @@
                 display: block;
                 background: none;
                 border: none;
-                color: #94a3b8;
+                color: #475569;
                 cursor: pointer;
             }
         }
@@ -1000,7 +1000,7 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="projects.html">Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <button class="mobile-menu-toggle">
@@ -1020,7 +1020,7 @@
                     <div class="profile-image-container">
                         <div class="profile-image">
                             <div class="profile-image-inner">
-                                <img src="attached_assets/generated_images/Professional_tech_developer_headshot_302a12ea.png" alt="Avumile Tati - Full Stack Developer">
+                                <img src="Images/MyPic.jpg" alt="Avumile Tati - Full Stack Developer">
                             </div>
                             <div class="status-indicator"></div>
                             <div class="floating-element floating-element-1"></div>
@@ -1110,14 +1110,13 @@
                 <div class="section-divider"></div>
             </div>
             
-            <div class="grid grid-cols-2">
+            <div class="grid grid-cols-3">
                 <div>
-                    <h3 style="color: white; font-size: 1.5rem; margin-bottom: 1rem;">Professional Background</h3>
-                    <p style="color: #94a3b8; margin-bottom: 1.5rem;">
-                        I'm a passionate ICT Graduate with a solid foundation in Applications Development from CTI Cape Town. 
-                        My journey into tech has been fueled by curiosity and a drive to solve real-world problems through code.
+                    <h3 style="color: #1e293b; font-size: 1.5rem; margin-bottom: 1rem;">Professional Background</h3>
+                    <p style="color: #475569; margin-bottom: 1.5rem;">
+                        Aspiring IT professional with a Diploma in Information Communication Technology and hands-on experience in web and application development. Eager to contribute technical expertise, problem-solving skills, and adaptability to a dynamic organization while continuing to grow professionally.
                     </p>
-                    <p style="color: #94a3b8; margin-bottom: 1.5rem;">
+                    <p style="color: #475569; margin-bottom: 1.5rem;">
                         My goal? To bridge the digital divide by empowering communities with tech education through my initiative, 
                         <span style="color: var(--accent-cyan); font-weight: 600;">Dynamic Duo Tech Solutions</span>. 
                         Whether it's developing sleek websites, mobile applications, or training learners in rural areas, 
@@ -1127,43 +1126,59 @@
                     <!-- Quick Stats -->
                     <div class="grid grid-cols-4" style="margin-top: 2rem;">
                         <div class="card" style="text-align: center; padding: 1rem;">
-                            <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-blue);">10+</div>
-                            <div style="color: #94a3b8; font-size: 0.875rem;">Projects</div>
+                            <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-blue);">2+</div>
+                            <div style="color: #475569; font-size: 0.875rem;">Years Exp</div>
                         </div>
                         <div class="card" style="text-align: center; padding: 1rem;">
-                            <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-cyan);">2+</div>
-                            <div style="color: #94a3b8; font-size: 0.875rem;">Years Exp</div>
+                            <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-cyan);">9</div>
+                            <div style="color: #475569; font-size: 0.875rem;">Skills</div>
                         </div>
                         <div class="card" style="text-align: center; padding: 1rem;">
-                            <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-purple);">15+</div>
-                            <div style="color: #94a3b8; font-size: 0.875rem;">Technologies</div>
+                            <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-purple);">2</div>
+                            <div style="color: #475569; font-size: 0.875rem;">Certifications</div>
                         </div>
                         <div class="card" style="text-align: center; padding: 1rem;">
-                            <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-blue);">3+</div>
-                            <div style="color: #94a3b8; font-size: 0.875rem;">Certifications</div>
+                            <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-blue);">1</div>
+                            <div style="color: #475569; font-size: 0.875rem;">Projects</div>
                         </div>
                     </div>
                 </div>
                 
                 <div>
-                    <h3 style="color: white; font-size: 1.5rem; margin-bottom: 1rem;">Education & Experience</h3>
+                    <h3 style="color: #1e293b; font-size: 1.5rem; margin-bottom: 1rem;">Education</h3>
                     
                     <div class="card" style="margin-bottom: 1.5rem;">
-                        <h4 style="color: var(--accent-blue); font-weight: 600; margin-bottom: 0.5rem;">CTI Cape Town</h4>
-                        <p style="color: white; font-weight: 500; margin-bottom: 0.5rem;">ICT (Applications Development)</p>
-                        <p style="color: #94a3b8; font-size: 0.875rem;">Comprehensive education in software development, web technologies, and system design</p>
-                    </div>
-
-                    <div class="card" style="margin-bottom: 1.5rem;">
-                        <h4 style="color: var(--accent-cyan); font-weight: 600; margin-bottom: 0.5rem;">Samsung Innovation Program</h4>
-                        <p style="color: white; font-weight: 500; margin-bottom: 0.5rem;">AI & Basic Coding Certification</p>
-                        <p style="color: #94a3b8; font-size: 0.875rem;">Advanced training in artificial intelligence and modern programming practices</p>
+                        <h4 style="color: var(--accent-blue); font-weight: 600; margin-bottom: 0.5rem;">Ndamase Senior Secondary School</h4>
+                        <p style="color: #1e293b; font-weight: 500; margin-bottom: 0.5rem;">Grade 12 (2020)</p>
+                        <p style="color: #475569; font-size: 0.875rem;">Completed high school education.</p>
                     </div>
 
                     <div class="card">
-                        <h4 style="color: var(--accent-purple); font-weight: 600; margin-bottom: 0.5rem;">Dynamic Duo Tech Solutions</h4>
-                        <p style="color: white; font-weight: 500; margin-bottom: 0.5rem;">Founder & Lead Developer</p>
-                        <p style="color: #94a3b8; font-size: 0.875rem;">Leading technology education initiatives and developing custom software solutions</p>
+                        <h4 style="color: var(--accent-cyan); font-weight: 600; margin-bottom: 0.5rem;">Walter Sisulu University</h4>
+                        <p style="color: #1e293b; font-weight: 500; margin-bottom: 0.5rem;">Diploma in Information Communication Technology (2021 - 2023)</p>
+                        <p style="color: #475569; font-size: 0.875rem;">Comprehensive education in software development, web technologies, and system design.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 style="color: #1e293b; font-size: 1.5rem; margin-bottom: 1rem;">Experience</h3>
+                    
+                    <div class="card" style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--accent-purple); font-weight: 600; margin-bottom: 0.5rem;">Samsung Innovation Campus</h4>
+                        <p style="color: #1e293b; font-weight: 500; margin-bottom: 0.5rem;">Trainee (Feb 2023 - Dec 2023)</p>
+                        <p style="color: #475569; font-size: 0.875rem;">Completed intensive training in Basic Coding, Programming, and Artificial Intelligence.</p>
+                    </div>
+
+                    <div class="card" style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--accent-blue); font-weight: 600; margin-bottom: 0.5rem;">Black Ink Promotions</h4>
+                        <p style="color: #1e293b; font-weight: 500; margin-bottom: 0.5rem;">Sales Assistant (Jun 2024 - Dec 2024)</p>
+                        <p style="color: #475569; font-size: 0.875rem;">Assisted customers and promoted products to increase sales, and ensured excellent customer service.</p>
+                    </div>
+
+                    <div class="card">
+                        <h4 style="color: var(--accent-cyan); font-weight: 600; margin-bottom: 0.5rem;">Net Campus</h4>
+                        <p style="color: #1e293b; font-weight: 500; margin-bottom: 0.5rem;">Intern (Jan 2025 - Present)</p>
+                        <p style="color: #475569; font-size: 0.875rem;">Gaining practical experience in a professional IT environment.</p>
                     </div>
                 </div>
             </div>
@@ -1171,7 +1186,7 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" style="background: rgba(51, 65, 85, 0.3);">
+    <section id="skills" style="background: rgba(241, 245, 249, 0.8);">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Technical Skills</h2>
@@ -1182,41 +1197,45 @@
             </div>
 
             <div style="text-align: center; margin-bottom: 2rem;">
-                <h3 style="color: white; font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem;">Tech Stack & Tools</h3>
+                <h3 style="color: #1e293b; font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem;">Tech Stack & Tools</h3>
             </div>
 
             <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem;">
-                <div class="skill-card" style="background: rgba(59, 130, 246, 0.2); border-color: rgba(59, 130, 246, 0.3);">
-                    <div class="skill-icon" style="color: #3b82f6; font-family: var(--font-mono); font-weight: 700; font-size: 0.875rem;">TS</div>
-                    <div class="skill-name">TypeScript</div>
+                <div class="skill-card" style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2);">
+                    <div class="skill-icon" style="color: #3b82f6; font-family: var(--font-mono); font-weight: 700; font-size: 0.875rem;">Web</div>
+                    <div class="skill-name">Web Development</div>
                 </div>
-                <div class="skill-card" style="background: rgba(34, 211, 238, 0.2); border-color: rgba(34, 211, 238, 0.3);">
-                    <div class="skill-icon" style="color: #22d3ee;">⚛️</div>
-                    <div class="skill-name">React</div>
+                <div class="skill-card" style="background: rgba(34, 211, 238, 0.1); border-color: rgba(34, 211, 238, 0.2);">
+                    <div class="skill-icon" style="color: #22d3ee;">👨‍💻</div>
+                    <div class="skill-name">Programming</div>
                 </div>
-                <div class="skill-card" style="background: rgba(34, 197, 94, 0.2); border-color: rgba(34, 197, 94, 0.3);">
-                    <div class="skill-icon" style="color: #22c55e; font-family: var(--font-mono); font-weight: 700; font-size: 0.875rem;">JS</div>
-                    <div class="skill-name">Node.js</div>
+                <div class="skill-card" style="background: rgba(34, 197, 94, 0.1); border-color: rgba(34, 197, 94, 0.2);">
+                    <div class="skill-icon" style="color: #22c55e; font-family: var(--font-mono); font-weight: 700; font-size: 0.875rem;">DB</div>
+                    <div class="skill-name">Database Management</div>
                 </div>
-                <div class="skill-card" style="background: rgba(37, 99, 235, 0.2); border-color: rgba(37, 99, 235, 0.3);">
-                    <div class="skill-icon" style="color: #2563eb;">🐘</div>
-                    <div class="skill-name">PostgreSQL</div>
+                <div class="skill-card" style="background: rgba(249, 115, 22, 0.1); border-color: rgba(249, 115, 22, 0.2);">
+                    <div class="skill-icon" style="color: #f97316;">🛠️</div>
+                    <div class="skill-name">Troubleshooting</div>
                 </div>
-                <div class="skill-card" style="background: rgba(249, 115, 22, 0.2); border-color: rgba(249, 115, 22, 0.3);">
-                    <div class="skill-icon" style="color: #f97316;">☁️</div>
-                    <div class="skill-name">AWS</div>
+                <div class="skill-card" style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2);">
+                    <div class="skill-icon" style="color: #3b82f6;">🤝</div>
+                    <div class="skill-name">Teamwork</div>
                 </div>
-                <div class="skill-card" style="background: rgba(59, 130, 246, 0.2); border-color: rgba(59, 130, 246, 0.3);">
-                    <div class="skill-icon" style="color: #3b82f6;">🐳</div>
-                    <div class="skill-name">Docker</div>
+                <div class="skill-card" style="background: rgba(234, 179, 8, 0.1); border-color: rgba(234, 179, 8, 0.2);">
+                    <div class="skill-icon" style="color: #eab308;">💡</div>
+                    <div class="skill-name">Problem-Solving</div>
                 </div>
-                <div class="skill-card" style="background: rgba(234, 179, 8, 0.2); border-color: rgba(234, 179, 8, 0.3);">
-                    <div class="skill-icon" style="color: #eab308;">🐍</div>
-                    <div class="skill-name">Python</div>
-                </div>
-                <div class="skill-card" style="background: rgba(239, 68, 68, 0.2); border-color: rgba(239, 68, 68, 0.3);">
+                <div class="skill-card" style="background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2);">
                     <div class="skill-icon" style="color: #ef4444; font-family: var(--font-mono); font-weight: 700; font-size: 0.875rem;">Git</div>
                     <div class="skill-name">Git</div>
+                </div>
+                <div class="skill-card" style="background: rgba(147, 51, 234, 0.1); border-color: rgba(147, 51, 234, 0.2);">
+                    <div class="skill-icon" style="color: #9333ea;">🤖</div>
+                    <div class="skill-name">AI Fundamentals</div>
+                </div>
+                <div class="skill-card" style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2);">
+                    <div class="skill-icon" style="color: #3b82f6;">📞</div>
+                    <div class="skill-name">Help Desk Support</div>
                 </div>
             </div>
         </div>
@@ -1240,7 +1259,7 @@
                     <div class="project-content">
                         <h3 class="project-title">Dynamic Duo Tech Solutions</h3>
                         <p class="project-description">
-                            Full-stack business website with modern UI/UX, responsive design, and integrated contact systems
+                            Full-stack business website with modern UI/UX, responsive design, and integrated contact systems.
                         </p>
                         <div class="project-tags">
                             <span class="tag tag-react">React</span>
@@ -1267,7 +1286,7 @@
                     <div class="project-content">
                         <h3 class="project-title">Modern Portfolio Website</h3>
                         <p class="project-description">
-                            This current portfolio built with React, TypeScript, and modern web technologies
+                            This current portfolio built with React, TypeScript, and modern web technologies.
                         </p>
                         <div class="project-tags">
                             <span class="tag tag-react">React</span>
@@ -1294,7 +1313,7 @@
                     <div class="project-content">
                         <h3 class="project-title">SRD Registration System</h3>
                         <p class="project-description">
-                            Government grant registration system with intuitive UX and accessibility features
+                            Government grant registration system with intuitive UX and accessibility features.
                         </p>
                         <div class="project-tags">
                             <span class="tag" style="background: rgba(236, 72, 153, 0.2); color: #ec4899;">Figma</span>
@@ -1315,7 +1334,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" style="background: rgba(51, 65, 85, 0.3);">
+    <section id="contact" style="background: rgba(241, 245, 249, 0.8);">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Get In Touch</h2>
@@ -1378,7 +1397,7 @@
                     <ul class="footer-links">
                         <li><a href="#about">About</a></li>
                         <li><a href="#skills">Skills</a></li>
-                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="projects.html">Projects</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -1397,135 +1416,15 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025 Avumile Tati. All rights reserved.</p>
+                <p>&copy; 2024 Avumile Tati. All rights reserved.</p>
                 <p>Built with passion for technology and innovation</p>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
-
-        // Typing animation
-        const roles = ["Full Stack Developer", "Software Engineer", "Tech Innovator", "Problem Solver"];
-        let currentRole = 0;
-        let currentText = "";
-        let isDeleting = false;
-
-        function typeRole() {
-            const role = roles[currentRole];
-            
-            if (isDeleting) {
-                currentText = role.substring(0, currentText.length - 1);
-            } else {
-                currentText = role.substring(0, currentText.length + 1);
-            }
-            
-            document.getElementById('typed-text').textContent = currentText;
-            
-            let typeSpeed = isDeleting ? 50 : 100;
-            
-            if (!isDeleting && currentText === role) {
-                typeSpeed = 2000;
-                isDeleting = true;
-            } else if (isDeleting && currentText === '') {
-                isDeleting = false;
-                currentRole = (currentRole + 1) % roles.length;
-                typeSpeed = 500;
-            }
-            
-            setTimeout(typeRole, typeSpeed);
-        }
-
-        // Terminal animation
-        const commands = [
-            { command: "npm create vite@latest my-app", output: "✓ Project created successfully!" },
-            { command: "cd my-app && npm install", output: "📦 Dependencies installed" },
-            { command: "git init && git add .", output: "✓ Repository initialized" },
-            { command: "npm run dev", output: "🚀 Development server running on http://localhost:5173" },
-            { command: "docker build -t my-app .", output: "🐳 Docker image built successfully" },
-            { command: "kubectl apply -f deployment.yaml", output: "☸️ Deployed to Kubernetes cluster" }
-        ];
-
-        let currentCommandIndex = 0;
-        let currentCommandText = "";
-        let isTypingCommand = true;
-
-        function animateTerminal() {
-            const command = commands[currentCommandIndex];
-            const commandElement = document.getElementById('terminal-command');
-            const outputElement = document.getElementById('terminal-output');
-            
-            if (isTypingCommand) {
-                if (currentCommandText.length < command.command.length) {
-                    currentCommandText += command.command[currentCommandText.length];
-                    commandElement.textContent = currentCommandText;
-                    setTimeout(animateTerminal, 50);
-                } else {
-                    isTypingCommand = false;
-                    outputElement.textContent = command.output;
-                    outputElement.style.display = 'block';
-                    setTimeout(animateTerminal, 2000);
-                }
-            } else {
-                currentCommandText = "";
-                isTypingCommand = true;
-                outputElement.style.display = 'none';
-                currentCommandIndex = (currentCommandIndex + 1) % commands.length;
-                setTimeout(animateTerminal, 500);
-            }
-        }
-
-        // Smooth scrolling
-        function scrollToSection(target) {
-            const element = document.querySelector(target);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        // Contact form submission
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const data = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                message: formData.get('message')
-            };
-            
-            // Here you would typically send the data to your backend
-            console.log('Contact form submitted:', data);
-            alert('Thank you for your message! I\'ll get back to you soon.');
-            this.reset();
-        });
-
-        // Add click event listeners to navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = this.getAttribute('href');
-                scrollToSection(target);
-            });
-        });
-
-        // Start animations when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            typeRole();
-            animateTerminal();
-        });
-
-        // Add scroll effect to navigation
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.style.background = 'rgba(15, 23, 42, 0.98)';
-            } else {
-                nav.style.background = 'rgba(15, 23, 42, 0.95)';
-            }
-        });
-    </script>
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <i data-lucide="arrow-up"></i>
+    </button>
+    <script src="script.js"></script>
 </body>
 </html>
