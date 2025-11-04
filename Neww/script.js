@@ -8,6 +8,34 @@ document.addEventListener('DOMContentLoaded', () => {
   // Ensure iOS style is enabled by default (no UI toggle)
   try { root.classList.add('ios'); } catch (e) { /* ignore */ }
 
+  // Start with landing state active. The .intro.landing section is shown full-screen.
+  try { document.body.classList.add('landing-active'); } catch (e) { /* ignore */ }
+
+  // End landing on the first meaningful user interaction and reveal the page.
+  (function attachLandingExit() {
+    const once = { once: true, passive: true };
+    function endLanding() {
+      document.body.classList.remove('landing-active');
+      // smooth scroll slightly so the user lands at the main content
+      setTimeout(() => {
+        const main = document.getElementById('main');
+        if (main) main.scrollIntoView({ behavior: 'smooth' });
+      }, 50);
+      // detach listeners automatically because of `{ once: true }`
+    }
+    // interactions that should end the landing: scroll/wheel/touch/key press/click on CTA
+    window.addEventListener('wheel', endLanding, once);
+    window.addEventListener('touchstart', endLanding, once);
+    window.addEventListener('keydown', (e) => {
+      const keys = ['ArrowDown','PageDown',' ','Enter'];
+      if (keys.includes(e.key)) endLanding();
+    }, { once: true });
+    document.addEventListener('scroll', endLanding, { once: true, passive: true });
+    // also allow the primary button to exit landing
+    const heroBtn = document.querySelector('.intro.landing .btn');
+    if (heroBtn) heroBtn.addEventListener('click', endLanding, { once: true });
+  })();
+
   // Menu handling
   if (!menuToggle || !nav || !navList) return;
 
