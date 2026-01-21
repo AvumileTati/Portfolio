@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avumile Tati - Full Stack Developer | Modern Tech Portfolio</title>
+    <title>Avumile Tati - Full Stack Developer</title>
     <meta name="description" content="Professional portfolio of Avumile Tati, ICT Graduate and Full Stack Developer specializing in React, Node.js, TypeScript, and modern web technologies.">
     
     <!-- Open Graph Meta Tags -->
@@ -14,1001 +14,37 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="Images/logo.ico">
     <link rel="stylesheet" href="styles.css">
     
-    <style>
-        :root {
-            /* Colors */
-            --dark-900: hsl(210, 40%, 98%); /* Light Gray */
-            --dark-800: hsl(0, 0%, 100%); /* White */
-            --dark-700: hsl(0, 0%, 100%); /* White */
-            --dark-600: hsl(210, 14%, 89%); /* Light Gray Border */
-            --dark-500: hsl(210, 9%, 61%); /* Medium Gray */
-            
-            --accent-blue: hsl(213, 94%, 58%);
-            --accent-cyan: hsl(180, 100%, 40%);
-            --accent-purple: hsl(270, 95%, 65%);
-            
-            /* Typography */
-            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-            --font-mono: 'Fira Code', 'Monaco', 'Cascadia Code', monospace;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: var(--font-sans);
-            background: var(--dark-900);
-            color: hsl(223, 47%, 23%);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Utility Classes */
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .btn-gradient {
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
-            border: none;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-gradient:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.25);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--accent-blue);
-            color: var(--accent-blue);
-            padding: 1rem 2rem;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-outline:hover {
-            background: var(--accent-blue);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
-            50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.6); }
-        }
-
-        @keyframes fade-in {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slide-up {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .animate-glow {
-            animation: glow 2s ease-in-out infinite;
-        }
-
-        .animate-fade-in {
-            animation: fade-in 0.8s ease-out forwards;
-        }
-
-        .animate-slide-up {
-            animation: slide-up 0.8s ease-out forwards;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--dark-600);
-            z-index: 1000;
-            padding: 1rem 0;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--accent-blue);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #475569;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-blue);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-blue);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            padding-top: 5rem;
-        }
-
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-        }
-
-        .hero-bg::before {
-            content: '';
-            position: absolute;
-            top: -2.5rem;
-            right: -2.5rem;
-            width: 18rem;
-            height: 18rem;
-            background: rgba(59, 130, 246, 0.15);
-            border-radius: 50%;
-            filter: blur(3rem);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .hero-bg::after {
-            content: '';
-            position: absolute;
-            bottom: -2.5rem;
-            left: -2.5rem;
-            width: 24rem;
-            height: 24rem;
-            background: rgba(34, 211, 238, 0.15);
-            border-radius: 50%;
-            filter: blur(3rem);
-            animation: float 6s ease-in-out infinite;
-            animation-delay: -3s;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
-            align-items: center;
-            position: relative;
-            z-index: 10;
-        }
-
-        @media (min-width: 1024px) {
-            .hero-content {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .hero-text {
-            text-align: center;
-            animation: fade-in 0.8s ease-out forwards;
-        }
-
-        @media (min-width: 1024px) {
-            .hero-text {
-                text-align: left;
-            }
-        }
-
-        .profile-image-container {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-        }
-
-        @media (min-width: 1024px) {
-            .profile-image-container {
-                justify-content: flex-start;
-            }
-        }
-
-        .profile-image {
-            position: relative;
-        }
-
-        .profile-image-inner {
-            width: 10rem;
-            height: 10rem;
-            border-radius: 50%;
-            border: 4px solid rgba(59, 130, 246, 0.5);
-            padding: 0.25rem;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(34, 211, 238, 0.1));
-            animation: glow 2s ease-in-out infinite;
-        }
-
-        .profile-image img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-
-        .status-indicator {
-            position: absolute;
-            bottom: 0.5rem;
-            right: 0.5rem;
-            width: 1.5rem;
-            height: 1.5rem;
-            background: #10b981;
-            border: 4px solid var(--dark-900);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .floating-element {
-            position: absolute;
-            border-radius: 50%;
-            animation: bounce 2s infinite;
-        }
-
-        .floating-element-1 {
-            top: -0.5rem;
-            right: -0.5rem;
-            width: 1rem;
-            height: 1rem;
-            background: var(--accent-blue);
-            animation-delay: 0s;
-        }
-
-        .floating-element-2 {
-            bottom: -0.5rem;
-            left: -0.5rem;
-            width: 0.75rem;
-            height: 0.75rem;
-            background: var(--accent-cyan);
-            animation-delay: 1s;
-        }
-
-        .floating-element-3 {
-            top: 50%;
-            left: -1rem;
-            width: 0.5rem;
-            height: 0.5rem;
-            background: var(--accent-purple);
-            animation-delay: 2s;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .terminal-greeting {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            color: var(--accent-cyan);
-            font-size: 1.125rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-
-        @media (min-width: 1024px) {
-            .terminal-greeting {
-                justify-content: flex-start;
-            }
-        }
-
-        .hero-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        @media (min-width: 640px) {
-            .hero-title {
-                font-size: 3.75rem;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .hero-title {
-                font-size: 4.5rem;
-            }
-        }
-
-        .typing-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        @media (min-width: 1024px) {
-            .typing-container {
-                justify-content: flex-start;
-            }
-        }
-
-        .typed-text {
-            color: var(--accent-blue);
-            font-family: var(--font-mono);
-        }
-
-        .cursor {
-            color: var(--accent-cyan);
-            animation: pulse 1s infinite;
-        }
-
-        .hero-subtitle {
-            font-size: 1.125rem;
-            color: #475569;
-            margin-bottom: 2rem;
-            max-width: 48rem;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        @media (min-width: 1024px) {
-            .hero-subtitle {
-                margin-left: 0;
-                margin-right: 0;
-            }
-        }
-
-        .hero-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        @media (min-width: 640px) {
-            .hero-buttons {
-                flex-direction: row;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .hero-buttons {
-                justify-content: flex-start;
-            }
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-
-        @media (min-width: 1024px) {
-            .social-links {
-                justify-content: flex-start;
-            }
-        }
-
-        .social-links a {
-            color: #475569;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--accent-blue);
-            transform: scale(1.1);
-        }
-
-        /* Terminal Animation */
-        .terminal {
-            background: var(--dark-800);
-            border: 1px solid var(--dark-600);
-            border-radius: 0.5rem;
-            overflow: hidden;
-            display: none;
-            animation: slide-up 0.8s ease-out forwards;
-        }
-
-        @media (min-width: 1024px) {
-            .terminal {
-                display: block;
-            }
-        }
-
-        .terminal-header {
-            display: flex;
-            align-items: center;
-            padding: 0.5rem 1rem;
-            background: #f1f5f9;
-            border-bottom: 1px solid var(--dark-600);
-        }
-
-        .terminal-buttons {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .terminal-button {
-            width: 0.75rem;
-            height: 0.75rem;
-            border-radius: 50%;
-        }
-
-        .terminal-button.red { background: #ef4444; }
-        .terminal-button.yellow { background: #eab308; }
-        .terminal-button.green { background: #22c55e; }
-
-        .terminal-title {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-left: 1rem;
-            color: #475569;
-            font-size: 0.875rem;
-            font-family: var(--font-mono);
-        }
-
-        .terminal-content {
-            padding: 1rem;
-            font-family: var(--font-mono);
-            font-size: 0.875rem;
-        }
-
-        .terminal-line {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .terminal-prompt {
-            color: var(--accent-blue);
-        }
-
-        .terminal-command {
-            color: #1e293b;
-        }
-
-        .terminal-output {
-            color: #22c55e;
-            padding-left: 1rem;
-        }
-
-        /* Section Styles */
-        section {
-            padding: 5rem 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 1rem;
-        }
-
-        .section-divider {
-            width: 6rem;
-            height: 0.25rem;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
-            margin: 0 auto;
-            border-radius: 9999px;
-        }
-
-        .section-subtitle {
-            color: #475569;
-            margin-top: 1.5rem;
-            max-width: 32rem;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Card Styles */
-        .card {
-            background: var(--dark-800);
-            border: 1px solid var(--dark-600);
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            border-color: rgba(59, 130, 246, 0.5);
-            transform: translateY(-8px);
-        }
-
-        /* Grid Layouts */
-        .grid {
-            display: grid;
-            gap: 2rem;
-        }
-
-        .grid-cols-2 {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        .grid-cols-3 {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        .grid-cols-4 {
-            grid-template-columns: repeat(4, 1fr);
-        }
-
-        @media (max-width: 768px) {
-            .grid-cols-2,
-            .grid-cols-3,
-            .grid-cols-4 {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .grid-cols-3,
-            .grid-cols-4 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        /* Skills Section */
-        .skill-card {
-            text-align: center;
-            padding: 1rem;
-            background: var(--dark-800);
-            border: 1px solid var(--dark-600);
-            border-radius: 0.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .skill-card:hover {
-            border-color: rgba(59, 130, 246, 0.5);
-            transform: scale(1.05);
-        }
-
-        .skill-icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .skill-name {
-            color: #1e293b;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-
-        /* Projects Section */
-        .project-card {
-            background: var(--dark-800);
-            border: 1px solid var(--dark-600);
-            border-radius: 0.5rem;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            border-color: rgba(59, 130, 246, 0.5);
-            transform: translateY(-4px);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 12rem;
-            object-fit: cover;
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-title {
-            color: #1e293b;
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-description {
-            color: #475569;
-            font-size: 0.875rem;
-            margin-bottom: 1rem;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .tag {
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-
-        .tag-react { background: rgba(34, 211, 238, 0.2); color: #22d3ee; }
-        .tag-typescript { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
-        .tag-nodejs { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
-        .tag-default { background: rgba(59, 130, 246, 0.2); color: var(--accent-blue); }
-
-        .project-links {
-            display: flex;
-            gap: 0.75rem;
-        }
-
-        .project-link {
-            padding: 0.5rem 1rem;
-            border-radius: 0.25rem;
-            font-size: 0.875rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .project-link-primary {
-            background: var(--accent-blue);
-            color: white;
-        }
-
-        .project-link-primary:hover {
-            background: #2563eb;
-        }
-
-        .project-link-secondary {
-            background: transparent;
-            border: 1px solid var(--dark-600);
-            color: #475569;
-        }
-
-        .project-link-secondary:hover {
-            border-color: var(--accent-blue);
-            color: var(--accent-blue);
-        }
-
-        /* Contact Section */
-        .contact-form {
-            max-width: 32rem;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-label {
-            display: block;
-            color: #1e293b;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-
-        .form-input,
-        .form-textarea {
-            width: 100%;
-            padding: 0.75rem;
-            background: var(--dark-800);
-            border: 1px solid var(--dark-600);
-            border-radius: 0.5rem;
-            color: #1e293b;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-input:focus,
-        .form-textarea:focus {
-            outline: none;
-            border-color: var(--accent-blue);
-        }
-
-        .form-textarea {
-            min-height: 8rem;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            background: #f1f5f9;
-            border-top: 1px solid var(--dark-600);
-            padding: 3rem 0;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .footer-content {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        .footer-section h3,
-        .footer-section h4 {
-            color: #1e293b;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .footer-section p {
-            color: #475569;
-            font-size: 0.875rem;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        @media (min-width: 768px) {
-            .footer-social {
-                justify-content: flex-start;
-            }
-
-            .footer-section:last-child .footer-social {
-                justify-content: flex-end;
-            }
-        }
-
-        .footer-social a {
-            width: 2.5rem;
-            height: 2.5rem;
-            background: var(--dark-900);
-            border: 1px solid var(--dark-600);
-            border-radius: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #475569;
-            transition: all 0.3s ease;
-        }
-
-        .footer-social a:hover {
-            color: var(--accent-blue);
-            border-color: var(--accent-blue);
-            transform: scale(1.05);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-links a {
-            color: #475569;
-            text-decoration: none;
-            font-size: 0.875rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-blue);
-        }
-
-        .footer-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            justify-content: center;
-        }
-
-        @media (min-width: 768px) {
-            .footer-tech {
-                justify-content: flex-end;
-            }
-        }
-
-        .footer-tech span {
-            padding: 0.25rem 0.75rem;
-            background: var(--dark-900);
-            border: 1px solid var(--dark-600);
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            color: #475569;
-            transition: border-color 0.3s ease;
-        }
-
-        .footer-tech span:hover {
-            border-color: var(--accent-blue);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid var(--dark-600);
-            padding-top: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        @media (min-width: 768px) {
-            .footer-bottom {
-                flex-direction: row;
-                justify-content: space-between;
-            }
-        }
-
-        .footer-bottom p {
-            color: #475569;
-            font-size: 0.875rem;
-        }
-
-        /* Scroll Indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #475569;
-            transition: color 0.3s ease;
-            animation: bounce 2s infinite;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .scroll-indicator:hover {
-            color: var(--accent-blue);
-        }
-
-        /* Hide mobile menu toggle on desktop */
-        .mobile-menu-toggle {
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .mobile-menu-toggle {
-                display: block;
-                background: none;
-                border: none;
-                color: #475569;
-                cursor: pointer;
-            }
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 640px) {
-            .container {
-                padding: 0 1rem;
-            }
-            
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .hero-buttons {
-                align-items: stretch;
-            }
-            
-            .hero-buttons .btn-gradient,
-            .hero-buttons .btn-outline {
-                text-align: center;
-                justify-content: center;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <div class="nav-container">
-                <div class="logo">AT</div>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <button class="mobile-menu-toggle">
-                    <i data-lucide="menu"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
+    <div class="nav-container">
+      <div class="nav-wrap">
+        <div class="bubble active"></div>
+        <div class="bubble hover"></div>
+        <nav class="nav">
+          <a class="active" href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="projects.html">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+
+    <script>
+      const links = document.querySelectorAll("nav a");
+      links.forEach((link) => {
+        link.addEventListener("click", () => {
+          links.forEach((l) => l.classList.remove("active"));
+          link.classList.add("active");
+        });
+      });
+    </script>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -1043,10 +79,8 @@
                             <span class="cursor">|</span>
                         </div>
                         <p>
-                            <span style="color: var(--accent-blue)">ICT Graduate</span> • 
-                            <span style="color: var(--accent-cyan)"> Software Engineer</span> • 
-                            <span style="color: var(--accent-purple)"> Tech Innovator</span>
-                        </p>
+                            <span style="color: var(--accent-blue)">ICT Graduate</span>
+                            </p>
                     </div>
 
                     <div class="hero-buttons">
@@ -1072,28 +106,6 @@
                         </a>
                     </div>
                 </div>
-
-                <!-- Terminal Animation -->
-                <div class="terminal">
-                    <div class="terminal-header">
-                        <div class="terminal-buttons">
-                            <div class="terminal-button red"></div>
-                            <div class="terminal-button yellow"></div>
-                            <div class="terminal-button green"></div>
-                        </div>
-                        <div class="terminal-title">
-                            <i data-lucide="terminal"></i>
-                            <span>avumile@dev:~$</span>
-                        </div>
-                    </div>
-                    <div class="terminal-content">
-                        <div class="terminal-line">
-                            <span class="terminal-prompt">$</span>
-                            <span class="terminal-command" id="terminal-command">npm create vite@latest my-app</span>
-                        </div>
-                        <div class="terminal-output" id="terminal-output" style="display: none;">✓ Project created successfully!</div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -1110,75 +122,174 @@
                 <div class="section-divider"></div>
             </div>
             
-            <div class="grid grid-cols-3">
-                <div>
-                    <h3 style="color: #1e293b; font-size: 1.5rem; margin-bottom: 1rem;">Professional Background</h3>
-                    <p style="color: #475569; margin-bottom: 1.5rem;">
+            <div class="about-container">
+                <div class="about-intro">
+                    <h3>Professional Background</h3>
+                    <p>
                         Aspiring IT professional with a Diploma in Information Communication Technology and hands-on experience in web and application development. Eager to contribute technical expertise, problem-solving skills, and adaptability to a dynamic organization while continuing to grow professionally.
                     </p>
-                    <p style="color: #475569; margin-bottom: 1.5rem;">
+                    <p>
                         My goal? To bridge the digital divide by empowering communities with tech education through my initiative, 
-                        <span style="color: var(--accent-cyan); font-weight: 600;">Dynamic Duo Tech Solutions</span>. 
+                        <span class="highlight-cyan">Dynamic Duo Tech Solutions</span>. 
                         Whether it's developing sleek websites, mobile applications, or training learners in rural areas, 
                         I'm all about creating opportunities through technology.
                     </p>
-
-                    <!-- Quick Stats -->
-                    <div class="grid grid-cols-4" style="margin-top: 2rem;">
-                        <div class="card" style="text-align: center; padding: 1rem;">
-                            <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-blue);">2+</div>
-                            <div style="color: #475569; font-size: 0.875rem;">Years Exp</div>
-                        </div>
-                        <div class="card" style="text-align: center; padding: 1rem;">
-                            <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-cyan);">9</div>
-                            <div style="color: #475569; font-size: 0.875rem;">Skills</div>
-                        </div>
-                        <div class="card" style="text-align: center; padding: 1rem;">
-                            <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-purple);">2</div>
-                            <div style="color: #475569; font-size: 0.875rem;">Certifications</div>
-                        </div>
-                        <div class="card" style="text-align: center; padding: 1rem;">
-                            <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-blue);">1</div>
-                            <div style="color: #475569; font-size: 0.875rem;">Projects</div>
-                        </div>
-                    </div>
                 </div>
-                
-                <div>
-                    <h3 style="color: #1e293b; font-size: 1.5rem; margin-bottom: 1rem;">Education</h3>
-                    
-                    <div class="card" style="margin-bottom: 1.5rem;">
-                        <h4 style="color: var(--accent-blue); font-weight: 600; margin-bottom: 0.5rem;">Ndamase Senior Secondary School</h4>
-                        <p style="color: #1e293b; font-weight: 500; margin-bottom: 0.5rem;">Grade 12 (2020)</p>
-                        <p style="color: #475569; font-size: 0.875rem;">Completed high school education.</p>
-                    </div>
 
-                    <div class="card">
-                        <h4 style="color: var(--accent-cyan); font-weight: 600; margin-bottom: 0.5rem;">Walter Sisulu University</h4>
-                        <p style="color: #1e293b; font-weight: 500; margin-bottom: 0.5rem;">Diploma in Information Communication Technology (2021 - 2023)</p>
-                        <p style="color: #475569; font-size: 0.875rem;">Comprehensive education in software development, web technologies, and system design.</p>
+                <div class="stats-section">
+                    <div class="stat-item">
+                        <div class="stat-number highlight-blue">2+</div>
+                        <div class="stat-label">Years Exp</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number highlight-cyan">10</div>
+                        <div class="stat-label">Skills</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number highlight-purple">2</div>
+                        <div class="stat-label">Certifications</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number highlight-blue">1</div>
+                        <div class="stat-label">Projects</div>
                     </div>
                 </div>
 
-                <div>
-                    <h3 style="color: #1e293b; font-size: 1.5rem; margin-bottom: 1rem;">Experience</h3>
-                    
-                    <div class="card" style="margin-bottom: 1.5rem;">
-                        <h4 style="color: var(--accent-purple); font-weight: 600; margin-bottom: 0.5rem;">Samsung Innovation Campus</h4>
-                        <p style="color: #1e293b; font-weight: 500; margin-bottom: 0.5rem;">Trainee (Feb 2023 - Dec 2023)</p>
-                        <p style="color: #475569; font-size: 0.875rem;">Completed intensive training in Basic Coding, Programming, and Artificial Intelligence.</p>
+                <div class="skills-section">
+                    <h3>Technical Skills</h3>
+                    <p class="skills-subtitle">Modern technologies and frameworks I use to build exceptional digital experiences</p>
+                    <div class="tech-stack">
+                        <div class="tech-item">
+                            <span class="tech-icon">🌐</span>
+                            <div class="tech-info">
+                                <h4>Web</h4>
+                                <p>Web Development</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-icon">👨‍💻</span>
+                            <div class="tech-info">
+                                <h4>Programming</h4>
+                                <p>Programming</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-icon">🗄️</span>
+                            <div class="tech-info">
+                                <h4>DB</h4>
+                                <p>Database Management</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-icon">🛠️</span>
+                            <div class="tech-info">
+                                <h4>Troubleshooting</h4>
+                                <p>Troubleshooting</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-icon">🤝</span>
+                            <div class="tech-info">
+                                <h4>Teamwork</h4>
+                                <p>Teamwork</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-icon">💡</span>
+                            <div class="tech-info">
+                                <h4>Problem-Solving</h4>
+                                <p>Problem-Solving</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-icon">📚</span>
+                            <div class="tech-info">
+                                <h4>Git</h4>
+                                <p>Version Control</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-icon">🤖</span>
+                            <div class="tech-info">
+                                <h4>AI Fundamentals</h4>
+                                <p>AI Fundamentals</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-icon">📞</span>
+                            <div class="tech-info">
+                                <h4>Help Desk Support</h4>
+                                <p>Help Desk Support</p>
+                            </div>
+                        </div>
                     </div>
+                </div>
 
-                    <div class="card" style="margin-bottom: 1.5rem;">
-                        <h4 style="color: var(--accent-blue); font-weight: 600; margin-bottom: 0.5rem;">Black Ink Promotions</h4>
-                        <p style="color: #1e293b; font-weight: 500; margin-bottom: 0.5rem;">Sales Assistant (Jun 2024 - Dec 2024)</p>
-                        <p style="color: #475569; font-size: 0.875rem;">Assisted customers and promoted products to increase sales, and ensured excellent customer service.</p>
-                    </div>
+                <div class="timeline-section">
+                    <h3>Education, Experience & Certifications</h3>
+                    <div class="timeline">
+                        <div class="timeline-item education">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h4 class="highlight-blue">Ndamase Senior Secondary School</h4>
+                                <p class="timeline-date">Grade 12 (2020)</p>
+                                <p>Completed high school education.</p>
+                            </div>
+                        </div>
 
-                    <div class="card">
-                        <h4 style="color: var(--accent-cyan); font-weight: 600; margin-bottom: 0.5rem;">Net Campus</h4>
-                        <p style="color: #1e293b; font-weight: 500; margin-bottom: 0.5rem;">Intern (Jan 2025 - Present)</p>
-                        <p style="color: #475569; font-size: 0.875rem;">Gaining practical experience in a professional IT environment.</p>
+                        <div class="timeline-item education">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h4 class="highlight-cyan">Walter Sisulu University</h4>
+                                <p class="timeline-date">Diploma in Information Communication Technology (2021 - 2023)</p>
+                                <p>Comprehensive education in software development, web technologies, and system design.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item certification">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h4 class="highlight-purple">Basic Coding & Programming Course</h4>
+                                <p class="timeline-date">Samsung Innovation Campus (Feb 2024)</p>
+                                <p>Completed intensive training in basic coding and programming fundamentals.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item certification">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h4 class="highlight-purple">Artificial Intelligence Course</h4>
+                                <p class="timeline-date">Samsung Innovation Campus (Feb 2024)</p>
+                                <p>Completed training in artificial intelligence fundamentals.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item experience">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h4 class="highlight-blue">Samsung Innovation Campus</h4>
+                                <p class="timeline-date">Trainee (Feb 2023 - Dec 2023)</p>
+                                <p>Completed intensive training in Basic Coding, Programming, and Artificial Intelligence.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item experience">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h4 class="highlight-cyan">Black Ink Promotions</h4>
+                                <p class="timeline-date">Sales Assistant (Jun 2024 - Dec 2024)</p>
+                                <p>Assisted customers and promoted products to increase sales, and ensured excellent customer service.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item experience">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h4 class="highlight-blue">Net Campus</h4>
+                                <p class="timeline-date">Intern (Jan 2025 - Dec 2025)</p>
+                                <p>Gaining practical experience in a professional IT environment.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1252,89 +363,46 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-3">
-                <!-- Project 1 -->
-                <div class="project-card">
-                    <img src="https://avumiletati.netlify.app/Images/Ddtsolutions.png" alt="Dynamic Duo Tech Solutions" class="project-image">
-                    <div class="project-content">
-                        <h3 class="project-title">Dynamic Duo Tech Solutions</h3>
-                        <p class="project-description">
-                            Full-stack business website with modern UI/UX, responsive design, and integrated contact systems.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag tag-react">React</span>
-                            <span class="tag tag-nodejs">Node.js</span>
-                            <span class="tag tag-typescript">TypeScript</span>
-                            <span class="tag tag-default">PostgreSQL</span>
+            <div class="project-slider">
+                <div class="slider-container">
+                    <div class="slide">
+                        <img src="https://avumiletati.netlify.app/Images/Ddtsolutions.png" alt="Dynamic Duo Tech Solutions" class="slide-image">
+                        <div class="slide-overlay">
+                            <h3>Dynamic Duo Tech Solutions</h3>
+                            <p>Full-stack business website</p>
+                            <a href="projects.html" class="slide-link">View Project</a>
                         </div>
-                        <div class="project-links">
-                            <a href="https://ddtsolutions.co.za/" target="_blank" class="project-link project-link-primary">
-                                <i data-lucide="external-link"></i>
-                                Live Demo
-                            </a>
-                            <a href="https://github.com/avumiletati/ddt-solutions" target="_blank" class="project-link project-link-secondary">
-                                <i data-lucide="github"></i>
-                                Code
-                            </a>
+                    </div>
+                    <div class="slide">
+                        <img src="https://avumiletati.netlify.app/Images/figma.png" alt="Modern Portfolio Website" class="slide-image">
+                        <div class="slide-overlay">
+                            <h3>Modern Portfolio Website</h3>
+                            <p>Built with React & TypeScript</p>
+                            <a href="projects.html" class="slide-link">View Project</a>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="https://avumiletati.netlify.app/Images/figma.png" alt="SRD Registration System" class="slide-image">
+                        <div class="slide-overlay">
+                            <h3>SRD Registration System</h3>
+                            <p>Government grant system</p>
+                            <a href="projects.html" class="slide-link">View Project</a>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <img src="https://avumiletati.netlify.app/Images/figma.png" alt="Modern Portfolio Website" class="project-image">
-                    <div class="project-content">
-                        <h3 class="project-title">Modern Portfolio Website</h3>
-                        <p class="project-description">
-                            This current portfolio built with React, TypeScript, and modern web technologies.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag tag-react">React</span>
-                            <span class="tag tag-typescript">TypeScript</span>
-                            <span class="tag tag-default">Tailwind</span>
-                            <span class="tag tag-default">Vite</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link project-link-primary">
-                                <i data-lucide="external-link"></i>
-                                Live Demo
-                            </a>
-                            <a href="https://github.com/avumiletati/portfolio-v2" target="_blank" class="project-link project-link-secondary">
-                                <i data-lucide="github"></i>
-                                Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <img src="https://avumiletati.netlify.app/Images/figma.png" alt="SRD Registration System" class="project-image">
-                    <div class="project-content">
-                        <h3 class="project-title">SRD Registration System</h3>
-                        <p class="project-description">
-                            Government grant registration system with intuitive UX and accessibility features.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag" style="background: rgba(236, 72, 153, 0.2); color: #ec4899;">Figma</span>
-                            <span class="tag tag-default">UI/UX</span>
-                            <span class="tag tag-default">Government</span>
-                            <span class="tag tag-nodejs">Accessibility</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://www.figma.com/proto/g6lfoZvSpSPmxNIDKIij84/Untitled?node-id=0-1&t=PAjooG4pZz9oZ6ox-1" target="_blank" class="project-link project-link-primary">
-                                <i data-lucide="external-link"></i>
-                                View Design
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <div class="text-center mt-8">
+                <a href="projects.html" class="btn-gradient">
+                    <i data-lucide="folder-open"></i>
+                    View All Projects
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" style="background: rgba(241, 245, 249, 0.8);">
+    <section id="contact" class="contact-section">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Get In Touch</h2>
@@ -1344,25 +412,37 @@
                 </p>
             </div>
 
-            <div class="contact-form">
-                <form id="contact-form">
-                    <div class="form-group">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" id="name" name="name" class="form-input" required>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i data-lucide="mail"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>tatiavumile@gmail.com</p>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" id="email" name="email" class="form-input" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea id="message" name="message" class="form-textarea" required placeholder="Tell me about your project..."></textarea>
-                    </div>
-                    <button type="submit" class="btn-gradient" style="width: 100%;">
-                        <i data-lucide="send"></i>
-                        Send Message
-                    </button>
-                </form>
+                </div>
+
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" id="name" name="name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" name="message" class="form-textarea" required placeholder="Tell me about your project..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-gradient" style="width: 100%;">
+                            <i data-lucide="send"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -1372,10 +452,10 @@
         <div class="container">
             <div class="footer-content">
                 <!-- About Section -->
-                <div class="footer-section">
+                <div class="footer-section footer-about">
                     <h3>Avumile Tati</h3>
                     <p>
-                        Full Stack Developer passionate about creating innovative tech solutions 
+                        Full Stack Developer passionate about creating innovative tech solutions
                         and empowering communities through technology education.
                     </p>
                     <div class="footer-social">
@@ -1392,9 +472,9 @@
                 </div>
 
                 <!-- Quick Links -->
-                <div class="footer-section" style="text-align: center;">
+                <div class="footer-section footer-links">
                     <h4>Quick Links</h4>
-                    <ul class="footer-links">
+                    <ul class="footer-nav">
                         <li><a href="#about">About</a></li>
                         <li><a href="#skills">Skills</a></li>
                         <li><a href="projects.html">Projects</a></li>
@@ -1403,7 +483,7 @@
                 </div>
 
                 <!-- Tech Stack -->
-                <div class="footer-section" style="text-align: right;">
+                <div class="footer-section footer-tech-section">
                     <h4>Tech Stack</h4>
                     <div class="footer-tech">
                         <span>React</span>
