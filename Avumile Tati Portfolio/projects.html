@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+   <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avumile Tati - Full Stack Developer</title>
     <meta name="description" content="Professional portfolio of Avumile Tati, ICT Graduate and Full Stack Developer specializing in React, Node.js, TypeScript, and modern web technologies.">
@@ -18,22 +18,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="Images/logo.ico">
     <link rel="stylesheet" href="styles.css">
-    
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+   
 </head>
 <body>
-     <div class="nav-container">
-      <div class="nav-wrap">
+      <!-- Navigation -->
+    <div class="nav-container">
+    <button class="hamburger" id="mobile-menu" aria-label="Menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+    </button>
+
+    <div class="nav-wrap">
         <div class="bubble active"></div>
         <div class="bubble hover"></div>
-        <nav class="nav">
-          <a class="active" href="index.html">Home</a>
-          <a href="index.html#about">About</a>
-          <a href="index.html#skills">Skills</a>
-          <a href="projects.html">Projects</a>
-          <a href="index.html#contact">Contact</a>
+        <nav class="nav" id="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#skills">Skills</a>
+            <a class="active" href="projects.html">Projects</a>
+            <a href="index.html#contact">Contact</a>
+            <button id="theme-toggle" class="theme-btn">
+                <i data-lucide="moon"></i>
+            </button>
         </nav>
-      </div>
     </div>
+</div>
     <script>
       const links = document.querySelectorAll("nav a");
       links.forEach((link) => {
@@ -205,7 +217,45 @@
                 </div>
             </div>
         </section>
+        <section class="project-details" id="netcamp-branding">
+            <div class="about-content">
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3><i class="fas fa-file-invoice"></i> NetCamp - Brand Identity & Stationery</h3>
+                        <div class="tech-stack">
+                            <span><i class="fas fa-pen-nib"></i> Brand Design</span>
+                            <span><i class="fas fa-print"></i> Typography</span>
+                            <span><i class="fas fa-vector-square"></i> Adobe Illustrator</span>
+                            <span><i class="fas fa-building"></i> Corporate Identity</span>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        <p>Developed a comprehensive corporate identity for PrePhones, focusing on professional stationery and brand consistency. This project established the visual standards for the company's official communications.</p>
+                        
+                        <div class="features-list">
+                            <h4>Project Highlights:</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>Corporate Letterhead:</strong> Designed standardized official letterheads featuring integrated contact systems.</li>
+                                <li><i class="fas fa-check"></i> <strong>Identity Integration:</strong> Consistent placement of brand logos and company credentials.</li>
+                                <li><i class="fas fa-check"></i> <strong>Information Design:</strong> Organized key business data including phone support, professional email (tati@prephones.com), and Cape Town office location.</li>
+                                <li><i class="fas fa-check"></i> <strong>Web Alignment:</strong> Coordinated visual assets with the official PrePhones web domain.</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="#" class="btn-primary">
+                                <i class="fas fa-eye"></i> View Style Guide
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-gallery">
+                        <img src="Images/letterhead-mockup.png" alt="PrePhones Corporate Letterhead Design">
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+</body>
 
     <footer class="footer">
         <div class="footer-content">
@@ -220,6 +270,6 @@
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
         <i class="fas fa-arrow-up"></i>
     </button>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script src="script.js"></script>
-</body>
 </html>
