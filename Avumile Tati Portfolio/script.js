@@ -124,3 +124,72 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial icon creation
     if (window.lucide) lucide.createIcons();
 });
+// Project Data Object (Add your specific images here)
+const projectData = {
+        "PrePhones Corporate Identity": {
+            description: "Developed official stationery featuring contact systems, professional email setups (tati@prephones.com), and Cape Town office details.",
+            images: ["Images/letterhead-mockup.png", "Images/prephone.png"],
+            tags: ["Branding", "Illustrator", "Corporate"],
+            link: "letterhead.pdf"
+        },
+        "Dynamic Duo Tech Solutions": {
+            description: "IT support including Google Workspace management, Microsoft 365 consulting, and security setup.",
+            images: ["Images/Ddtsolutions.png", "Images/graphic1.png"],
+            tags: ["IT Support", "Google Workspace", "Security"],
+            link: "https://ddtsolutions.co.za/"
+        },
+        "SRD Registration System": {
+            description: "Streamlined registration process with integrated maps and identity verification for users aged 18-26.",
+            images: ["Images/figma.png", "Images/WebStore.png"],
+            tags: ["Figma", "UI/UX", "Maps Integration"],
+            link: "#"
+        }
+    };
+
+    const modal = document.getElementById('project-modal');
+    const closeBtn = document.querySelector('.close-modal');
+
+    document.querySelectorAll('.cool-project-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const title = card.querySelector('h3').innerText;
+            const data = projectData[title];
+
+            if (data) {
+                document.getElementById('modal-title').innerText = title;
+                document.getElementById('modal-description').innerText = data.description;
+                document.getElementById('modal-main-img').src = data.images[0];
+                document.getElementById('modal-link').href = data.link;
+
+                // Tags
+                const tagContainer = document.getElementById('modal-tags');
+                tagContainer.innerHTML = data.tags.map(t => `<span class="badge">${t}</span>`).join('');
+
+                // Thumbnails
+                const thumbContainer = document.getElementById('modal-thumbnails');
+                thumbContainer.innerHTML = '';
+                data.images.forEach((img, index) => {
+                    const thumb = document.createElement('img');
+                    thumb.src = img;
+                    if(index === 0) thumb.classList.add('active');
+                    thumb.onclick = (e) => {
+                        e.stopPropagation();
+                        document.getElementById('modal-main-img').src = img;
+                        document.querySelectorAll('.thumbnail-grid img').forEach(t => t.classList.remove('active'));
+                        thumb.classList.add('active');
+                    };
+                    thumbContainer.appendChild(thumb);
+                });
+
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
+    closeBtn.onclick = () => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    };
+
+    window.onclick = (event) => { if (event.target == modal) closeBtn.onclick(); };
+;

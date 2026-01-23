@@ -1,275 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avumile Tati - Full Stack Developer</title>
-    <meta name="description" content="Professional portfolio of Avumile Tati, ICT Graduate and Full Stack Developer specializing in React, Node.js, TypeScript, and modern web technologies.">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Avumile Tati - Full Stack Developer">
-    <meta property="og:description" content="Professional portfolio showcasing cutting-edge software engineering skills and modern development expertise.">
-    <meta property="og:type" content="website">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Projects | Avumile Tati</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="Images/logo.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-   
 </head>
 <body>
-      <!-- Navigation -->
     <div class="nav-container">
-    <button class="hamburger" id="mobile-menu" aria-label="Menu">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-    </button>
-
-    <div class="nav-wrap">
-        <div class="bubble active"></div>
-        <div class="bubble hover"></div>
-        <nav class="nav" id="nav-links">
-            <a href="index.html">Home</a>
-            <a href="index.html#about">About</a>
-            <a href="index.html#skills">Skills</a>
-            <a class="active" href="projects.html">Projects</a>
-            <a href="index.html#contact">Contact</a>
-            <button id="theme-toggle" class="theme-btn">
-                <i data-lucide="moon"></i>
-            </button>
-        </nav>
-    </div>
-</div>
-    <script>
-      const links = document.querySelectorAll("nav a");
-      links.forEach((link) => {
-        link.addEventListener("click", () => {
-          links.forEach((l) => l.classList.remove("active"));
-          link.classList.add("active");
-        });
-      });
-    </script>
-
-    <main class="container">
-        <section class="section-header">
-            <h2>My Projects</h2>
-        </section>
-
-        <section class="project-details" id="dynamic-duo">
-            <div class="about-content">
-                <div class="project-content">
-                    <div class="project-header">
-                        <h3><i class="fas fa-tools"></i> Dynamic Duo Tech Solutions</h3>
-                        <div class="tech-stack">
-                            <span><i class="fas fa-desktop"></i> IT Support</span>
-                            <span><i class="fab fa-google"></i> Google Workspace</span>
-                            <span><i class="fab fa-microsoft"></i> Microsoft 365</span>
-                            <span><i class="fas fa-shield-alt"></i> Security</span>
-                        </div>
-                    </div>
-                    <div class="project-description">
-                        <p>Dynamic Duo Tech Solutions is a comprehensive IT services provider offering professional support and solutions for businesses. We focus on delivering reliable, efficient, and secure technology services to help organizations thrive in the digital age.</p>
-                        
-                        <div class="features-list">
-                            <h4>Core Services:</h4>
-                            <ul>
-                                <li><i class="fas fa-tools"></i> IT Support Solutions - Remote and on-site troubleshooting</li>
-                                <li><i class="fab fa-google"></i> Google Workspace Management</li>
-                                <li><i class="fab fa-microsoft"></i> Microsoft 365 Consulting</li>
-                                <li><i class="fas fa-laptop"></i> ManageEngine Endpoint Central</li>
-                                <li><i class="fas fa-globe"></i> Website Design</li>
-                                <li><i class="fas fa-shield-alt"></i> Antivirus and Security Setup</li>
-                            </ul>
-                        </div>
-
-                        <div class="project-links">
-                            <a href="https://ddtsolutions.co.za/" target="_blank" class="btn-primary">
-                                <i class="fas fa-external-link-alt"></i> Visit Website
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-gallery">
-                        <img src="Images/Ddtsolutions.png" alt="Dynamic Duo Homepage">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="project-details" id="srd-registration">
-            <div class="about-content">
-                <div class="project-content">
-                    <div class="project-header">
-                        <h3><i class="fas fa-mobile-alt"></i> SRD Registration System</h3>
-                        <div class="tech-stack">
-                            <span><i class="fab fa-figma"></i> Figma</span>
-                            <span><i class="fas fa-paint-brush"></i> UI/UX Design</span>
-                            <span><i class="fas fa-map-marked-alt"></i> Maps Integration</span>
-                            <span><i class="fas fa-users"></i> User Research</span>
-                        </div>
-                    </div>
-                    <div class="project-description">
-                        <p>A modern, youth-focused web application designed for registering SRD R350 grant applications. The interface is specifically tailored for users aged 18-26, combining functionality with an engaging user experience.</p>
-                        
-                        <div class="features-list">
-                            <h4>Key Features:</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Streamlined registration process</li>
-                                <li><i class="fas fa-check"></i> Modern, youth-friendly interface</li>
-                                <li><i class="fas fa-check"></i> Integrated office location maps</li>
-                                <li><i class="fas fa-check"></i> Identity verification system</li>
-                                <li><i class="fas fa-check"></i> Interactive form validation</li>
-                            </ul>
-                        </div>
-
-                        <div class="project-links">
-                            <a href="https://www.figma.com/proto/g6lfoZvSpSPmxNIDKIij84/Untitled?node-id=0-1&t=PAjooG4pZz9oZ6ox-1" target="_blank" class="btn-primary">
-                                <i class="fab fa-figma"></i> View Interactive Prototype
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-gallery">
-                        <img src="Images/figma.png" alt="SRD Registration System Interface">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="project-details" id="graphic-design">
-            <div class="about-content">
-                <div class="project-content">
-                    <div class="project-header">
-                        <h3><i class="fas fa-palette"></i> Brand Identity & Marketing Design</h3>
-                        <div class="tech-stack">
-                            <span><i class="fas fa-palette"></i> Adobe Photoshop</span>
-                            <span><i class="fas fa-vector-square"></i> Adobe Illustrator</span>
-                            <span><i class="fas fa-pencil-ruler"></i> Brand Design</span>
-                            <span><i class="fas fa-print"></i> Print Design</span>
-                        </div>
-                    </div>
-                    <div class="project-description">
-                        <p>Creative design solutions for businesses including brand identity, marketing materials, and digital assets. Focus on creating cohesive visual experiences that communicate brand values effectively.</p>
-                        
-                        <div class="features-list">
-                            <h4>Design Services:</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Brand Identity Design</li>
-                                <li><i class="fas fa-check"></i> Marketing Collateral</li>
-                                <li><i class="fas fa-check"></i> Social Media Graphics</li>
-                                <li><i class="fas fa-check"></i> Print Materials</li>
-                                <li><i class="fas fa-check"></i> Digital Assets</li>
-                            </ul>
-                        </div>
-
-                        <div class="project-links">
-                            <a href="#" class="btn-primary">
-                                <i class="fas fa-images"></i> View Portfolio
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-gallery">
-                        <img src="Images/graphic1.png" alt="Brand Identity Design Examples">
-                        <img src="Images/graphic2.png" alt="Marketing Materials Examples">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="project-details" id="pre-phones">
-            <div class="about-content">
-                <div class="project-content">
-                    <div class="project-header">
-                        <h3><i class="fas fa-laptop-code"></i> Pre-phones Skills Project</h3>
-                        <div class="tech-stack">
-                            <span><i class="fab fa-google"></i> Google Sites</span>
-                            <span><i class="fas fa-code"></i> Web Development</span>
-                            <span><i class="fas fa-sitemap"></i> Site Structure</span>
-                            <span><i class="fas fa-tasks"></i> Project Planning</span>
-                        </div>
-                    </div>
-                    <div class="project-description">
-                        <p>A demonstration project created on Google Sites to showcase my web development and site organization skills. This project serves as a practical example of implementing learned concepts and technologies.</p>
-                        
-                        <div class="features-list">
-                            <h4>Skills Demonstrated:</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Google Sites Platform Usage</li>
-                                <li><i class="fas fa-check"></i> Content Organization</li>
-                                <li><i class="fas fa-check"></i> Website Structure Planning</li>
-                                <li><i class="fas fa-check"></i> Web Development Fundamentals</li>
-                            </ul>
-                        </div>
-
-                        <div class="project-links">
-                            <a href="https://sites.google.com/view/prephones/home" target="_blank" class="btn-primary">
-                                <i class="fas fa-external-link-alt"></i> Visit Website
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-gallery">
-                        <img src="Images/prephone.png" alt="Pre-phones Testing Platform">
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="project-details" id="netcamp-branding">
-            <div class="about-content">
-                <div class="project-content">
-                    <div class="project-header">
-                        <h3><i class="fas fa-file-invoice"></i> NetCamp - Brand Identity & Stationery</h3>
-                        <div class="tech-stack">
-                            <span><i class="fas fa-pen-nib"></i> Brand Design</span>
-                            <span><i class="fas fa-print"></i> Typography</span>
-                            <span><i class="fas fa-vector-square"></i> Adobe Illustrator</span>
-                            <span><i class="fas fa-building"></i> Corporate Identity</span>
-                        </div>
-                    </div>
-                    <div class="project-description">
-                        <p>Developed a comprehensive corporate identity for PrePhones, focusing on professional stationery and brand consistency. This project established the visual standards for the company's official communications.</p>
-                        
-                        <div class="features-list">
-                            <h4>Project Highlights:</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> <strong>Corporate Letterhead:</strong> Designed standardized official letterheads featuring integrated contact systems.</li>
-                                <li><i class="fas fa-check"></i> <strong>Identity Integration:</strong> Consistent placement of brand logos and company credentials.</li>
-                                <li><i class="fas fa-check"></i> <strong>Information Design:</strong> Organized key business data including phone support, professional email (tati@prephones.com), and Cape Town office location.</li>
-                                <li><i class="fas fa-check"></i> <strong>Web Alignment:</strong> Coordinated visual assets with the official PrePhones web domain.</li>
-                            </ul>
-                        </div>
-
-                        <div class="project-links">
-                            <a href="#" class="btn-primary">
-                                <i class="fas fa-eye"></i> View Style Guide
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-gallery">
-                        <img src="Images/letterhead-mockup.png" alt="PrePhones Corporate Letterhead Design">
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-</body>
-
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-social">
-                <a href="https://github.com/AvumileTati" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/avumiletati" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://twitter.com/AvumileTati" target="_blank"><i class="fab fa-twitter"></i></a>
-            </div>
-            <p>Designed & Built by Avumile Tati | © 2025</p>
+        <div class="nav-wrap">
+            <nav class="nav" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About</a>
+                <a class="active" href="projects.html">Projects</a>
+                <a href="index.html#contact">Contact</a>
+                <button id="theme-toggle" class="theme-btn"><i data-lucide="moon"></i></button>
+            </nav>
         </div>
-    </footer>
-    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+    </div>
+
+    <main class="container project-page-top" style="padding-top: 100px;">
+        <div class="section-header">
+            <h2 class="section-title">Portfolio Showcase</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">Click on any project to see technical details and expanded galleries.</p>
+        </div>
+
+        <div class="projects-showcase-grid">
+            <article class="cool-project-card">
+                <div class="project-image-wrapper">
+                    <img src="Images/letterhead-mockup.png" alt="PrePhones Branding">
+                    <div class="project-badges"><span class="badge">Branding</span></div>
+                </div>
+                <div class="project-info">
+                    <h3>PrePhones Corporate Identity</h3>
+                    <p>Standardized official stationery and brand alignment for professional communications.</p>
+                    <div class="project-actions"><span class="btn-primary-sm">View Details</span></div>
+                </div>
+            </article>
+
+            <article class="cool-project-card">
+                <div class="project-image-wrapper">
+                    <img src="Images/Ddtsolutions.png" alt="IT Solutions">
+                    <div class="project-badges"><span class="badge">IT Support</span></div>
+                </div>
+                <div class="project-info">
+                    <h3>Dynamic Duo Tech Solutions</h3>
+                    <p>Professional IT support, Google Workspace management, and security solutions.</p>
+                    <div class="project-actions"><span class="btn-primary-sm">View Details</span></div>
+                </div>
+            </article>
+
+            <article class="cool-project-card">
+                <div class="project-image-wrapper">
+                    <img src="Images/figma.png" alt="SRD Registration">
+                    <div class="project-badges"><span class="badge">UI/UX</span></div>
+                </div>
+                <div class="project-info">
+                    <h3>SRD Registration System</h3>
+                    <p>A modern, youth-focused interface for SRD R350 grant applications.</p>
+                    <div class="project-actions"><span class="btn-primary-sm">View Details</span></div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <div class="modal-gallery">
+                    <div class="main-image-container">
+                        <img id="modal-main-img" src="" alt="Project Preview">
+                    </div>
+                    <div class="thumbnail-grid" id="modal-thumbnails"></div>
+                </div>
+                <div class="modal-details">
+                    <h2 id="modal-title"></h2>
+                    <div id="modal-tags" class="tech-stack-modal"></div>
+                    <p id="modal-description" style="margin: 20px 0; line-height: 1.6;"></p>
+                    <div class="modal-actions">
+                        <a href="#" id="modal-link" target="_blank" class="btn-gradient">Visit Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="script.js"></script>
+</body>
 </html>
