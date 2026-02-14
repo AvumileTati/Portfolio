@@ -1,64 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avumile Tati - Full Stack Developer</title>
-    <meta name="description" content="Professional portfolio of Avumile Tati, ICT Graduate and Full Stack Developer specializing in React, Node.js, TypeScript, and modern web technologies.">
-    
+    <meta name="description"
+        content="Professional portfolio of Avumile Tati, ICT Graduate and Full Stack Developer specializing in React, Node.js, TypeScript, and modern web technologies.">
+
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Avumile Tati - Full Stack Developer">
-    <meta property="og:description" content="Professional portfolio showcasing cutting-edge software engineering skills and modern development expertise.">
+    <meta property="og:description"
+        content="Professional portfolio showcasing cutting-edge software engineering skills and modern development expertise.">
     <meta property="og:type" content="website">
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="Images/logo.ico">
     <link rel="stylesheet" href="styles.css">
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-   
+
 
 </head>
+
 <body>
     <!-- Navigation -->
     <div class="nav-container">
-    <button class="hamburger" id="mobile-menu" aria-label="Menu">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-    </button>
+        <button class="hamburger" id="mobile-menu" aria-label="Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
 
-    <div class="nav-wrap">
-        <div class="bubble active"></div>
-        <div class="bubble hover"></div>
-        <nav class="nav" id="nav-links">
-            <a class="active" href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="projects.html">Projects</a>
-            <a href="#contact">Contact</a>
-            <a href="javascript:void(0)" id="theme-toggle" class="theme-toggle">
-                <i data-lucide="moon"></i>
-            </a>
-        </nav>
+        <div class="nav-wrap">
+            <div class="bubble active"></div>
+            <div class="bubble hover"></div>
+            <nav class="nav" id="nav-links">
+                <a class="active" href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="projects.html">Projects</a>
+                <a href="#contact">Contact</a>
+                <a href="javascript:void(0)" id="theme-toggle" class="theme-toggle">
+                    <i data-lucide="moon"></i>
+                </a>
+            </nav>
+        </div>
     </div>
-</div>
     <script>
-      const links = document.querySelectorAll("nav a");
-      links.forEach((link) => {
-        link.addEventListener("click", () => {
-          links.forEach((l) => l.classList.remove("active"));
-          link.classList.add("active");
+        const links = document.querySelectorAll("nav a");
+        links.forEach((link) => {
+            link.addEventListener("click", () => {
+                links.forEach((l) => l.classList.remove("active"));
+                link.classList.add("active");
+            });
         });
-      });
 
     </script>
-</header>
-
+    </header>
+    <br>
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-bg"></div>
@@ -66,15 +72,15 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <!-- Profile Image -->
-                   <div class="profile-image-container">
-                         <div class="profile-image">
-                             <div class="profile-image-inner">
-                                 <img src="Images/MyPic.jpg" alt="Avumile Tati">
-                             </div>
-                         </div>
+                    <div class="profile-image-container">
+                        <div class="profile-image">
+                            <div class="profile-image-inner">
+                                <img src="Images/MyPic.jpg" alt="Avumile Tati">
+                            </div>
+                        </div>
                     </div>
 
-               
+
 
                     <h1 class="hero-title gradient-text">Avumile Tati</h1>
 
@@ -92,7 +98,8 @@
                             <i data-lucide="mail"></i>
                             Hire Me
                         </a>
-                        <a href="https://drive.google.com/file/d/15FRU_ZDtcOGFhW2zs84X1EjSPy_PZIr2/view?usp=drive_link" target="_blank" class="btn-outline">
+                        <a href="https://drive.google.com/file/d/15FRU_ZDtcOGFhW2zs84X1EjSPy_PZIr2/view?usp=drive_link"
+                            target="_blank" class="btn-outline">
                             <i data-lucide="download"></i>
                             View CV
                         </a>
@@ -125,17 +132,22 @@
                 <h2 class="section-title">About Me</h2>
                 <div class="section-divider"></div>
             </div>
-            
+
             <div class="about-container">
                 <div class="about-intro">
                     <h3>Professional Background</h3>
                     <p>
-                        Aspiring IT professional with a Diploma in Information Communication Technology and hands-on experience in web and application development. Eager to contribute technical expertise, problem-solving skills, and adaptability to a dynamic organization while continuing to grow professionally.
+                        Aspiring IT professional with a Diploma in Information Communication Technology and hands-on
+                        experience in web and application development. Eager to contribute technical expertise,
+                        problem-solving skills, and adaptability to a dynamic organization while continuing to grow
+                        professionally.
                     </p>
                     <p>
-                        My goal? To bridge the digital divide by empowering communities with tech education through my initiative, 
-                        <span class="highlight-cyan">Dynamic Duo Tech Solutions</span>. 
-                        Whether it's developing sleek websites, mobile applications, or training learners in rural areas, 
+                        My goal? To bridge the digital divide by empowering communities with tech education through my
+                        initiative,
+                        <span class="highlight-cyan">Dynamic Duo Tech Solutions</span>.
+                        Whether it's developing sleek websites, mobile applications, or training learners in rural
+                        areas,
                         I'm all about creating opportunities through technology.
                     </p>
                 </div>
@@ -159,9 +171,10 @@
                     </div>
                 </div>
 
-                <div class="skills-section" id ="skills">
+                <div class="skills-section" id="skills">
                     <h3>Technical Skills</h3>
-                    <p class="skills-subtitle">Modern technologies and frameworks I use to build exceptional digital experiences</p>
+                    <p class="skills-subtitle">Modern technologies and frameworks I use to build exceptional digital
+                        experiences</p>
                     <div class="tech-stack">
                         <div class="tech-item">
                             <span class="tech-icon">🌐</span>
@@ -220,69 +233,69 @@
                     </div>
                 </div>
 
-               
+
     </section>
     <!-- Education, Experience, Certifications Section -->
-     <section class="portfolio-container">
-    <div class="portfolio-grid">
-        
-        <div class="grid-column">
-            <h3 class="title-experience">Work Experience</h3>
-            
-            <div class="card experience current">
-                <div class="status-badge">latest Job</div>
-                <h4>Net Campus</h4>
-                <p class="date">Jan 2025 - Dec 2025</p>
-                <p>IT Intern gaining practical environment experience.</p>
+    <section class="portfolio-container">
+        <div class="portfolio-grid">
+
+            <div class="grid-column">
+                <h3 class="title-experience">Work Experience</h3>
+
+                <div class="card experience current">
+                    <div class="status-badge">latest Job</div>
+                    <h4>Net Campus</h4>
+                    <p class="date">Jan 2025 - Dec 2025</p>
+                    <p>IT Intern gaining practical environment experience.</p>
+                </div>
+
+                <div class="card experience">
+                    <h4>Black Ink Promotions</h4>
+                    <p class="date">Jun 2024 - Dec 2024</p>
+                    <p>Sales Assistant focusing on customer service.</p>
+                </div>
+
+                <div class="card experience">
+                    <h4>Samsung Innovation Campus</h4>
+                    <p class="date">Feb 2023 - Dec 2023</p>
+                    <p>Technical Trainee in AI and Programming.</p>
+                </div>
             </div>
 
-            <div class="card experience">
-                <h4>Black Ink Promotions</h4>
-                <p class="date">Jun 2024 - Dec 2024</p>
-                <p>Sales Assistant focusing on customer service.</p>
+            <div class="grid-column">
+                <h3 class="title-cert">Certifications</h3>
+
+                <div class="card certification">
+                    <h4>Artificial Intelligence</h4>
+                    <p class="date">Samsung Innovation Campus</p>
+                    <p class="issued">Issued: Feb 2024</p>
+                </div>
+
+                <div class="card certification">
+                    <h4>Basic Coding & Programming</h4>
+                    <p class="date">Samsung Innovation Campus</p>
+                    <p class="issued">Issued: Feb 2024</p>
+                </div>
             </div>
 
-            <div class="card experience">
-                <h4>Samsung Innovation Campus</h4>
-                <p class="date">Feb 2023 - Dec 2023</p>
-                <p>Technical Trainee in AI and Programming.</p>
+            <div class="grid-column">
+                <h3 class="title-edu">Education</h3>
+
+                <div class="card education">
+                    <h4>Walter Sisulu University</h4>
+                    <p class="date">2021 - 2023</p>
+                    <p>Diploma in ICT (Software Development)</p>
+                </div>
+
+                <div class="card education">
+                    <h4>Ndamase Senior Secondary</h4>
+                    <p class="date">Graduated 2020</p>
+                    <p>Grade 12 Certificate</p>
+                </div>
             </div>
+
         </div>
-
-        <div class="grid-column">
-            <h3 class="title-cert">Certifications</h3>
-            
-            <div class="card certification">
-                <h4>Artificial Intelligence</h4>
-                <p class="date">Samsung Innovation Campus</p>
-                <p class="issued">Issued: Feb 2024</p>
-            </div>
-
-            <div class="card certification">
-                <h4>Basic Coding & Programming</h4>
-                <p class="date">Samsung Innovation Campus</p>
-                <p class="issued">Issued: Feb 2024</p>
-            </div>
-        </div>
-
-        <div class="grid-column">
-            <h3 class="title-edu">Education</h3>
-            
-            <div class="card education">
-                <h4>Walter Sisulu University</h4>
-                <p class="date">2021 - 2023</p>
-                <p>Diploma in ICT (Software Development)</p>
-            </div>
-
-            <div class="card education">
-                <h4>Ndamase Senior Secondary</h4>
-                <p class="date">Graduated 2020</p>
-                <p>Grade 12 Certificate</p>
-            </div>
-        </div>
-
-    </div>
-</section>
+    </section>
 
     <!-- Projects Section -->
     <section id="projects">
@@ -298,7 +311,8 @@
             <div class="project-slider">
                 <div class="slider-container">
                     <div class="slide">
-                        <img src="https://avumiletati.netlify.app/Images/Ddtsolutions.png" alt="Dynamic Duo Tech Solutions" class="slide-image">
+                        <img src="https://avumiletati.netlify.app/Images/Ddtsolutions.png"
+                            alt="Dynamic Duo Tech Solutions" class="slide-image">
                         <div class="slide-overlay">
                             <h3>Dynamic Duo Tech Solutions</h3>
                             <p>Full-stack business website</p>
@@ -306,7 +320,8 @@
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="https://avumiletati.netlify.app/Images/figma.png" alt="Modern Portfolio Website" class="slide-image">
+                        <img src="https://avumiletati.netlify.app/Images/figma.png" alt="Modern Portfolio Website"
+                            class="slide-image">
                         <div class="slide-overlay">
                             <h3>Modern Portfolio Website</h3>
                             <p>Built with React & TypeScript</p>
@@ -314,7 +329,8 @@
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="https://avumiletati.netlify.app/Images/figma.png" alt="SRD Registration System" class="slide-image">
+                        <img src="https://avumiletati.netlify.app/Images/figma.png" alt="SRD Registration System"
+                            class="slide-image">
                         <div class="slide-overlay">
                             <h3>SRD Registration System</h3>
                             <p>Government grant system</p>
@@ -335,70 +351,74 @@
 
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="section-divider"></div>
-            <p class="section-subtitle">
-                Ready to start your next project? Let's discuss how we can work together to bring your ideas to life.
-            </p>
-        </div>
-
-        <div class="contact-grid">
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="icon-box"><i data-lucide="mail"></i></div>
-                    <div>
-                        <h4>Email</h4>
-                        <p><a href="mailto:tatiavumile@gmail.com">tatiavumile@gmail.com</a></p>
-                    </div>
-                </div>
-                
-                <div class="contact-item">
-                    <div class="icon-box"><i data-lucide="map-pin"></i></div>
-                    <div>
-                        <h4>Location</h4>
-                        <p>Cape Town, South Africa</p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="icon-box"><i data-lucide="linkedin"></i></div>
-                    <div>
-                        <h4>LinkedIn</h4>
-                        <p><a href="#">View Profile</a></p>
-                    </div>
-                </div>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">
+                    Ready to start your next project? Let's discuss how we can work together to bring your ideas to
+                    life.
+                </p>
             </div>
 
-            <div class="contact-form-container">
-                <form id="contact-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name" class="form-label">Full Name</label>
-                            <input type="text" id="name" name="name" class="form-input" placeholder="Avumile Tati" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="form-label">Email Address</label>
-                            <input type="email" id="email" name="email" class="form-input" placeholder="avumile@example.com" required>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="icon-box"><i data-lucide="mail"></i></div>
+                        <div>
+                            <h4>Email</h4>
+                            <p><a href="mailto:tatiavumile@gmail.com">tatiavumile@gmail.com</a></p>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="message" class="form-label">Your Message</label>
-                        <textarea id="message" name="message" class="form-textarea" required placeholder="Tell me about your project..."></textarea>
+
+                    <div class="contact-item">
+                        <div class="icon-box"><i data-lucide="map-pin"></i></div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Cape Town, South Africa</p>
+                        </div>
                     </div>
-                    <button type="submit" class="btn-send">
-                        <span>Send Message</span>
-                        <i data-lucide="send"></i>
-                    </button>
-                </form>
+
+                    <div class="contact-item">
+                        <div class="icon-box"><i data-lucide="linkedin"></i></div>
+                        <div>
+                            <h4>LinkedIn</h4>
+                            <p><a href="#">View Profile</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <form id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Full Name</label>
+                                <input type="text" id="name" name="name" class="form-input" placeholder="Avumile Tati"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" id="email" name="email" class="form-input"
+                                    placeholder="avumile@example.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="form-label">Your Message</label>
+                            <textarea id="message" name="message" class="form-textarea" required
+                                placeholder="Tell me about your project..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-send">
+                            <span>Send Message</span>
+                            <i data-lucide="send"></i>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <script src="https://unpkg.com/lucide@latest"></script>
-        <script>
+    <script>
         // This line tells the browser to find all <i data-lucide="..."> tags 
         // and turn them into SVG icons
         lucide.createIcons();
@@ -406,7 +426,7 @@
 
 </body>
 
-    <footer class="main-footer">
+<footer class="main-footer">
     <div class="container">
         <div class="footer-grid">
             <div class="footer-section footer-about">
@@ -449,9 +469,9 @@
     </div>
 </footer>
 
-    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
-        <i data-lucide="arrow-up"></i>
-    </button>
-    <script src="script.js"></script>
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <i data-lucide="arrow-up"></i>
+</button>
+<script src="script.js"></script>
 
 </html>
