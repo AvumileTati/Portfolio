@@ -133,7 +133,7 @@
                 <div class="section-divider"></div>
             </div>
 
-            <div class="about-container">
+            <div class="about-container reveal">
                 <div class="about-intro">
                     <h3>Professional Background</h3>
                     <p>
@@ -152,7 +152,7 @@
                     </p>
                 </div>
 
-                <div class="stats-section">
+                <div class="stats-section reveal">
                     <div class="stat-item">
                         <div class="stat-number highlight-blue">2+</div>
                         <div class="stat-label">Years Exp</div>
@@ -171,7 +171,7 @@
                     </div>
                 </div>
 
-                <div class="skills-section" id="skills">
+                <div class="skills-section reveal" id="skills">
                     <h3>Technical Skills</h3>
                     <p class="skills-subtitle">Modern technologies and frameworks I use to build exceptional digital
                         experiences</p>
@@ -237,7 +237,7 @@
     </section>
     <!-- Education, Experience, Certifications Section -->
     <section class="portfolio-container">
-        <div class="portfolio-grid">
+        <div class="portfolio-grid reveal">
 
             <div class="grid-column">
                 <h3 class="title-experience">Work Experience</h3>
@@ -308,11 +308,10 @@
                 </p>
             </div>
 
-            <div class="project-slider">
+            <div class="project-slider reveal">
                 <div class="slider-container">
                     <div class="slide">
-                        <img src="https://avumiletati.netlify.app/Images/Ddtsolutions.png"
-                            alt="Dynamic Duo Tech Solutions" class="slide-image">
+                        <img src="Images/ddt_home.png" alt="Dynamic Duo Tech Solutions" class="slide-image">
                         <div class="slide-overlay">
                             <h3>Dynamic Duo Tech Solutions</h3>
                             <p>Full-stack business website</p>
@@ -320,20 +319,18 @@
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="https://avumiletati.netlify.app/Images/figma.png" alt="Modern Portfolio Website"
-                            class="slide-image">
+                        <img src="Images/prephones_home.png" alt="PrePhones Official Store" class="slide-image">
                         <div class="slide-overlay">
-                            <h3>Modern Portfolio Website</h3>
-                            <p>Built with React & TypeScript</p>
+                            <h3>PrePhones Official Store</h3>
+                            <p>E-commerce Google Sites Store</p>
                             <a href="projects.html" class="slide-link">View Project</a>
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="https://avumiletati.netlify.app/Images/figma.png" alt="SRD Registration System"
-                            class="slide-image">
+                        <img src="Images/srd_figma1.png" alt="SRD Registration System" class="slide-image">
                         <div class="slide-overlay">
                             <h3>SRD Registration System</h3>
-                            <p>Government grant system</p>
+                            <p>Government grant UI/UX prototype</p>
                             <a href="projects.html" class="slide-link">View Project</a>
                         </div>
                     </div>
@@ -419,59 +416,55 @@
 
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
-        // This line tells the browser to find all <i data-lucide="..."> tags 
-        // and turn them into SVG icons
         lucide.createIcons();
     </script>
 
-</body>
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section footer-about">
+                    <h3>Avumile Tati</h3>
+                    <p>
+                        Full Stack Developer passionate about creating innovative tech solutions
+                        and empowering communities through technology education.
+                    </p>
+                </div>
 
-<footer class="main-footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-section footer-about">
-                <h3>Avumile Tati</h3>
-                <p>
-                    Full Stack Developer passionate about creating innovative tech solutions
-                    and empowering communities through technology education.
-                </p>
-            </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-nav">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
 
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul class="footer-nav">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>Primary Stack</h4>
-                <div class="footer-tech-tags">
-                    <span>Python</span>
-                    <span>Java</span>
-                    <span>React</span>
-                    <span>SQL</span>
-                    <span>AI/ML</span>
+                <div class="footer-section">
+                    <h4>Primary Stack</h4>
+                    <div class="footer-tech-tags">
+                        <span>Python</span>
+                        <span>Java</span>
+                        <span>React</span>
+                        <span>SQL</span>
+                        <span>AI/ML</span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="footer-bottom">
-            <div class="footer-divider"></div>
-            <div class="bottom-flex">
-                <p>&copy; 2026 Avumile Tati. All rights reserved.</p>
-                <p>Built with <i data-lucide="heart" class="heart-icon"></i> in South Africa</p>
+            <div class="footer-bottom">
+                <div class="footer-divider"></div>
+                <div class="bottom-flex">
+                    <p>&copy; 2026 Avumile Tati. All rights reserved.</p>
+                    <p>Built with <i data-lucide="heart" class="heart-icon"></i> in South Africa</p>
+                </div>
             </div>
-        </div>
-    </div>
-</footer>
+    </footer>
 
-<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
-    <i data-lucide="arrow-up"></i>
-</button>
-<script src="script.js"></script>
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <i data-lucide="arrow-up"></i>
+    </button>
+    <script src="script.js"></script>
+</body>
 
 </html>

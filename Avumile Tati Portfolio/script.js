@@ -15,8 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateThemeIcon = (theme) => {
         if (!themeToggle) return;
         // Use Lucide icons: Sun for dark mode, Moon for light
-        themeToggle.innerHTML = theme === 'dark' 
-            ? '<i data-lucide="sun"></i>' 
+        themeToggle.innerHTML = theme === 'dark'
+            ? '<i data-lucide="sun"></i>'
             : '<i data-lucide="moon"></i>';
         if (window.lucide) lucide.createIcons();
     };
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Close menu
                 hamburger.classList.remove('active');
                 navWrap.classList.remove('active');
-                
+
                 // Update active state for the rounded bubble
                 navLinks.forEach(l => l.classList.remove('active'));
                 link.classList.add('active');
@@ -57,8 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Close mobile menu when clicking outside
         document.addEventListener('click', (e) => {
-            if (navWrap.classList.contains('active') && 
-                !navWrap.contains(e.target) && 
+            if (navWrap.classList.contains('active') &&
+                !navWrap.contains(e.target) &&
                 !hamburger.contains(e.target)) {
                 hamburger.classList.remove('active');
                 navWrap.classList.remove('active');
@@ -100,13 +100,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 5. SCROLL EFFECTS (Scroll to Top + Reveal Animations)
+    const observerOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Once visible, we can stop observing if we want a one-time animation
+                // observer.unobserve(entry.target); 
+            } else {
+                // Remove this if you want animations to only happen once
+                entry.target.classList.remove('visible');
+            }
         });
-    }, { threshold: 0.1 });
-    
-    document.querySelectorAll('.card, .section-title, .about-container').forEach(el => observer.observe(el));
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal, .cool-project-card').forEach(el => observer.observe(el));
 
     window.addEventListener('scroll', () => {
         if (scrollTop) {
@@ -126,70 +138,97 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 // Project Data Object (Add your specific images here)
 const projectData = {
-        "PrePhones Corporate Identity": {
-            description: "Developed official stationery featuring contact systems, professional email setups (tati@prephones.com), and Cape Town office details.",
-            images: ["Images/letterhead-mockup.png", "Images/prephone.png"],
-            tags: ["Branding", "Illustrator", "Corporate"],
-            link: "letterhead.pdf"
-        },
-        "Dynamic Duo Tech Solutions": {
-            description: "IT support including Google Workspace management, Microsoft 365 consulting, and security setup.",
-            images: ["Images/Ddtsolutions.png", "Images/graphic1.png"],
-            tags: ["IT Support", "Google Workspace", "Security"],
-            link: "https://ddtsolutions.co.za/"
-        },
-        "SRD Registration System": {
-            description: "Streamlined registration process with integrated maps and identity verification for users aged 18-26.",
-            images: ["Images/figma.png", "Images/WebStore.png"],
-            tags: ["Figma", "UI/UX", "Maps Integration"],
-            link: "#"
-        }
-    };
+    "PrePhones Official Store": {
+        description: "Built the official Google Sites storefront for PrePhones — a Cape Town retailer for pre-owned smartphones. The site features a premium dark-themed hero section, responsive product carousels, and integrated contact channels to drive sales and customer engagement.",
+        images: ["Images/prephones_home.png", "Images/prephones_products.png"],
+        tags: ["Web Development", "Google Sites", "E-commerce"],
+        link: "https://sites.google.com/view/prephones/home"
+    },
+    "Brand Identity & Marketing Design Assets": {
+        description: "Full creative suite developed for PrePhones, including logo design, business cards, official letterheads, and social media marketing graphics. These assets were designed to create a cohesive and trustworthy brand presence for the smartphone retailer.",
+        images: ["Images/Business Card.png", "Images/Instagram story.png", "Images/Twitter graphic.png", "Images/social banner.png", "Images/Advertisement mockups.png"],
+        tags: ["Branding", "Graphic Design", "Illustrator", "Canva"],
+        link: "#",
+        downloads: [
+            { label: "Brand Kit Vol.1 (Letterhead, Logo, Business Card, Banner)", url: "https://drive.google.com/file/d/1AwQ6FDzqE8kralNGStsiOQmoq-gsA0g7/view?usp=drive_link" },
+            { label: "Brand Kit Vol.2 (Marketing & Social Media Design)", url: "https://drive.google.com/file/d/1AjA8Mx1OdYsT3xG-LGZkDralk7bHU8JQ/view?usp=drive_link" }
+        ]
+    },
+    "Dynamic Duo Tech Solutions": {
+        description: "Built and maintained the full ddtsolutions.co.za website for Dynamic Duo Tech — a South African IT company servicing SMBs. The site showcases their managed Microsoft 365 consulting, cybersecurity & antivirus solutions, web & app development services, and 24/7 local IT support. Designed with a focus on clear service communication, B-BBEE compliance transparency, and lead generation via Calendly integrations.",
+        images: ["Images/ddt_home.png", "Images/ddt_about.png", "Images/ddt_services.png", "Images/ddt_contact.png"],
+        tags: ["Web Development", "Microsoft 365", "Cybersecurity", "IT Support", "Next.js"],
+        link: "https://ddtsolutions.co.za/"
+    },
+    "SRD Registration System": {
+        description: "Designed a mobile UI/UX prototype in Figma for the SASSA SRD R350 grant application system, targeting youth aged 18–26. The design features a profile dashboard with an integrated Google Maps view showing nearby SASSA offices, a Youth Registration form with identity number verification, and a step-by-step SRD 350 Payment onboarding flow. Built with a bold yellow & dark theme for accessibility and youth appeal.",
+        images: ["Images/srd_figma1.png", "Images/srd_figma2.png", "Images/figma.png"],
+        tags: ["Figma", "UI/UX", "Maps Integration", "Mobile Design"],
+        link: "https://www.figma.com/design/g6lfoZvSpSPmxNIDKIij84/Untitled?node-id=0-1&t=WCvltsKAyVpkmuXO-1"
+    }
+};
 
-    const modal = document.getElementById('project-modal');
-    const closeBtn = document.querySelector('.close-modal');
+const modal = document.getElementById('project-modal');
+const closeBtn = document.querySelector('.close-modal');
 
-    document.querySelectorAll('.cool-project-card').forEach(card => {
-        card.addEventListener('click', () => {
-            const title = card.querySelector('h3').innerText;
-            const data = projectData[title];
+document.querySelectorAll('.cool-project-card').forEach(card => {
+    card.addEventListener('click', () => {
+        const title = card.querySelector('h3').innerText;
+        const data = projectData[title];
 
-            if (data) {
-                document.getElementById('modal-title').innerText = title;
-                document.getElementById('modal-description').innerText = data.description;
-                document.getElementById('modal-main-img').src = data.images[0];
-                document.getElementById('modal-link').href = data.link;
+        if (data) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-description').innerText = data.description;
+            document.getElementById('modal-main-img').src = data.images[0];
+            document.getElementById('modal-link').href = data.link;
 
-                // Tags
-                const tagContainer = document.getElementById('modal-tags');
-                tagContainer.innerHTML = data.tags.map(t => `<span class="badge">${t}</span>`).join('');
+            // Tags
+            const tagContainer = document.getElementById('modal-tags');
+            tagContainer.innerHTML = data.tags.map(t => `<span class="badge">${t}</span>`).join('');
 
-                // Thumbnails
-                const thumbContainer = document.getElementById('modal-thumbnails');
-                thumbContainer.innerHTML = '';
-                data.images.forEach((img, index) => {
-                    const thumb = document.createElement('img');
-                    thumb.src = img;
-                    if(index === 0) thumb.classList.add('active');
-                    thumb.onclick = (e) => {
-                        e.stopPropagation();
-                        document.getElementById('modal-main-img').src = img;
-                        document.querySelectorAll('.thumbnail-grid img').forEach(t => t.classList.remove('active'));
-                        thumb.classList.add('active');
-                    };
-                    thumbContainer.appendChild(thumb);
+            // Thumbnails
+            const thumbContainer = document.getElementById('modal-thumbnails');
+            thumbContainer.innerHTML = '';
+            data.images.forEach((img, index) => {
+                const thumb = document.createElement('img');
+                thumb.src = img;
+                if (index === 0) thumb.classList.add('active');
+                thumb.onclick = (e) => {
+                    e.stopPropagation();
+                    document.getElementById('modal-main-img').src = img;
+                    document.querySelectorAll('.thumbnail-grid img').forEach(t => t.classList.remove('active'));
+                    thumb.classList.add('active');
+                };
+                thumbContainer.appendChild(thumb);
+            });
+
+            // Download buttons
+            const modalActions = document.querySelector('.modal-actions');
+            // Remove any existing download buttons from a previous modal open
+            modalActions.querySelectorAll('.btn-download').forEach(el => el.remove());
+            if (data.downloads && data.downloads.length) {
+                data.downloads.forEach(dl => {
+                    const a = document.createElement('a');
+                    a.href = dl.url;
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                    a.className = 'btn-download';
+                    a.innerHTML = `<i data-lucide="download"></i> ${dl.label}`;
+                    modalActions.appendChild(a);
                 });
-
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden';
+                if (window.lucide) lucide.createIcons();
             }
-        });
+
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
     });
+});
 
-    closeBtn.onclick = () => {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    };
+closeBtn.onclick = () => {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+};
 
-    window.onclick = (event) => { if (event.target == modal) closeBtn.onclick(); };
+window.onclick = (event) => { if (event.target == modal) closeBtn.onclick(); };
 ;
