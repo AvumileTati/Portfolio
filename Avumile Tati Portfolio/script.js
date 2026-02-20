@@ -1,3 +1,8 @@
+// Initialize EmailJS with Public Key
+(function () {
+    emailjs.init("0UQlWQQQsUT_R6OEC");
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
     // 1. SELECT ELEMENTS
     const hamburger = document.getElementById('mobile-menu');
@@ -130,6 +135,47 @@ document.addEventListener('DOMContentLoaded', () => {
     if (scrollTop) {
         scrollTop.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // 6. CONTACT FORM HANDLING WITH EMAILJS
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Show loading state on button
+            const submitBtn = this.querySelector('.btn-send');
+            const originalBtnContent = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span>Sending...</span><i class="fas fa-spinner fa-spin"></i>';
+            submitBtn.disabled = true;
+
+            // Prepare template parameters
+            // Ensure your EmailJS template uses these exact names: {{from_name}}, {{from_email}}, {{message}}
+            const templateParams = {
+                from_name: document.getElementById('name').value,
+                from_email: document.getElementById('email').value,
+                message: document.getElementById('message').value,
+                to_name: "Avumile Tati"
+            };
+
+            // Use your Service ID (replace 'service_id' if you have a specific one, or it usually works with 'default_service')
+            const serviceID = "service_default";
+            const templateID = "template_sxyyixd";
+
+            emailjs.send(serviceID, templateID, templateParams)
+                .then(() => {
+                    alert('Message sent successfully! I will get back to you soon.');
+                    contactForm.reset();
+                })
+                .catch((error) => {
+                    console.error('EmailJS Error:', error);
+                    alert('Oops! Something went wrong. Please try again later or contact me directly via email.');
+                })
+                .finally(() => {
+                    submitBtn.innerHTML = originalBtnContent;
+                    submitBtn.disabled = false;
+                });
         });
     }
 
