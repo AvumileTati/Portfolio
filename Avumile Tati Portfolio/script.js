@@ -1,6 +1,8 @@
 // Initialize EmailJS with Public Key
 (function () {
-    emailjs.init("0UQlWQQQsUT_R6OEC");
+    if (typeof emailjs !== 'undefined') {
+        emailjs.init("l_3AEBZ3w63Er-f-G");
+    }
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -159,18 +161,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 to_name: "Avumile Tati"
             };
 
-            // Use your Service ID (replace 'service_id' if you have a specific one, or it usually works with 'default_service')
-            const serviceID = "service_default";
+            // Preparation for status feedback
+            const formStatus = document.getElementById('form-status');
+            const showStatus = (message, isSuccess) => {
+                formStatus.textContent = message;
+                formStatus.className = `form-status ${isSuccess ? 'success' : 'error'}`;
+                formStatus.style.display = 'block';
+
+                // Hide after 5 seconds
+                setTimeout(() => {
+                    formStatus.style.display = 'none';
+                }, 5000);
+            };
+
+            // Use your Service ID 
+            // Most common is "service_default" or "gmail_service"
+            const serviceID = "service_074c36z";
             const templateID = "template_sxyyixd";
 
-            emailjs.send(serviceID, templateID, templateParams)
+            emailjs.sendForm(serviceID, templateID, this)
                 .then(() => {
-                    alert('Message sent successfully! I will get back to you soon.');
+                    showStatus('Message sent successfully! I will get back to you soon.', true);
                     contactForm.reset();
                 })
                 .catch((error) => {
                     console.error('EmailJS Error:', error);
-                    alert('Oops! Something went wrong. Please try again later or contact me directly via email.');
+                    const errorMsg = error.text || 'Error connecting to service. Check Service ID.';
+                    showStatus(`Oops! ${errorMsg}`, false);
                 })
                 .finally(() => {
                     submitBtn.innerHTML = originalBtnContent;
