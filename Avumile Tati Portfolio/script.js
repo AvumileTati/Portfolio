@@ -17,11 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. THEME TOGGLE LOGIC
     const savedTheme = localStorage.getItem('theme') || 'light';
-    body.dataset.theme = savedTheme;
+    // Use documentElement to match the flash-prevention script in <head>
+    document.documentElement.setAttribute('data-theme', savedTheme);
 
     const updateThemeIcon = (theme) => {
         if (!themeToggle) return;
-        // Use Lucide icons: Sun for dark mode, Moon for light
         themeToggle.innerHTML = theme === 'dark'
             ? '<i data-lucide="sun"></i>'
             : '<i data-lucide="moon"></i>';
@@ -33,10 +33,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (themeToggle) {
         themeToggle.addEventListener('click', (e) => {
             e.preventDefault();
-            const newTheme = body.dataset.theme === 'dark' ? 'light' : 'dark';
-            body.dataset.theme = newTheme;
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             updateThemeIcon(newTheme);
+
+            // Sync background to prevent flashes during navigation
+            if (newTheme === 'dark') {
+                document.documentElement.style.backgroundColor = '#0b0b0f';
+            } else {
+                document.documentElement.style.backgroundColor = '#ffffff';
+            }
         });
     }
 
@@ -228,6 +237,12 @@ const projectData = {
         images: ["Images/srd_figma1.png", "Images/srd_figma2.png", "Images/figma.png"],
         tags: ["Figma", "UI/UX", "Maps Integration", "Mobile Design"],
         link: "https://www.figma.com/design/g6lfoZvSpSPmxNIDKIij84/Untitled?node-id=0-1&t=WCvltsKAyVpkmuXO-1"
+    },
+    "Bright Minds Hub": {
+        description: "A comprehensive community platform for an after-school program delivering academic support, nutrition, and holistic growth to learners. The website features a dynamic community wish list, a gallery showcasing program life, and clear mission pillars to drive engagement and local support. Built with a vibrant, accessible design to serve as a digital 'home away from home'.",
+        images: ["Images/bright_minds_home.png", "Images/bright_minds_pillars.png", "Images/bright_minds_wishlist.png", "Images/bright_minds_life.png"],
+        tags: ["Web Development", "Community Support", "Responsive Design", "Non-Profit"],
+        link: "https://avumiletati.github.io/Bright-Minds-Hub/"
     }
 };
 

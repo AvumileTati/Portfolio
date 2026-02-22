@@ -26,6 +26,19 @@
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <!-- Theme Detection (Prevents FOUC/Flash of Unstyled Content) -->
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            if (savedTheme === 'dark') {
+                document.documentElement.style.backgroundColor = '#0b0b0f';
+            } else {
+                document.documentElement.style.backgroundColor = '#ffffff';
+            }
+        })();
+    </script>
 </head>
 
 <body>
@@ -165,7 +178,7 @@
                         <div class="stat-label">Certifications</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number highlight-blue">4</div>
+                        <div class="stat-number highlight-blue">5</div>
                         <div class="stat-label">Projects</div>
                     </div>
                 </div>
@@ -310,10 +323,18 @@
             <div class="project-slider reveal">
                 <div class="slider-container">
                     <div class="slide">
+                        <img src="Images/bright_minds_home.png" alt="Bright Minds Hub" class="slide-image">
+                        <div class="slide-overlay">
+                            <h3>Bright Minds Hub</h3>
+                            <p>Community Driven After-School Platform</p>
+                            <a href="projects.html" class="slide-link">View Project</a>
+                        </div>
+                    </div>
+                    <div class="slide">
                         <img src="Images/ddt_home.png" alt="Dynamic Duo Tech Solutions" class="slide-image">
                         <div class="slide-overlay">
                             <h3>Dynamic Duo Tech Solutions</h3>
-                            <p>Full-stack business website</p>
+                            <p>Managed IT & Cybersecurity Showcase</p>
                             <a href="projects.html" class="slide-link">View Project</a>
                         </div>
                     </div>
@@ -321,7 +342,7 @@
                         <img src="Images/prephones_home.png" alt="PrePhones Official Store" class="slide-image">
                         <div class="slide-overlay">
                             <h3>PrePhones Official Store</h3>
-                            <p>E-commerce Google Sites Store</p>
+                            <p>Modern E-commerce Mobile Experience</p>
                             <a href="projects.html" class="slide-link">View Project</a>
                         </div>
                     </div>
@@ -329,7 +350,7 @@
                         <img src="Images/srd_figma1.png" alt="SRD Registration System" class="slide-image">
                         <div class="slide-overlay">
                             <h3>SRD Registration System</h3>
-                            <p>Government grant UI/UX prototype</p>
+                            <p>SASSA Grant UI/UX Mobile Prototype</p>
                             <a href="projects.html" class="slide-link">View Project</a>
                         </div>
                     </div>

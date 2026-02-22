@@ -10,6 +10,18 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <!-- Theme Detection (Prevents FOUC/Flash of Unstyled Content) -->
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            if (savedTheme === 'dark') {
+                document.documentElement.style.backgroundColor = '#0b0b0f';
+            } else {
+                document.documentElement.style.backgroundColor = '#ffffff';
+            }
+        })();
+    </script>
 </head>
 
 <body>
@@ -40,10 +52,56 @@
         <div class="section-header">
             <h2 class="section-title">Portfolio Showcase</h2>
             <div class="section-divider"></div>
-            <p class="section-subtitle">Click on any project to see technical details and expanded galleries.</p>
+            <p class="section-subtitle">A curated collection of my latest work, ranging from community-driven platforms
+                to corporate digital solutions.</p>
         </div>
 
         <div class="projects-showcase-grid reveal">
+            <!-- Project 1: Bright Minds Hub (Featured/New) -->
+            <article class="cool-project-card">
+                <div class="project-image-wrapper">
+                    <img src="Images/bright_minds_home.png" alt="Bright Minds Hub Website">
+                    <div class="project-badges">
+                        <span class="badge" style="background: var(--primary);">NEW</span>
+                        <span class="badge">Web Development</span>
+                        <span class="badge">Community</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Bright Minds Hub</h3>
+                    <p>A safe haven for after-school learning. This platform supports a community-driven initiative
+                        providing academic support, nutrition, and holistic growth for learners.</p>
+                    <div class="project-actions">
+                        <span class="btn-primary-sm">View Details</span>
+                        <a href="https://avumiletati.github.io/Bright-Minds-Hub/" target="_blank"
+                            rel="noopener noreferrer" class="btn-outline-sm" onclick="event.stopPropagation()">Visit
+                            Site ↗</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 2: Dynamic Duo Tech Solutions -->
+            <article class="cool-project-card">
+                <div class="project-image-wrapper">
+                    <img src="Images/ddt_home.png" alt="Dynamic Duo Tech Solutions Website">
+                    <div class="project-badges">
+                        <span class="badge">Full-Stack</span>
+                        <span class="badge">IT Support</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Dynamic Duo Tech Solutions</h3>
+                    <p>Designed and built the full ddtsolutions.co.za website — showcasing Microsoft 365, cybersecurity,
+                        and IT support services for South African SMBs.</p>
+                    <div class="project-actions">
+                        <span class="btn-primary-sm">View Details</span>
+                        <a href="https://ddtsolutions.co.za/" target="_blank" rel="noopener noreferrer"
+                            class="btn-outline-sm" onclick="event.stopPropagation()">Visit Site ↗</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 3: PrePhones Official Store -->
             <article class="cool-project-card">
                 <div class="project-image-wrapper">
                     <img src="Images/prephones_home.png" alt="PrePhones Official Store">
@@ -64,44 +122,7 @@
                 </div>
             </article>
 
-            <article class="cool-project-card">
-                <div class="project-image-wrapper">
-                    <img src="Images/Business Card.png" alt="PrePhones Branding Assets">
-                    <div class="project-badges">
-                        <span class="badge">Branding</span>
-                        <span class="badge">Graphic Design</span>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3>Brand Identity & Marketing Design Assets</h3>
-                    <p>Cohesive brand identity design including logos, stationery, and social media marketing materials
-                        for PrePhones.</p>
-                    <div class="project-actions">
-                        <span class="btn-primary-sm">View Details</span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="cool-project-card">
-                <div class="project-image-wrapper">
-                    <img src="Images/ddt_home.png" alt="Dynamic Duo Tech Solutions Website">
-                    <div class="project-badges">
-                        <span class="badge">Web Dev</span>
-                        <span class="badge">IT Support</span>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3>Dynamic Duo Tech Solutions</h3>
-                    <p>Designed and built the full ddtsolutions.co.za website — showcasing Microsoft 365, cybersecurity,
-                        and IT support services for South African SMBs.</p>
-                    <div class="project-actions">
-                        <span class="btn-primary-sm">View Details</span>
-                        <a href="https://ddtsolutions.co.za/" target="_blank" rel="noopener noreferrer"
-                            class="btn-outline-sm" onclick="event.stopPropagation()">Visit Site ↗</a>
-                    </div>
-                </div>
-            </article>
-
+            <!-- Project 4: SRD Registration System -->
             <article class="cool-project-card">
                 <div class="project-image-wrapper">
                     <img src="Images/srd_figma1.png" alt="SRD Registration Figma Design">
@@ -119,6 +140,25 @@
                         <a href="https://www.figma.com/design/g6lfoZvSpSPmxNIDKIij84/Untitled?node-id=0-1&t=WCvltsKAyVpkmuXO-1"
                             target="_blank" rel="noopener noreferrer" class="btn-outline-sm"
                             onclick="event.stopPropagation()">View Design ↗</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 5: Brand Identity & Marketing Assets -->
+            <article class="cool-project-card">
+                <div class="project-image-wrapper">
+                    <img src="Images/Business Card.png" alt="PrePhones Branding Assets">
+                    <div class="project-badges">
+                        <span class="badge">Branding</span>
+                        <span class="badge">Graphic Design</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Brand Identity & Marketing Design Assets</h3>
+                    <p>Cohesive brand identity design including logos, stationery, and social media marketing materials
+                        for PrePhones.</p>
+                    <div class="project-actions">
+                        <span class="btn-primary-sm">View Details</span>
                     </div>
                 </div>
             </article>
