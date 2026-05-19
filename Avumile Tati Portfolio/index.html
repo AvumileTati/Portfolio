@@ -65,17 +65,7 @@
             </nav>
         </div>
     </div>
-    <script>
-        const links = document.querySelectorAll("nav a");
-        links.forEach((link) => {
-            link.addEventListener("click", () => {
-                links.forEach((l) => l.classList.remove("active"));
-                link.classList.add("active");
-            });
-        });
 
-    </script>
-    </header>
     <br>
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -166,19 +156,19 @@
 
                 <div class="stats-section reveal">
                     <div class="stat-item">
-                        <div class="stat-number highlight-blue">2+</div>
+                        <div class="stat-number highlight-blue" data-count="2" data-suffix="+">0+</div>
                         <div class="stat-label">Years Exp</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number highlight-cyan">10+</div>
+                        <div class="stat-number highlight-cyan" data-count="10" data-suffix="+">0+</div>
                         <div class="stat-label">Skills</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number highlight-purple">2</div>
+                        <div class="stat-number highlight-purple" data-count="2" data-suffix="">0</div>
                         <div class="stat-label">Certifications</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number highlight-blue">5</div>
+                        <div class="stat-number highlight-blue" data-count="5" data-suffix="">0</div>
                         <div class="stat-label">Projects</div>
                     </div>
                 </div>
@@ -188,58 +178,85 @@
                     <p class="skills-subtitle">Modern technologies and frameworks I use to build exceptional digital
                         experiences</p>
                     <div class="tech-stack">
-                        <div class="tech-item">
-                            <span class="tech-icon">🌐</span>
+                        <div class="tech-item item-web">
+                            <div class="tech-icon-box">
+                                <i data-lucide="globe" class="tech-svg"></i>
+                            </div>
                             <div class="tech-info">
                                 <p>Web Development</p>
+                                <span class="skill-level">Advanced</span>
                             </div>
                         </div>
-                        <div class="tech-item">
-                            <span class="tech-icon">👨‍💻</span>
+                        <div class="tech-item item-coding">
+                            <div class="tech-icon-box">
+                                <i data-lucide="code-2" class="tech-svg"></i>
+                            </div>
                             <div class="tech-info">
                                 <p>Programming</p>
+                                <span class="skill-level">Advanced</span>
                             </div>
                         </div>
-                        <div class="tech-item">
-                            <span class="tech-icon">🗄️</span>
+                        <div class="tech-item item-db">
+                            <div class="tech-icon-box">
+                                <i data-lucide="database" class="tech-svg"></i>
+                            </div>
                             <div class="tech-info">
                                 <p>Database Management</p>
+                                <span class="skill-level">Advanced</span>
                             </div>
                         </div>
-                        <div class="tech-item">
-                            <span class="tech-icon">🛠️</span>
+                        <div class="tech-item item-support">
+                            <div class="tech-icon-box">
+                                <i data-lucide="wrench" class="tech-svg"></i>
+                            </div>
                             <div class="tech-info">
                                 <p>Troubleshooting</p>
+                                <span class="skill-level">Proficient</span>
                             </div>
                         </div>
-                        <div class="tech-item">
-                            <span class="tech-icon">🤝</span>
+                        <div class="tech-item item-collab">
+                            <div class="tech-icon-box">
+                                <i data-lucide="users" class="tech-svg"></i>
+                            </div>
                             <div class="tech-info">
                                 <p>Teamwork</p>
+                                <span class="skill-level">Expert</span>
                             </div>
                         </div>
-                        <div class="tech-item">
-                            <span class="tech-icon">💡</span>
+                        <div class="tech-item item-creative">
+                            <div class="tech-icon-box">
+                                <i data-lucide="lightbulb" class="tech-svg"></i>
+                            </div>
                             <div class="tech-info">
                                 <p>Problem-Solving</p>
+                                <span class="skill-level">Expert</span>
                             </div>
                         </div>
-                        <div class="tech-item">
-                            <span class="tech-icon">📚</span>
+                        <div class="tech-item item-git">
+                            <div class="tech-icon-box">
+                                <i data-lucide="git-branch" class="tech-svg"></i>
+                            </div>
                             <div class="tech-info">
                                 <p>GitHub</p>
+                                <span class="skill-level">Advanced</span>
                             </div>
                         </div>
-                        <div class="tech-item">
-                            <span class="tech-icon">🤖</span>
+                        <div class="tech-item item-ai">
+                            <div class="tech-icon-box">
+                                <i data-lucide="cpu" class="tech-svg"></i>
+                            </div>
                             <div class="tech-info">
                                 <p>AI Fundamentals</p>
+                                <span class="skill-level">Proficient</span>
                             </div>
                         </div>
-                        <div class="tech-item">
-                            <span class="tech-icon">📞</span>
+                        <div class="tech-item item-support">
+                            <div class="tech-icon-box">
+                                <i data-lucide="phone" class="tech-svg"></i>
+                            </div>
                             <div class="tech-info">
                                 <p>Help Desk Support</p>
+                                <span class="skill-level">Proficient</span>
                             </div>
                         </div>
                     </div>
@@ -296,7 +313,7 @@
                 <div class="card education">
                     <h4>Walter Sisulu University</h4>
                     <p class="date">2021 - 2023</p>
-                    <p>Diploma in ICT (Software Development)</p>
+                    <p>Diploma in ICT (Application Development)</p>
                 </div>
 
                 <div class="card education">
@@ -380,11 +397,16 @@
 
             <div class="contact-grid">
                 <div class="contact-info">
-                    <div class="contact-item">
+                    <div class="contact-item email-item">
                         <div class="icon-box"><i data-lucide="mail"></i></div>
-                        <div>
+                        <div class="contact-details" style="position: relative; width: 100%;">
                             <h4>Email</h4>
-                            <p><a href="mailto:tatiavumile@gmail.com">tatiavumile@gmail.com</a></p>
+                            <p style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                                <a href="mailto:tatiavumile@gmail.com" id="contact-email">tatiavumile@gmail.com</a>
+                                <button type="button" class="btn-copy" id="btn-copy-email" aria-label="Copy email" title="Copy to clipboard">
+                                    <i data-lucide="copy" style="width: 14px; height: 14px;"></i>
+                                </button>
+                            </p>
                         </div>
                     </div>
 

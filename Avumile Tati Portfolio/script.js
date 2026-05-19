@@ -5,6 +5,14 @@
     }
 })();
 
+// Global Scroll To Section Helper
+window.scrollToSection = function (selector) {
+    const target = document.querySelector(selector);
+    if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+    }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     // 1. SELECT ELEMENTS
     const hamburger = document.getElementById('mobile-menu');
@@ -14,6 +22,81 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollTop = document.getElementById('scrollTop');
     const body = document.body;
     const typingElement = document.getElementById('typed-text');
+    const activeBubble = document.querySelector('.bubble.active');
+    const hoverBubble = document.querySelector('.bubble.hover');
+
+    // 1b. SLIDING PILL BUBBLE NAVIGATION & SCROLL SPY LOGIC
+    function updateActiveBubble() {
+        // Disable bubble positioning on mobile
+        if (window.innerWidth <= 768) {
+            if (activeBubble) activeBubble.style.opacity = '0';
+            if (hoverBubble) hoverBubble.style.opacity = '0';
+            return;
+        }
+
+        const activeLink = document.querySelector('.nav a.active');
+        if (activeLink && activeBubble && navWrap) {
+            const rect = activeLink.getBoundingClientRect();
+            const navWrapRect = navWrap.getBoundingClientRect();
+
+            activeBubble.style.left = `${rect.left - navWrapRect.left}px`;
+            activeBubble.style.width = `${rect.width}px`;
+            activeBubble.style.height = `${rect.height}px`;
+            activeBubble.style.top = `${rect.top - navWrapRect.top + rect.height / 2}px`;
+            activeBubble.style.opacity = '1';
+        } else if (activeBubble) {
+            activeBubble.style.opacity = '0';
+        }
+    }
+
+    // Set up hover bubble positioning
+    navLinks.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            if (window.innerWidth <= 768) return;
+            if (hoverBubble && navWrap) {
+                const rect = link.getBoundingClientRect();
+                const navWrapRect = navWrap.getBoundingClientRect();
+
+                hoverBubble.style.left = `${rect.left - navWrapRect.left}px`;
+                hoverBubble.style.width = `${rect.width}px`;
+                hoverBubble.style.height = `${rect.height}px`;
+                hoverBubble.style.top = `${rect.top - navWrapRect.top + rect.height / 2}px`;
+                hoverBubble.style.opacity = '1';
+            }
+        });
+
+        link.addEventListener('mouseleave', () => {
+            if (hoverBubble) {
+                hoverBubble.style.opacity = '0';
+            }
+        });
+    });
+
+    // Scroll Spy Logic
+    const sections = document.querySelectorAll('section[id]');
+    function scrollSpy() {
+        if (sections.length === 0) return; // Only run on index.html
+        
+        const scrollY = window.pageYOffset;
+        sections.forEach(current => {
+            const sectionHeight = current.offsetHeight;
+            const sectionTop = current.offsetTop - 180; // Offset for floating nav bar
+            const sectionId = current.getAttribute('id');
+            
+            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                const activeLink = document.querySelector(`.nav a[href*="#${sectionId}"]`);
+                if (activeLink) {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    activeLink.classList.add('active');
+                }
+            }
+        });
+        updateActiveBubble();
+    }
+
+    window.addEventListener('resize', updateActiveBubble);
+    window.addEventListener('scroll', scrollSpy);
+    setTimeout(updateActiveBubble, 150); // Let fonts and DOM settle
 
     // 2. THEME TOGGLE LOGIC
     const savedTheme = localStorage.getItem('theme') || 'light';
@@ -46,6 +129,9 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 document.documentElement.style.backgroundColor = '#ffffff';
             }
+            
+            // Re-render active bubble position on theme change (due to any transition shifts)
+            setTimeout(updateActiveBubble, 300);
         });
     }
 
@@ -68,6 +154,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Update active state for the rounded bubble
                 navLinks.forEach(l => l.classList.remove('active'));
                 link.classList.add('active');
+                
+                updateActiveBubble();
             });
         });
 
@@ -149,6 +237,52 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // 5b. DYNAMIC STATISTICS COUNTER ANIMATION
+    const statsSection = document.querySelector('.stats-section');
+    let countersAnimated = false;
+
+    if (statsSection) {
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !countersAnimated) {
+                    countersAnimated = true;
+                    animateCounters();
+                }
+            });
+        }, { threshold: 0.3 });
+
+        statsObserver.observe(statsSection);
+    }
+
+    function animateCounters() {
+        const counters = document.querySelectorAll('.stat-number');
+        counters.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-count'), 10);
+            const suffix = counter.getAttribute('data-suffix') || '';
+            const duration = 2000; // 2 seconds
+            const startTime = performance.now();
+
+            const updateCount = (currentTime) => {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Cubic ease-out transition math
+                const easeOutProgress = 1 - Math.pow(1 - progress, 3);
+                const currentValue = Math.floor(easeOutProgress * target);
+
+                counter.textContent = currentValue + suffix;
+
+                if (progress < 1) {
+                    requestAnimationFrame(updateCount);
+                } else {
+                    counter.textContent = target + suffix;
+                }
+            };
+
+            requestAnimationFrame(updateCount);
+        });
+    }
+
     // 6. CONTACT FORM HANDLING WITH EMAILJS
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
@@ -183,6 +317,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 5000);
             };
 
+            if (typeof emailjs === 'undefined') {
+                showStatus('Email service is currently unavailable. Please email me directly at tatiavumile@gmail.com.', false);
+                submitBtn.innerHTML = originalBtnContent;
+                submitBtn.disabled = false;
+                return;
+            }
+
             // Use your Service ID 
             // Most common is "service_default" or "gmail_service"
             const serviceID = "service_074c36z";
@@ -202,6 +343,67 @@ document.addEventListener('DOMContentLoaded', () => {
                     submitBtn.innerHTML = originalBtnContent;
                     submitBtn.disabled = false;
                 });
+        });
+    }
+
+    // 5c. DYNAMIC PROJECTS CATEGORY FILTER
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.projects-showcase-grid .cool-project-card');
+
+    if (filterButtons.length > 0 && projectCards.length > 0) {
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filterValue = button.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    card.classList.remove('fade-in');
+                    card.classList.add('fade-out');
+
+                    // Wait for fade-out animation to complete, then update display
+                    setTimeout(() => {
+                        const cardCategory = card.getAttribute('data-category');
+                        if (filterValue === 'all' || cardCategory === filterValue) {
+                            card.classList.remove('hide');
+                            card.classList.remove('fade-out');
+                            card.classList.add('fade-in');
+                        } else {
+                            card.classList.add('hide');
+                        }
+                    }, 350);
+                });
+            });
+        });
+    }
+
+    // 5d. CLICK-TO-COPY CONTACT EMAIL UTILITY
+    const copyEmailBtn = document.getElementById('btn-copy-email');
+    if (copyEmailBtn) {
+        copyEmailBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const emailAddress = "tatiavumile@gmail.com";
+            
+            navigator.clipboard.writeText(emailAddress).then(() => {
+                // Check if tooltip already exists
+                const parent = copyEmailBtn.parentElement;
+                let tooltip = parent.querySelector('.copy-tooltip');
+                if (!tooltip) {
+                    tooltip = document.createElement('span');
+                    tooltip.className = 'copy-tooltip';
+                    tooltip.textContent = 'Copied! ✓';
+                    parent.appendChild(tooltip);
+                }
+                
+                // Remove tooltip after 1.5 seconds
+                setTimeout(() => {
+                    tooltip.remove();
+                }, 1500);
+            }).catch(err => {
+                console.error('Clipboard copy failed:', err);
+            });
         });
     }
 
@@ -249,64 +451,71 @@ const projectData = {
 const modal = document.getElementById('project-modal');
 const closeBtn = document.querySelector('.close-modal');
 
-document.querySelectorAll('.cool-project-card').forEach(card => {
-    card.addEventListener('click', () => {
-        const title = card.querySelector('h3').innerText;
-        const data = projectData[title];
+if (modal && closeBtn) {
+    document.querySelectorAll('.cool-project-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const title = card.querySelector('h3').innerText;
+            const data = projectData[title];
 
-        if (data) {
-            document.getElementById('modal-title').innerText = title;
-            document.getElementById('modal-description').innerText = data.description;
-            document.getElementById('modal-main-img').src = data.images[0];
-            document.getElementById('modal-link').href = data.link;
+            if (data) {
+                document.getElementById('modal-title').innerText = title;
+                document.getElementById('modal-description').innerText = data.description;
+                document.getElementById('modal-main-img').src = data.images[0];
+                document.getElementById('modal-link').href = data.link;
 
-            // Tags
-            const tagContainer = document.getElementById('modal-tags');
-            tagContainer.innerHTML = data.tags.map(t => `<span class="badge">${t}</span>`).join('');
+                // Tags
+                const tagContainer = document.getElementById('modal-tags');
+                tagContainer.innerHTML = data.tags.map(t => `<span class="badge">${t}</span>`).join('');
 
-            // Thumbnails
-            const thumbContainer = document.getElementById('modal-thumbnails');
-            thumbContainer.innerHTML = '';
-            data.images.forEach((img, index) => {
-                const thumb = document.createElement('img');
-                thumb.src = img;
-                if (index === 0) thumb.classList.add('active');
-                thumb.onclick = (e) => {
-                    e.stopPropagation();
-                    document.getElementById('modal-main-img').src = img;
-                    document.querySelectorAll('.thumbnail-grid img').forEach(t => t.classList.remove('active'));
-                    thumb.classList.add('active');
-                };
-                thumbContainer.appendChild(thumb);
-            });
-
-            // Download buttons
-            const modalActions = document.querySelector('.modal-actions');
-            // Remove any existing download buttons from a previous modal open
-            modalActions.querySelectorAll('.btn-download').forEach(el => el.remove());
-            if (data.downloads && data.downloads.length) {
-                data.downloads.forEach(dl => {
-                    const a = document.createElement('a');
-                    a.href = dl.url;
-                    a.target = '_blank';
-                    a.rel = 'noopener noreferrer';
-                    a.className = 'btn-download';
-                    a.innerHTML = `<i data-lucide="download"></i> ${dl.label}`;
-                    modalActions.appendChild(a);
+                // Thumbnails
+                const thumbContainer = document.getElementById('modal-thumbnails');
+                thumbContainer.innerHTML = '';
+                data.images.forEach((img, index) => {
+                    const thumb = document.createElement('img');
+                    thumb.src = img;
+                    if (index === 0) thumb.classList.add('active');
+                    thumb.onclick = (e) => {
+                        e.stopPropagation();
+                        document.getElementById('modal-main-img').src = img;
+                        document.querySelectorAll('.thumbnail-grid img').forEach(t => t.classList.remove('active'));
+                        thumb.classList.add('active');
+                    };
+                    thumbContainer.appendChild(thumb);
                 });
-                if (window.lucide) lucide.createIcons();
+
+                // Download buttons
+                const modalActions = document.querySelector('.modal-actions');
+                // Remove any existing download buttons from a previous modal open
+                modalActions.querySelectorAll('.btn-download').forEach(el => el.remove());
+                if (data.downloads && data.downloads.length) {
+                    data.downloads.forEach(dl => {
+                        const a = document.createElement('a');
+                        a.href = dl.url;
+                        a.target = '_blank';
+                        a.rel = 'noopener noreferrer';
+                        a.className = 'btn-download';
+                        a.innerHTML = `<i data-lucide="download"></i> ${dl.label}`;
+                        modalActions.appendChild(a);
+                    });
+                    if (window.lucide) lucide.createIcons();
+                }
+
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
             }
-
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
+        });
     });
-});
 
-closeBtn.onclick = () => {
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto';
-};
+    closeBtn.onclick = () => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    };
 
-window.onclick = (event) => { if (event.target == modal) closeBtn.onclick(); };
+    window.onclick = (event) => { 
+        if (event.target == modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    };
+}
 ;
