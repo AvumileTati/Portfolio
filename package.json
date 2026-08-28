@@ -1,0 +1,15 @@
+{
+  "name": "avumiletati-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio migration",
+  "main": "server.js",
+  "scripts": {
+    "build": "echo 'No build required for static site'",
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@google/genai": "^2.19.0",
+    "express": "^4.19.2"
+  }
+}
