@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4. HERO TYPING EFFECT
     if (typingElement) {
-        const roles = ["Full Stack Developer", "ICT Graduate", "Tech Enthusiast"];
+        const roles = ["IT Support & Service Desk Technician", "ICT Graduate", "Tech Enthusiast"];
         let roleIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
