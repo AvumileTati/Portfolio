@@ -149,20 +149,21 @@ section {
 
 .nav-wrap {
     background: var(--glass-bg);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    padding: 8px 20px;
-    border-radius: 50px;
+    backdrop-filter: blur(24px) saturate(200%);
+    -webkit-backdrop-filter: blur(24px) saturate(200%);
+    padding: 8px 16px;
+    border-radius: 99px;
     border: 1px solid var(--glass-border);
     display: flex;
     align-items: center;
-    box-shadow: var(--glass-shadow);
-    transition: transform 0.4s var(--ease-ios), box-shadow 0.4s var(--ease-ios);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 10px rgba(0, 0, 0, 0.04);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .nav-wrap:active {
-    transform: scale(0.98);
+    transform: scale(0.97);
 }
 
 /* Sliding Pill Navigation Bubble */
@@ -171,46 +172,53 @@ section {
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    border-radius: 25px;
-    transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+    border-radius: 99px;
+    /* Spring animation for iOS feel */
+    transition: all 0.55s cubic-bezier(0.25, 0.85, 0.15, 1.15); 
     pointer-events: none;
     z-index: 0;
 }
 
 .bubble.active {
     background: var(--primary);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
 }
 
 .bubble.hover {
-    background: rgba(37, 99, 235, 0.08);
+    background: rgba(120, 120, 120, 0.15);
     opacity: 0;
-    transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.15s ease;
+    transition: all 0.4s cubic-bezier(0.25, 0.85, 0.15, 1.15), opacity 0.2s ease;
 }
 
 [data-theme="dark"] .bubble.hover {
-    background: rgba(96, 165, 250, 0.12);
+    background: rgba(255, 255, 255, 0.12);
 }
 
 .nav {
     display: flex;
-    gap: 5px;
+    gap: 4px;
     align-items: center;
 }
 
 .nav a {
-    color: var(--text);
+    color: var(--text-light);
     padding: 8px 16px;
     font-size: 0.95rem;
     font-weight: 500;
-    border-radius: 25px;
-    transition: color 0.3s ease;
+    border-radius: 99px;
+    transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     z-index: 1;
+    display: flex;
+    align-items: center;
+}
+
+.nav a:active {
+    transform: scale(0.92);
 }
 
 .nav a:hover {
-    color: var(--primary);
+    color: var(--text);
 }
 
 .nav a.active {
@@ -2177,3 +2185,49 @@ section {
     border-color: var(--primary-light);
 }
 
+
+/* Certification Scrollable List */
+.cert-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-height: 700px; /* Keep it aligned roughly with the timeline height */
+    overflow-y: auto;
+    padding-right: 8px;
+    padding-left: 2px;
+    margin-right: -8px; /* Compensate for padding */
+}
+
+.cert-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.cert-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.cert-list::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+}
+
+.cert-list::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+
+.cert-list .card {
+    margin-bottom: 0;
+}
+
+/* Elegant Theme Switching Class */
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *:before,
+html.theme-transition *:after {
+    transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                color 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                stroke 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                fill 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}

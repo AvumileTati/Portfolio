@@ -116,6 +116,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (themeToggle) {
         themeToggle.addEventListener('click', (e) => {
             e.preventDefault();
+            
+            document.documentElement.classList.add('theme-transition');
+
             const currentTheme = document.documentElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
@@ -123,14 +126,16 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('theme', newTheme);
             updateThemeIcon(newTheme);
 
-            // Sync background to prevent flashes during navigation
             if (newTheme === 'dark') {
                 document.documentElement.style.backgroundColor = '#0b0b0f';
             } else {
                 document.documentElement.style.backgroundColor = '#ffffff';
             }
             
-            // Re-render active bubble position on theme change (due to any transition shifts)
+            setTimeout(() => {
+                document.documentElement.classList.remove('theme-transition');
+            }, 850);
+
             setTimeout(updateActiveBubble, 300);
         });
     }
