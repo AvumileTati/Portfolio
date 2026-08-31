@@ -2486,3 +2486,111 @@ section:nth-of-type(3)::before {
 .experience-section {
     padding: 2rem 0; /* Let the section nth-of-type(3) padding handle the rest */
 }
+
+/* Bootcamp Featured Badge Styles */
+.bootcamp-bento {
+    grid-column: 1 / -1; /* Span full width */
+    background: linear-gradient(135deg, var(--bg-card), var(--bg-light));
+}
+
+.bootcamp-content {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.bootcamp-image-col {
+    flex: 0 0 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bootcamp-badge-img {
+    width: 100%;
+    max-width: 250px;
+    filter: drop-shadow(0 15px 30px rgba(37, 99, 235, 0.25));
+    transition: transform 0.5s cubic-bezier(0.25, 0.85, 0.15, 1.15);
+}
+
+.bootcamp-bento:hover .bootcamp-badge-img {
+    transform: scale(1.05) rotate(-2deg);
+}
+
+.bootcamp-details {
+    flex: 1;
+}
+
+.bootcamp-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.bootcamp-issuer {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 1rem;
+}
+
+.bootcamp-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.bootcamp-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg);
+    padding: 6px 12px;
+    border-radius: 50px;
+    border: 1px solid var(--border);
+}
+
+.bootcamp-desc {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.bootcamp-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 1rem;
+}
+
+.bootcamp-skills .badge {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-weight: 500;
+}
+
+@media (max-width: 992px) {
+    .credentials-bento {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .bootcamp-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .bootcamp-meta {
+        justify-content: center;
+    }
+    .bootcamp-skills {
+        justify-content: center;
+    }
+}
