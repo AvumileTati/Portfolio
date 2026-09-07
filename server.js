@@ -52,7 +52,18 @@ app.post('/api/chat', async (req, res) => {
     }
 });
 
+
+// EmailJS Config endpoint
+app.get('/api/email-config', (req, res) => {
+    res.json({
+        publicKey: process.env.EMAILJS_PUBLIC_KEY || '',
+        serviceId: process.env.EMAILJS_SERVICE_ID || '',
+        templateId: process.env.EMAILJS_TEMPLATE_ID || ''
+    });
+});
+
 // Handle root or arbitrary routes by falling back to index.html
+
 app.get('*', (req, res) => {
     res.sendFile(path.join(staticPath, 'index.html'));
 });
