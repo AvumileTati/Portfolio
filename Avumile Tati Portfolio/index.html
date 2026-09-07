@@ -359,35 +359,14 @@
             <div class="project-slider reveal">
                 <div class="slider-container">
                     <div class="slide">
-                        <img src="Images/bright_minds_home.png" alt="Bright Minds Hub" class="slide-image">
-                        <div class="slide-overlay">
-                            <h3>Bright Minds Hub</h3>
-                            <p>Community Driven After-School Platform</p>
-                            <a href="projects.html" class="slide-link">View Project</a>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <img src="Images/ddt_home.png" alt="Dynamic Duo Tech Solutions" class="slide-image">
-                        <div class="slide-overlay">
-                            <h3>Dynamic Duo Tech Solutions</h3>
-                            <p>Managed IT & Cybersecurity Showcase</p>
-                            <a href="projects.html" class="slide-link">View Project</a>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <img src="Images/prephones_home.png" alt="PrePhones Official Store" class="slide-image">
-                        <div class="slide-overlay">
-                            <h3>PrePhones Official Store</h3>
-                            <p>Modern E-commerce Mobile Experience</p>
-                            <a href="projects.html" class="slide-link">View Project</a>
-                        </div>
-                    </div>
-                    <div class="slide">
                         <img src="Images/srd_figma1.png" alt="SRD Registration System" class="slide-image">
                         <div class="slide-overlay">
                             <h3>SRD Registration System</h3>
                             <p>SASSA Grant UI/UX Mobile Prototype</p>
-                            <a href="projects.html" class="slide-link">View Project</a>
+                            <div class="slide-actions">
+                                <button class="quick-view-btn" data-title="SRD Registration System" data-desc="A streamlined, user-friendly mobile UI/UX prototype designed to simplify the SASSA grant registration process for South African citizens." data-img="Images/srd_figma1.png" data-link="projects.html"><i data-lucide="eye" style="width:16px;height:16px;"></i> Quick View</button>
+                                <a href="projects.html" class="slide-link">View Project</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -570,6 +549,26 @@
         <i data-lucide="arrow-up"></i>
     </button>
     <script src="script.js"></script>
+
+    <!-- Quick View Modal -->
+    <div id="quick-view-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close-btn"><i data-lucide="x"></i></button>
+            <div class="modal-body">
+                <div class="modal-image-container">
+                    <img id="modal-image" src="" alt="Project Preview">
+                </div>
+                <div class="modal-details">
+                    <h3 id="modal-title">Project Title</h3>
+                    <p id="modal-desc">Detailed description goes here...</p>
+                    <div class="modal-actions">
+                        <a id="modal-link" href="#" class="btn-primary">View Full Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>

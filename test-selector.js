@@ -4,7 +4,7 @@ const { JSDOM } = jsdom;
 const html = fs.readFileSync('Avumile Tati Portfolio/index.html', 'utf8');
 const dom = new JSDOM(html);
 
-const el = dom.window.document.querySelector("section#projects:nth-of-type(5) > div:nth-of-type(1)");
+const el = dom.window.document.querySelector("section#projects:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1)");
 if (el) {
   console.log("Element found:", el.className);
 } else {

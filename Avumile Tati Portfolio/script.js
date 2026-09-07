@@ -312,13 +312,28 @@ document.addEventListener('DOMContentLoaded', () => {
             // Preparation for status feedback
             const formStatus = document.getElementById('form-status');
             const showStatus = (message, isSuccess) => {
-                formStatus.textContent = message;
+                if (isSuccess) {
+                    formStatus.innerHTML = `
+                        <div class="success-animation">
+                            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                                <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                                <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                            </svg>
+                        </div>
+                        <span class="status-text">${message}</span>
+                    `;
+                    formStatus.style.display = 'flex';
+                } else {
+                    formStatus.textContent = message;
+                    formStatus.style.display = 'block';
+                }
+                
                 formStatus.className = `form-status ${isSuccess ? 'success' : 'error'}`;
-                formStatus.style.display = 'block';
 
                 // Hide after 5 seconds
                 setTimeout(() => {
                     formStatus.style.display = 'none';
+                    formStatus.innerHTML = ''; // reset
                 }, 5000);
             };
 
@@ -716,4 +731,63 @@ document.addEventListener('DOMContentLoaded', () => {
             chatInput.focus();
         }
     });
+});
+
+/* =========================================
+   QUICK VIEW MODAL LOGIC
+   ========================================= */
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('quick-view-modal');
+    const modalCloseBtn = document.getElementById('modal-close-btn');
+    const modalImage = document.getElementById('modal-image');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDesc = document.getElementById('modal-desc');
+    const modalLink = document.getElementById('modal-link');
+    
+    if (!modal) return; // Exit if modal isn't on the page
+
+    // Open Modal
+    document.querySelectorAll('.quick-view-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation(); // Prevent slider interactions if any
+            
+            const title = btn.getAttribute('data-title');
+            const desc = btn.getAttribute('data-desc');
+            const img = btn.getAttribute('data-img');
+            const link = btn.getAttribute('data-link');
+            
+            modalTitle.textContent = title;
+            modalDesc.textContent = desc;
+            modalImage.src = img;
+            modalLink.href = link;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+    });
+
+    // Close Modal via Button
+    modalCloseBtn.addEventListener('click', () => {
+        closeModal();
+    });
+
+    // Close Modal via Overlay Click
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Close Modal via Escape Key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
 });
