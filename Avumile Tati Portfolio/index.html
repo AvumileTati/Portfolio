@@ -39,6 +39,7 @@
             }
         })();
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
 <body>
@@ -106,10 +107,9 @@
                             <i data-lucide="linkedin"></i>
                             LinkedIn
                         </a>
-                        <a href="https://drive.google.com/file/d/15FRU_ZDtcOGFhW2zs84X1EjSPy_PZIr2/view?usp=drive_link"
-                            target="_blank" class="btn-outline">
-                            <i data-lucide="download"></i>
-                            View CV
+                        <a href="#" id="open-static-cv-btn" class="btn-outline">
+                            <i class='bx bx-file'></i>
+                            Preview & Download CV
                         </a>
                     </div>
 
@@ -358,13 +358,36 @@
 
             <div class="project-slider reveal">
                 <div class="slider-container">
-                    <div class="slide">
+
+                    <div class="slide project-slide-stagger" style="opacity: 0; transform: translateY(50px); transition: all 0.6s cubic-bezier(0.25, 0.85, 0.15, 1.15);">
+                        <img src="Images/bright_minds_home.png" alt="Bright Minds Hub" class="slide-image">
+                        <div class="slide-overlay">
+                            <h3>Bright Minds Hub</h3>
+                            <p>Community After-School Platform</p>
+                            <div class="slide-actions">
+                                <button class="quick-view-btn" data-title="Bright Minds Hub" data-desc="An engaging educational platform." data-img="Images/bright_minds_home.png" data-link="projects.html"><i data-lucide="eye" style="width:16px;height:16px;"></i> Quick View</button>
+                                <a href="projects.html" class="slide-link">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide project-slide-stagger" style="opacity: 0; transform: translateY(50px); transition: all 0.6s cubic-bezier(0.25, 0.85, 0.15, 1.15);">
+                        <img src="Images/dynamicduo_logo.png" alt="Dynamic Duo Tech" class="slide-image">
+                        <div class="slide-overlay">
+                            <h3>Dynamic Duo Tech Solutions</h3>
+                            <p>Managed IT Portfolio</p>
+                            <div class="slide-actions">
+                                <button class="quick-view-btn" data-title="Dynamic Duo Tech Solutions" data-desc="A professional showcase portfolio for an IT consulting firm." data-img="Images/dynamicduo_logo.png" data-link="projects.html"><i data-lucide="eye" style="width:16px;height:16px;"></i> Quick View</button>
+                                <a href="projects.html" class="slide-link">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide project-slide-stagger" style="opacity: 0; transform: translateY(50px); transition: all 0.6s cubic-bezier(0.25, 0.85, 0.15, 1.15);">
                         <img src="Images/srd_figma1.png" alt="SRD Registration System" class="slide-image">
                         <div class="slide-overlay">
                             <h3>SRD Registration System</h3>
-                            <p>SASSA Grant UI/UX Mobile Prototype</p>
+                            <p>SASSA Grant Mobile Prototype</p>
                             <div class="slide-actions">
-                                <button class="quick-view-btn" data-title="SRD Registration System" data-desc="A streamlined, user-friendly mobile UI/UX prototype designed to simplify the SASSA grant registration process for South African citizens." data-img="Images/srd_figma1.png" data-link="projects.html"><i data-lucide="eye" style="width:16px;height:16px;"></i> Quick View</button>
+                                <button class="quick-view-btn" data-title="SRD Registration System" data-desc="A streamlined, user-friendly mobile UI/UX prototype." data-img="Images/srd_figma1.png" data-link="projects.html"><i data-lucide="eye" style="width:16px;height:16px;"></i> Quick View</button>
                                 <a href="projects.html" class="slide-link">View Project</a>
                             </div>
                         </div>
@@ -579,6 +602,99 @@
         </div>
     </div>
 
-</body>
 
+    
+    <!-- Static CV Preview Modal -->
+    <div id="static-cv-modal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 850px; width: 95%; max-height: 90vh; display: flex; flex-direction: column;">
+            <button class="modal-close" id="static-cv-close-btn"><i class='bx bx-x'></i></button>
+            
+            <div class="modal-header" style="padding: 1.5rem 2rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="margin: 0; display: flex; align-items: center; gap: 10px; color: var(--text);"><i class='bx bx-file text-primary'></i> Resume Preview</h3>
+                <button id="btn-download-static-cv" class="btn-primary-sm" style="padding: 8px 16px; border-radius: 8px; background: var(--primary); color: white; border: none; cursor: pointer; display: flex; align-items: center; gap: 5px; font-weight: 600;">
+                    <i class='bx bx-download'></i> Download PDF
+                </button>
+            </div>
+
+            <div class="modal-body" style="padding: 2rem; flex: 1 1 auto; overflow-y: auto; overflow-x: hidden; background: var(--bg-light); position: relative; max-height: calc(90vh - 85px);">
+                
+                <div id="static-cv-document" style="font-family: 'Helvetica Neue', Arial, sans-serif; color: #333; line-height: 1.6; width: 100%; margin: 0 auto; padding: 40px; background: #fff; text-align: left; box-shadow: 0 4px 15px rgba(0,0,0,0.1); min-height: min-content; display: flow-root;">
+                    <h1 style="font-size: 32px; margin-bottom: 5px; color: #111; font-weight: 700;">Avumile Tati</h1>
+                    <p style="font-size: 16px; margin-top: 0; color: #555; border-bottom: 2px solid #2563eb; padding-bottom: 15px; font-weight: 500;">IT Support & Service Desk Technician | ICT Graduate</p>
+                    
+                    <div style="font-size: 13px; margin-bottom: 25px; display: flex; flex-wrap: wrap; gap: 15px; color: #666; font-weight: 500;">
+                        <span style="display: flex; align-items: center; gap: 4px;"><i class='bx bx-envelope' style="font-size: 16px; color: #2563eb;"></i> tatiavumile@gmail.com</span>
+                        <span style="display: flex; align-items: center; gap: 4px;"><i class='bx bx-map' style="font-size: 16px; color: #2563eb;"></i> Cape Town, South Africa</span>
+                        <span style="display: flex; align-items: center; gap: 4px;"><i class='bx bxl-linkedin' style="font-size: 16px; color: #2563eb;"></i> linkedin.com/in/avumile-tati</span>
+                        <span style="display: flex; align-items: center; gap: 4px;"><i class='bx bxl-github' style="font-size: 16px; color: #2563eb;"></i> github.com/avumiletati</span>
+                    </div>
+
+                    <h3 style="font-size: 18px; color: #2563eb; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Profile</h3>
+                    <p style="font-size: 14px; color: #444;">Aspiring IT professional with a Diploma in Information Communication Technology and hands-on experience in web and application development. Eager to contribute technical expertise, problem-solving skills, and adaptability to a dynamic organization. Passionate about bridging the digital divide by empowering communities with tech education through initiatives like Dynamic Duo Tech Solutions.</p>
+
+                    <h3 style="font-size: 18px; color: #2563eb; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 25px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Technical Skills</h3>
+                    <ul style="font-size: 14px; padding-left: 20px; margin-bottom: 20px; color: #444;">
+                        <li style="margin-bottom: 6px;"><strong>Web Development:</strong> PHP, MySQL, Full-Stack Architecture, HTML, CSS, JavaScript</li>
+                        <li style="margin-bottom: 6px;"><strong>Deployment & Version Control:</strong> GitHub, Netlify, Custom DNS</li>
+                        <li style="margin-bottom: 6px;"><strong>IT & Environment Setup:</strong> VS Code, PowerShell, Windows OS Customization, Hardware & Software Troubleshooting</li>
+                    </ul>
+
+                    <h3 style="font-size: 18px; color: #2563eb; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 25px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Experience</h3>
+                    <div style="margin-bottom: 15px;">
+                        <h4 style="font-size: 16px; margin: 0; color: #111;">Service Desk Academy Trainee</h4>
+                        <div style="font-size: 14px; color: #2563eb; margin-bottom: 5px; font-weight: 500;">CAPACITI | Aug 2026 - Present</div>
+                        <ul style="font-size: 14px; padding-left: 20px; margin-top: 5px; color: #444;">
+                            <li style="margin-bottom: 4px;">Service Desk Academy intensive training program.</li>
+                        </ul>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <h4 style="font-size: 16px; margin: 0; color: #111;">IT Intern</h4>
+                        <div style="font-size: 14px; color: #2563eb; margin-bottom: 5px; font-weight: 500;">Net Campus | Jan 2025 - Dec 2025</div>
+                        <ul style="font-size: 14px; padding-left: 20px; margin-top: 5px; color: #444;">
+                            <li style="margin-bottom: 4px;">Gained practical enterprise environment experience, assisting with network and systems operations.</li>
+                        </ul>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <h4 style="font-size: 16px; margin: 0; color: #111;">Sales Assistant</h4>
+                        <div style="font-size: 14px; color: #2563eb; margin-bottom: 5px; font-weight: 500;">Black Ink Promotions | Jun 2024 - Dec 2024</div>
+                        <ul style="font-size: 14px; padding-left: 20px; margin-top: 5px; color: #444;">
+                            <li style="margin-bottom: 4px;">Delivered exceptional customer service, problem-solving client inquiries efficiently.</li>
+                        </ul>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <h4 style="font-size: 16px; margin: 0; color: #111;">Technical Trainee (AI & Programming)</h4>
+                        <div style="font-size: 14px; color: #2563eb; margin-bottom: 5px; font-weight: 500;">Samsung Innovation Campus | Feb 2023 - Dec 2023</div>
+                        <ul style="font-size: 14px; padding-left: 20px; margin-top: 5px; color: #444;">
+                            <li style="margin-bottom: 4px;">Completed comprehensive training in Artificial Intelligence, programming methodologies, and technical problem solving.</li>
+                        </ul>
+                    </div>
+
+                    <h3 style="font-size: 18px; color: #2563eb; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 25px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Projects</h3>
+                    <ul style="font-size: 14px; padding-left: 20px; margin-bottom: 20px; color: #444;">
+                        <li style="margin-bottom: 6px;"><strong>Dynamic Duo Tech Solutions:</strong> A tech initiative focused on creating opportunities through tech education, developing websites/apps, and training learners in rural areas.</li>
+                    </ul>
+
+                    <h3 style="font-size: 18px; color: #2563eb; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 25px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Education</h3>
+                    <div style="margin-bottom: 15px;">
+                        <h4 style="font-size: 16px; margin: 0; color: #111;">Diploma in ICT in Applications Development</h4>
+                        <div style="font-size: 14px; color: #666;">Walter Sisulu University | Completed Dec 2023</div>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <h4 style="font-size: 16px; margin: 0; color: #111;">Grade 12 Certificate</h4>
+                        <div style="font-size: 14px; color: #666;">Ndamase Senior Secondary School | Completed 2020</div>
+                    </div>
+                    
+                    <h3 style="font-size: 18px; color: #2563eb; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 25px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Certifications</h3>
+                    <div style="font-size: 14px; color: #444; display: flex; flex-wrap: wrap; gap: 8px;">
+                        <span style="background: #f1f5f9; padding: 4px 8px; border-radius: 4px; border: 1px solid #e2e8f0;">DeepLearning.AI Machine Learning</span>
+                        <span style="background: #f1f5f9; padding: 4px 8px; border-radius: 4px; border: 1px solid #e2e8f0;">IBM Python for Data Science</span>
+                        <span style="background: #f1f5f9; padding: 4px 8px; border-radius: 4px; border: 1px solid #e2e8f0;">Google Cloud Generative AI</span>
+                        <span style="background: #f1f5f9; padding: 4px 8px; border-radius: 4px; border: 1px solid #e2e8f0;">Samsung Innovation Campus AI</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
 </html>

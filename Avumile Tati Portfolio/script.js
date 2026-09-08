@@ -833,3 +833,276 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = ''; // Restore scrolling
     }
 });
+
+/* =========================================
+   STATIC CV PREVIEW & DOWNLOAD LOGIC
+   ========================================= */
+document.addEventListener('DOMContentLoaded', () => {
+    const cvModal = document.getElementById('static-cv-modal');
+    const openCvBtn = document.getElementById('open-static-cv-btn');
+    const closeCvBtn = document.getElementById('static-cv-close-btn');
+    const btnDownload = document.getElementById('btn-download-static-cv');
+
+    if (!cvModal || !openCvBtn) {
+        console.error("Missing CV elements:", { cvModal, openCvBtn });
+        return;
+    }
+
+    // Auto-Update CV Content from Portfolio
+    function syncCvContent() {
+        try {
+            const cvDoc = document.getElementById('static-cv-document');
+            if (!cvDoc) return;
+
+            // 1. Profile Summary
+            const aboutIntro = document.querySelector('.about-intro p:first-of-type');
+            const aboutGoals = document.querySelector('.about-intro p:nth-of-type(2)');
+            const cvProfile = cvDoc.querySelector('h3:contains("Profile") + p');
+            if (aboutIntro && aboutGoals && cvProfile) {
+                // Remove HTML tags for clean text in CV
+                let cleanGoals = aboutGoals.innerHTML.replace(/<[^>]*>?/gm, ' ').replace(/\s+/g, ' ').trim();
+                cvProfile.textContent = aboutIntro.textContent.trim() + " " + cleanGoals;
+            }
+
+            // 2. Experience
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const cvExperienceContainer = cvDoc.querySelectorAll('h3:contains("Experience")')[0].nextElementSibling.parentNode;
+            
+            // We need to carefully replace just the experience blocks, but this is risky if the DOM structure changes.
+            // A safer approach is to dynamically rebuild the experience section in the CV.
+            
+            // Let's create a targeted rebuild of just the lists based on DOM parsing.
+            
+            // Note: Writing a robust two-way sync in vanilla JS that handles complex nesting without a framework (like React) is error-prone.
+            // Instead, since the CV HTML is static in index.html, we will implement a "hydrate" function that grabs the latest DOM text content.
+        } catch(e) {
+            console.error("Auto-sync CV failed", e);
+        }
+    }
+
+    // Custom jQuery-like contains selector for vanilla JS
+    HTMLElement.prototype.querySelectorAllContains = function(selector, text) {
+        return Array.from(this.querySelectorAll(selector)).filter(el => el.textContent.trim() === text);
+    };
+
+    function autoSyncResume() {
+        const doc = document.getElementById('static-cv-document');
+        if (!doc) return;
+
+        // 1. Sync Profile Summary
+        const aboutIntro = document.querySelector('.about-intro p:first-of-type');
+        const aboutGoals = document.querySelector('.about-intro p:nth-of-type(2)');
+        const cvProfileHeaders = Array.from(doc.querySelectorAll('h3')).filter(el => el.textContent.includes('Profile'));
+        
+        if (aboutIntro && aboutGoals && cvProfileHeaders.length > 0) {
+            const cvProfile = cvProfileHeaders[0].nextElementSibling;
+            if (cvProfile && cvProfile.tagName === 'P') {
+                let cleanGoals = aboutGoals.innerHTML.replace(/<[^>]*>?/gm, ' ').replace(/\s+/g, ' ').trim();
+                cvProfile.textContent = aboutIntro.textContent.trim() + " " + cleanGoals;
+            }
+        }
+
+        // 2. Sync Projects
+        const domProjects = document.querySelectorAll('.project-card');
+        if (domProjects.length > 0) {
+            const projHeaders = Array.from(doc.querySelectorAll('h3')).filter(el => el.textContent.includes('Projects'));
+            if (projHeaders.length > 0) {
+                const projHeader = projHeaders[0];
+                let nextEl = projHeader.nextElementSibling;
+                // Keep removing until next H3
+                while(nextEl && nextEl.tagName !== 'H3') {
+                    const toRemove = nextEl;
+                    nextEl = nextEl.nextElementSibling;
+                    toRemove.remove();
+                }
+
+                const ul = document.createElement('ul');
+                ul.style.fontSize = '14px';
+                ul.style.paddingLeft = '20px';
+                ul.style.marginBottom = '20px';
+                ul.style.color = '#444';
+
+                domProjects.forEach(proj => {
+                    const title = proj.querySelector('h3') ? proj.querySelector('h3').textContent.trim() : '';
+                    const desc = proj.querySelector('p') ? proj.querySelector('p').textContent.trim() : '';
+                    
+                    if (title && desc) {
+                        const li = document.createElement('li');
+                        li.style.marginBottom = '6px';
+                        li.innerHTML = `<strong>${title}:</strong> ${desc}`;
+                        ul.appendChild(li);
+                    }
+                });
+                
+                if(ul.children.length > 0) {
+                    projHeader.parentNode.insertBefore(ul, projHeader.nextSibling);
+                }
+            }
+        }
+
+        // 3. Sync Experience
+        const domExperiences = document.querySelectorAll('.timeline-item .card.experience');
+        if (domExperiences.length > 0) {
+            const expHeaders = Array.from(doc.querySelectorAll('h3')).filter(el => el.textContent.includes('Experience'));
+            if (expHeaders.length > 0) {
+                const expHeader = expHeaders[0];
+                // Remove old experience blocks
+                let nextEl = expHeader.nextElementSibling;
+                while(nextEl && nextEl.tagName !== 'H3') {
+                    const toRemove = nextEl;
+                    nextEl = nextEl.nextElementSibling;
+                    toRemove.remove();
+                }
+
+                // Inject fresh experiences from portfolio
+                const fragment = document.createDocumentFragment();
+                // Reverse the NodeList to preserve correct top-to-bottom order if we use insertBefore repeatedly,
+                // actually, fragment preserves order.
+                Array.from(domExperiences).forEach(exp => {
+                    const title = exp.querySelector('h4') ? exp.querySelector('h4').textContent : '';
+                    const date = exp.querySelector('.date') ? exp.querySelector('.date').textContent : '';
+                    const desc = exp.querySelector('p:not(.date)') ? exp.querySelector('p:not(.date)').textContent : '';
+
+                    const block = document.createElement('div');
+                    block.style.marginBottom = '15px';
+                    block.innerHTML = `
+                        <h4 style="font-size: 16px; margin: 0; color: #111;">${title}</h4>
+                        <div style="font-size: 14px; color: #2563eb; margin-bottom: 5px; font-weight: 500;">${date}</div>
+                        <ul style="font-size: 14px; padding-left: 20px; margin-top: 5px; color: #444;">
+                            <li style="margin-bottom: 4px;">${desc}</li>
+                        </ul>
+                    `;
+                    fragment.appendChild(block);
+                });
+                
+                // Insert after header
+                expHeader.parentNode.insertBefore(fragment, expHeader.nextSibling);
+            }
+        }
+        
+        // 4. Sync Education
+        const domEdu = document.querySelectorAll('.card.education');
+        if (domEdu.length > 0) {
+            const eduHeaders = Array.from(doc.querySelectorAll('h3')).filter(el => el.textContent.includes('Education'));
+            if (eduHeaders.length > 0) {
+                const eduHeader = eduHeaders[0];
+                let nextEl = eduHeader.nextElementSibling;
+                while(nextEl && nextEl.tagName !== 'H3') {
+                    const toRemove = nextEl;
+                    nextEl = nextEl.nextElementSibling;
+                    toRemove.remove();
+                }
+
+                const fragment = document.createDocumentFragment();
+                Array.from(domEdu).forEach(edu => {
+                    const title = edu.querySelector('p:not(.date)') ? edu.querySelector('p:not(.date)').textContent : '';
+                    const inst = edu.querySelector('h4') ? edu.querySelector('h4').textContent : '';
+                    const date = edu.querySelector('.date') ? edu.querySelector('.date').textContent : '';
+
+                    const block = document.createElement('div');
+                    block.style.marginBottom = '15px';
+                    block.innerHTML = `
+                        <h4 style="font-size: 16px; margin: 0; color: #111;">${title}</h4>
+                        <div style="font-size: 14px; color: #666;">${inst} | ${date}</div>
+                    `;
+                    fragment.appendChild(block);
+                });
+                eduHeader.parentNode.insertBefore(fragment, eduHeader.nextSibling);
+            }
+        }
+    }
+
+    // Function to periodically check and sync the CV
+    function startPeriodicCvSync() {
+        // Run immediately once
+        autoSyncResume();
+        
+        // Then check every 5 seconds for any updates to the DOM
+        setInterval(() => {
+            if (document.getElementById('static-cv-document')) {
+                autoSyncResume();
+            }
+        }, 5000);
+    }
+
+    // Initialize the periodic background sync
+    startPeriodicCvSync();
+
+    // Open Modal
+    openCvBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        autoSyncResume(); // Force an immediate pull just in case before showing
+        cvModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    // Close Modal
+    const closeCvModal = () => {
+        cvModal.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+
+    if (closeCvBtn) {
+        closeCvBtn.addEventListener('click', closeCvModal);
+    }
+    
+    cvModal.addEventListener('click', (e) => {
+        if (e.target === cvModal) closeCvModal();
+    });
+
+    // Handle PDF Download using html2pdf
+    if (btnDownload) {
+        btnDownload.addEventListener('click', () => {
+            const element = document.getElementById('static-cv-document');
+            if (!element) return;
+            
+            const opt = {
+                margin:       10,
+                filename:     'Avumile_Tati_CV.pdf',
+                image:        { type: 'jpeg', quality: 1 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            // Change button text while processing
+            const originalText = btnDownload.innerHTML;
+            btnDownload.innerHTML = "<i class='bx bx-loader-alt bx-spin'></i> Generating PDF...";
+            btnDownload.disabled = true;
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                btnDownload.innerHTML = originalText;
+                btnDownload.disabled = false;
+            }).catch(err => {
+                console.error("PDF generation failed", err);
+                btnDownload.innerHTML = originalText;
+                btnDownload.disabled = false;
+            });
+        });
+    }
+});
+document.addEventListener('DOMContentLoaded', () => { 
+    // Intersection Observer for stagger-reveal on project slides
+    const staggerObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                // If the container is in view, we find all the slides inside it
+                // Actually, let's just observe the slides directly, but if we want them to stagger together,
+                // we can observe the .project-slider container.
+                
+                const slides = entry.target.querySelectorAll('.project-slide-stagger');
+                slides.forEach((slide, index) => {
+                    setTimeout(() => {
+                        slide.classList.add('in-view');
+                    }, index * 200); // 200ms stagger delay between each slide
+                });
+                
+                staggerObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    const projectSliderContainer = document.querySelector('#projects .project-slider');
+    if (projectSliderContainer) {
+        staggerObserver.observe(projectSliderContainer);
+    }
+ });

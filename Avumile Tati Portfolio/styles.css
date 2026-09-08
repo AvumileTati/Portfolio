@@ -3172,3 +3172,257 @@ section#contact:nth-of-type(6) > div:nth-of-type(1) .social-icon-btn.email:hover
 section#contact:nth-of-type(6) > div:nth-of-type(1) .icon-box i {
     font-size: 24px;
 }
+
+/* =========================================
+   HIDE REDUNDANT EMAIL CONTACT ITEM
+   ========================================= */
+section#contact:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) {
+    display: none !important;
+}
+
+/* =========================================
+   STATIC CV MODAL FIX
+   ========================================= */
+div#static-cv-modal .modal-content {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+}
+
+[data-theme="dark"] div#static-cv-modal .modal-content {
+    background: #161b22;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+div#static-cv-modal .modal-body {
+    background: var(--bg);
+}
+
+[data-theme="dark"] div#static-cv-modal .modal-body {
+    background: #0b0b0f;
+}
+
+div#static-cv-modal .modal-header {
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+}
+
+[data-theme="dark"] div#static-cv-modal .modal-header {
+    background: #161b22;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+div#static-cv-modal .modal-close {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--text);
+}
+
+[data-theme="dark"] div#static-cv-modal .modal-close {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+div#static-cv-modal .modal-close:hover {
+    background: var(--primary);
+    color: #ffffff;
+}
+
+/* Ensure CV document is always light mode for printing and preview */
+#static-cv-document {
+    background-color: #ffffff !important;
+    color: #333333 !important;
+}
+#static-cv-document h1, 
+#static-cv-document h2, 
+#static-cv-document h3, 
+#static-cv-document h4, 
+#static-cv-document p, 
+#static-cv-document span, 
+#static-cv-document li, 
+#static-cv-document div {
+    color: inherit;
+}
+#static-cv-document h1 {
+    color: #111111 !important;
+}
+#static-cv-document h3 {
+    color: #2563eb !important;
+}
+#static-cv-document h4 {
+    color: #111111 !important;
+}
+#static-cv-document p {
+    color: #444444 !important;
+}
+#static-cv-document .bx {
+    color: #2563eb !important;
+}
+[data-theme="dark"] #static-cv-document {
+    background-color: #ffffff !important;
+    color: #333333 !important;
+}
+[data-theme="dark"] #static-cv-document * {
+    text-shadow: none !important;
+}
+
+/* Fix for CV document bleeding out of modal container */
+div#static-cv-modal .modal-content {
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh !important;
+}
+
+div#static-cv-modal .modal-body {
+    flex: 1;
+    overflow-y: auto !important;
+    padding: 2rem !important;
+}
+
+#static-cv-document {
+    /* Ensure it doesn't break out of the flex container */
+    max-width: 100%;
+    overflow: hidden;
+    height: auto !important;
+    display: block;
+}
+
+/* Additional fail-safes for the paper element */
+#static-cv-document {
+    height: max-content !important;
+    min-height: 100% !important;
+}
+
+/* Additional styles to ensure newly injected DOM elements in the CV match the design */
+#static-cv-document h4 {
+    color: #111 !important;
+}
+#static-cv-document ul {
+    color: #444 !important;
+}
+
+/* Stagger Animation Trigger Classes */
+.project-slide-stagger {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s cubic-bezier(0.25, 0.85, 0.15, 1.15);
+}
+
+.project-slide-stagger.in-view {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Dynamic multi-layered drop shadow on hover for project slides */
+#projects .slide.project-slide-stagger.in-view {
+    transition: transform 0.5s cubic-bezier(0.25, 0.85, 0.15, 1.15), box-shadow 0.5s cubic-bezier(0.25, 0.85, 0.15, 1.15) !important;
+}
+
+#projects .slide.project-slide-stagger.in-view:hover {
+    transform: translateY(-12px) !important;
+    /* Light Theme Multi-layered Shadow */
+    box-shadow: 
+        0 4px 10px rgba(0, 0, 0, 0.05),
+        0 15px 30px rgba(37, 99, 235, 0.15),
+        0 30px 60px rgba(37, 99, 235, 0.1) !important;
+    z-index: 10;
+}
+
+/* Dark Theme Multi-layered Shadow */
+[data-theme="dark"] #projects .slide.project-slide-stagger.in-view:hover {
+    box-shadow: 
+        0 4px 10px rgba(0, 0, 0, 0.5),
+        0 15px 30px rgba(96, 165, 250, 0.2),
+        0 30px 60px rgba(96, 165, 250, 0.15) !important;
+}
+
+/* =========================================
+   PRINT SPECIFIC MEDIA QUERY (A4 CV)
+   ========================================= */
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 15mm;
+    }
+
+    /* Hide the rest of the website */
+    body * {
+        visibility: hidden;
+    }
+
+    /* Ensure modal overlays don't interfere */
+    #static-cv-modal {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: auto;
+        background: transparent !important;
+    }
+
+    #static-cv-modal .modal-content {
+        box-shadow: none !important;
+        border: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        transform: none !important;
+    }
+
+    #static-cv-modal .modal-body {
+        padding: 0 !important;
+        overflow: visible !important;
+    }
+
+    /* Explicitly hide UI controls */
+    #static-cv-modal .modal-header,
+    #static-cv-modal .modal-close,
+    nav, 
+    footer, 
+    section,
+    .nav-container {
+        display: none !important;
+    }
+
+    /* Reveal only the CV document and its children */
+    #static-cv-document, 
+    #static-cv-document * {
+        visibility: visible;
+    }
+
+    /* Position the document perfectly for standard A4 */
+    #static-cv-document {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        background-color: #fff !important;
+        color: #000 !important;
+    }
+
+    /* Prevent awkward page breaks */
+    #static-cv-document h1, 
+    #static-cv-document h2, 
+    #static-cv-document h3, 
+    #static-cv-document h4 {
+        page-break-after: avoid;
+    }
+    
+    #static-cv-document p, 
+    #static-cv-document ul, 
+    #static-cv-document li,
+    #static-cv-document div {
+        page-break-inside: avoid;
+    }
+
+    /* Force background colors and exact colors to print (bypasses browser defaults) */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+}
