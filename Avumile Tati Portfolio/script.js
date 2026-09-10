@@ -792,26 +792,69 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (!modal) return; // Exit if modal isn't on the page
 
-    // Open Modal
-    document.querySelectorAll('.quick-view-btn').forEach(btn => {
+    
+    // Open Modal and Handle Navigation
+    const quickViewBtns = Array.from(document.querySelectorAll('.quick-view-btn'));
+    let currentProjectIndex = 0;
+    
+    const modalPrevBtn = document.getElementById('modal-prev');
+    const modalNextBtn = document.getElementById('modal-next');
+    
+    function populateModal(index) {
+        if(index < 0 || index >= quickViewBtns.length) return;
+        
+        const btn = quickViewBtns[index];
+        const title = btn.getAttribute('data-title');
+        const desc = btn.getAttribute('data-desc');
+        const img = btn.getAttribute('data-img');
+        const link = btn.getAttribute('data-link');
+        
+        modalTitle.textContent = title;
+        modalDesc.textContent = desc;
+        modalImage.src = img;
+        modalLink.href = link;
+        
+        // Disable/enable buttons based on index
+        if(modalPrevBtn) modalPrevBtn.style.opacity = index === 0 ? '0.5' : '1';
+        if(modalPrevBtn) modalPrevBtn.style.pointerEvents = index === 0 ? 'none' : 'auto';
+        
+        if(modalNextBtn) modalNextBtn.style.opacity = index === quickViewBtns.length - 1 ? '0.5' : '1';
+        if(modalNextBtn) modalNextBtn.style.pointerEvents = index === quickViewBtns.length - 1 ? 'none' : 'auto';
+    }
+
+    quickViewBtns.forEach((btn, index) => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation(); // Prevent slider interactions if any
             
-            const title = btn.getAttribute('data-title');
-            const desc = btn.getAttribute('data-desc');
-            const img = btn.getAttribute('data-img');
-            const link = btn.getAttribute('data-link');
-            
-            modalTitle.textContent = title;
-            modalDesc.textContent = desc;
-            modalImage.src = img;
-            modalLink.href = link;
+            currentProjectIndex = index;
+            populateModal(currentProjectIndex);
             
             modal.classList.add('active');
             document.body.style.overflow = 'hidden'; // Prevent background scrolling
         });
     });
+    
+    if (modalPrevBtn) {
+        modalPrevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentProjectIndex > 0) {
+                currentProjectIndex--;
+                populateModal(currentProjectIndex);
+            }
+        });
+    }
+    
+    if (modalNextBtn) {
+        modalNextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentProjectIndex < quickViewBtns.length - 1) {
+                currentProjectIndex++;
+                populateModal(currentProjectIndex);
+            }
+        });
+    }
+
 
     // Close Modal via Button
     modalCloseBtn.addEventListener('click', () => {

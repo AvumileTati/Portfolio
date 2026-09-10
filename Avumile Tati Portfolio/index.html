@@ -168,43 +168,56 @@
                         <div class="stat-label">Projects</div>
                     </div>
                 </div>
+            </div>
+    </section>
 
-                <div class="skills-section reveal" id="skills">
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section reveal">
+        <div class="container">
                     <h3>Technical Skills</h3>
                     <p class="skills-subtitle">Modern technologies and frameworks I use to build exceptional digital
                         experiences</p>
-                    <div class="tech-stack">
-                        <div class="tech-item item-web">
-                            <div class="tech-icon-box">
-                                <i data-lucide="globe" class="tech-svg"></i>
-                            </div>
-                            <div class="tech-info">
-                                <p>Web Development</p>
-                                <span class="skill-level">PHP, MySQL, Full-Stack Architecture</span>
-                            </div>
-                        </div>
-                        <div class="tech-item item-git">
-                            <div class="tech-icon-box">
-                                <i data-lucide="git-branch" class="tech-svg"></i>
-                            </div>
-                            <div class="tech-info">
-                                <p>Deployment & Version Control</p>
-                                <span class="skill-level">GitHub, Netlify, Custom DNS</span>
+                    <div class="premium-skills-bento">
+                        <div class="skill-bento-card core-dev">
+                            <div class="bento-bg-glow"></div>
+                            <div class="bento-icon"><i data-lucide="code-2"></i></div>
+                            <h4>Frontend & Backend</h4>
+                            <p>Full-stack architecture focusing on scalable, secure, and responsive web applications.</p>
+                            <div class="skill-tags">
+                                <span>PHP</span>
+                                <span>MySQL</span>
+                                <span>HTML5</span>
+                                <span>CSS3</span>
+                                <span>JavaScript</span>
                             </div>
                         </div>
-                        <div class="tech-item item-support">
-                            <div class="tech-icon-box">
-                                <i data-lucide="monitor" class="tech-svg"></i>
+                        
+                        <div class="skill-bento-card devops">
+                            <div class="bento-bg-glow"></div>
+                            <div class="bento-icon"><i data-lucide="git-branch"></i></div>
+                            <h4>Deployment & Git</h4>
+                            <p>Version control, DNS configuration, and continuous deployment workflows.</p>
+                            <div class="skill-tags">
+                                <span>GitHub</span>
+                                <span>Netlify</span>
+                                <span>Custom DNS</span>
                             </div>
-                            <div class="tech-info">
-                                <p>IT & Environment Setup</p>
-                                <span class="skill-level">VS Code, PowerShell, Windows OS Customization</span>
+                        </div>
+                        
+                        <div class="skill-bento-card it-support">
+                            <div class="bento-bg-glow"></div>
+                            <div class="bento-icon"><i data-lucide="cpu"></i></div>
+                            <h4>IT Support & OS</h4>
+                            <p>Environment provisioning, scripting, and enterprise system troubleshooting.</p>
+                            <div class="skill-tags">
+                                <span>PowerShell</span>
+                                <span>VS Code</span>
+                                <span>Windows OS</span>
+                                <span>Active Directory</span>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
     </section>
     <!-- Experience Section -->
     <section id="experience" class="experience-section">
@@ -643,6 +656,11 @@
     <div id="quick-view-modal" class="modal-overlay">
         <div class="modal-content">
             <button class="modal-close" id="modal-close-btn"><i data-lucide="x"></i></button>
+            
+            <div class="modal-nav-buttons">
+                <button id="modal-prev" class="modal-nav-btn" aria-label="Previous Project"><i data-lucide="chevron-left"></i></button>
+                <button id="modal-next" class="modal-nav-btn" aria-label="Next Project"><i data-lucide="chevron-right"></i></button>
+            </div>
             <div class="modal-body">
                 <div class="modal-image-container">
                     <img id="modal-image" src="" alt="Project Preview">
