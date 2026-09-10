@@ -479,7 +479,8 @@ const projectData = {
         images: ["Images/prephones_home.png", "Images/prephones_products.png"],
         tags: ["Web Development", "Google Sites", "E-commerce"],
         liveDemo: "https://sites.google.com/view/prephones/home",
-        sourceCode: "https://github.com/avumiletati"
+        sourceCode: "https://github.com/avumiletati",
+        isWebApp: true
     },
     "Brand Identity & Marketing Design Assets": {
         description: "Full creative suite developed for PrePhones, including logo design, business cards, official letterheads, and social media marketing graphics. These assets were designed to create a cohesive and trustworthy brand presence for the smartphone retailer.",
@@ -497,14 +498,16 @@ const projectData = {
         images: ["Images/ddt_home.png", "Images/ddt_about.png", "Images/ddt_services.png", "Images/ddt_contact.png"],
         tags: ["Web Development", "Microsoft 365", "Cybersecurity", "IT Support", "Next.js"],
         liveDemo: "https://ddtsolutions.co.za/",
-        sourceCode: "https://github.com/avumiletati"
+        sourceCode: "https://github.com/avumiletati",
+        isWebApp: true
     },
     "TechnoResolve Desk": {
-        description: "Programmed the web interface and implemented local storage data persistence.",
-        images: ["Images/logo.png"],
-        tags: ["Web Interface", "Local Storage", "Data Persistence"],
-        liveDemo: "",
-        sourceCode: ""
+        description: "TechnoResolve Desk routes business requests with AI triage and gives admins, technicians and customers a dashboard built for their role. Implemented advanced AI ticket classification and role-based access control.",
+        images: ["https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"],
+        tags: ["AI Triage", "Dashboard", "SaaS", "Full-Stack"],
+        liveDemo: "https://technoresolve-desk.ai.studio/",
+        sourceCode: "",
+        isWebApp: true
     },
     "SRD Registration System": {
         description: "Designed a mobile UI/UX prototype in Figma for the SASSA SRD R350 grant application system, targeting youth aged 18–26. The design features a profile dashboard with an integrated Google Maps view showing nearby SASSA offices, a Youth Registration form with identity number verification, and a step-by-step SRD 350 Payment onboarding flow. Built with a bold yellow & dark theme for accessibility and youth appeal.",
@@ -534,7 +537,38 @@ if (modal && closeBtn) {
             if (data) {
                 document.getElementById('modal-title').innerText = title;
                 document.getElementById('modal-description').innerText = data.description;
-                document.getElementById('modal-main-img').src = data.images[0];
+                
+                const mainImg = document.getElementById('modal-main-img');
+                
+                // Add iframe support for real-time live preview
+                let liveIframe = document.getElementById('modal-live-iframe');
+                if (!liveIframe) {
+                    liveIframe = document.createElement('iframe');
+                    liveIframe.id = 'modal-live-iframe';
+                    liveIframe.style.width = '100%';
+                    liveIframe.style.height = '100%';
+                    liveIframe.style.border = 'none';
+                    liveIframe.style.borderRadius = '12px';
+                    liveIframe.style.display = 'none';
+                    liveIframe.style.position = 'absolute';
+                    liveIframe.style.top = '0';
+                    liveIframe.style.left = '0';
+                    liveIframe.style.background = '#fff';
+                    // Insert after mainImg
+                    mainImg.parentNode.style.position = 'relative';
+                    mainImg.parentNode.appendChild(liveIframe);
+                }
+
+                if (data.isWebApp && data.liveDemo) {
+                    mainImg.style.display = 'none';
+                    liveIframe.src = data.liveDemo;
+                    liveIframe.style.display = 'block';
+                } else {
+                    liveIframe.style.display = 'none';
+                    liveIframe.src = '';
+                    mainImg.style.display = 'block';
+                    mainImg.src = data.images[0];
+                }
                 
                 // Links setup
                 const liveLinkBtn = document.getElementById('modal-live-link');

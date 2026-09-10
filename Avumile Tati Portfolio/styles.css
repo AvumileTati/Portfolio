@@ -4346,3 +4346,57 @@ a.card.certification:hover .date {
     max-width: 600px;
     margin: 0 auto 2rem auto;
 }
+
+/* =========================================
+   LIVE PREVIEW MODS
+   ========================================= */
+.live-indicator {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+
+.cool-project-card:hover .live-preview-wrapper iframe {
+    /* Slight zoom in the iframe container if possible, though transform is already scaling it */
+    /* Wait, it's better not to mess with the iframe's transform too much because it's precisely scaled */
+    filter: brightness(1.1);
+}
+
+.cool-project-card .live-preview-wrapper::after {
+    /* Glass sheen over the iframe so it feels like a card */
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 100%);
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* Improve slider iframe interactivity on hover */
+.slide:hover .live-preview-wrapper iframe {
+    /* Slightly zoom the iframe instead of the container so it doesn't break layout */
+    transform: scale(0.26) !important;
+}
+
+/* Ensure the slide overlay stays on top of the iframe */
+.slide-overlay {
+    z-index: 10;
+}
