@@ -514,7 +514,8 @@ const projectData = {
         images: ["Images/srd_figma1.png", "Images/srd_figma2.png", "Images/figma.png"],
         tags: ["Figma", "UI/UX", "Maps Integration", "Mobile Design"],
         liveDemo: "https://www.figma.com/design/g6lfoZvSpSPmxNIDKIij84/Untitled?node-id=0-1&t=WCvltsKAyVpkmuXO-1",
-        sourceCode: ""
+        sourceCode: "",
+        isWebApp: true
     },
     "Bright Minds Hub": {
         description: "A comprehensive community platform for an after-school program delivering academic support, nutrition, and holistic growth to learners. The website features a dynamic community wish list, a gallery showcasing program life, and clear mission pillars to drive engagement and local support. Built with a vibrant, accessible design to serve as a digital 'home away from home'.",
@@ -545,10 +546,12 @@ if (modal && closeBtn) {
                 if (!liveIframe) {
                     liveIframe = document.createElement('iframe');
                     liveIframe.id = 'modal-live-iframe';
-                    liveIframe.style.width = '100%';
-                    liveIframe.style.height = '100%';
+                    liveIframe.style.width = '300%';
+                    liveIframe.style.height = '300%';
                     liveIframe.style.border = 'none';
-                    liveIframe.style.borderRadius = '12px';
+                    liveIframe.style.borderRadius = '36px'; // 12px * 3 to account for scale
+                    liveIframe.style.transform = 'scale(0.333333)';
+                    liveIframe.style.transformOrigin = '0 0';
                     liveIframe.style.display = 'none';
                     liveIframe.style.position = 'absolute';
                     liveIframe.style.top = '0';
@@ -556,6 +559,8 @@ if (modal && closeBtn) {
                     liveIframe.style.background = '#fff';
                     // Insert after mainImg
                     mainImg.parentNode.style.position = 'relative';
+                    mainImg.parentNode.style.overflow = 'hidden';
+                    mainImg.parentNode.style.borderRadius = '15px';
                     mainImg.parentNode.appendChild(liveIframe);
                 }
 
@@ -563,10 +568,21 @@ if (modal && closeBtn) {
                     mainImg.style.display = 'none';
                     liveIframe.src = data.liveDemo;
                     liveIframe.style.display = 'block';
+                    liveIframe.style.minHeight = '350px'; 
+                    mainImg.parentNode.style.minHeight = '350px';
+                    
+                    const prevBtn = document.getElementById('modal-prev-btn');
+                    const nextBtn = document.getElementById('modal-next-btn');
+                    if(prevBtn) prevBtn.style.zIndex = '20';
+                    if(nextBtn) nextBtn.style.zIndex = '20';
+                    liveIframe.style.zIndex = '5';
                 } else {
-                    liveIframe.style.display = 'none';
-                    liveIframe.src = '';
+                    if (liveIframe) {
+                        liveIframe.style.display = 'none';
+                        liveIframe.src = '';
+                    }
                     mainImg.style.display = 'block';
+                    mainImg.parentNode.style.minHeight = 'auto';
                     mainImg.src = data.images[0];
                 }
                 
@@ -598,13 +614,32 @@ if (modal && closeBtn) {
                 let currentImageIndex = 0;
 
                 const updateMainImage = (index) => {
-                    document.getElementById('modal-main-img').src = data.images[index];
+                    const mainImg = document.getElementById('modal-main-img');
+                    mainImg.src = data.images[index];
                     document.querySelectorAll('.thumbnail-grid img').forEach((t, i) => {
                         t.classList.toggle('active', i === index);
                     });
+                    
+                    const liveIframe = document.getElementById('modal-live-iframe');
+                    if (data.isWebApp && data.liveDemo && liveIframe) {
+                        if (index === 0) {
+                            mainImg.style.display = 'none';
+                            liveIframe.style.display = 'block';
+                            liveIframe.style.minHeight = '350px'; 
+                            mainImg.parentNode.style.minHeight = '350px';
+                        } else {
+                            mainImg.style.display = 'block';
+                            liveIframe.style.display = 'none';
+                            mainImg.parentNode.style.minHeight = 'auto';
+                        }
+                    }
                 };
 
                 data.images.forEach((img, index) => {
+                    const thumbWrapper = document.createElement('div');
+                    thumbWrapper.style.position = 'relative';
+                    thumbWrapper.style.display = 'inline-block';
+                    
                     const thumb = document.createElement('img');
                     thumb.src = img;
                     if (index === 0) thumb.classList.add('active');
@@ -613,7 +648,16 @@ if (modal && closeBtn) {
                         currentImageIndex = index;
                         updateMainImage(currentImageIndex);
                     };
-                    thumbContainer.appendChild(thumb);
+                    
+                    if (index === 0 && data.isWebApp && data.liveDemo) {
+                        const indicator = document.createElement('div');
+                        indicator.className = 'live-thumb-indicator';
+                        indicator.innerText = 'LIVE';
+                        thumbWrapper.appendChild(indicator);
+                    }
+                    
+                    thumbWrapper.appendChild(thumb);
+                    thumbContainer.appendChild(thumbWrapper);
                 });
                 
                 const prevBtn = document.getElementById('modal-prev-btn');
@@ -925,7 +969,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnDownload = document.getElementById('btn-download-static-cv');
 
     if (!cvModal || !openCvBtn) {
-        console.error("Missing CV elements:", { cvModal, openCvBtn });
+        // Elements only exist on index.html, quiet return for projects.html
         return;
     }
 

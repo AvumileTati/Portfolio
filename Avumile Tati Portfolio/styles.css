@@ -2782,7 +2782,9 @@ section#projects:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(2) > div:
     opacity: 0;
 }
 
-.modal-overlay.active .modal-content {
+.modal-overlay.active .modal-content,
+.modal[style*="display: block"] .modal-content,
+.modal.active .modal-content {
     transform: scale(1) translateY(0);
     opacity: 1;
 }
@@ -4374,11 +4376,7 @@ a.card.certification:hover .date {
     100% { opacity: 1; }
 }
 
-.cool-project-card:hover .live-preview-wrapper iframe {
-    /* Slight zoom in the iframe container if possible, though transform is already scaling it */
-    /* Wait, it's better not to mess with the iframe's transform too much because it's precisely scaled */
-    filter: brightness(1.1);
-}
+
 
 .cool-project-card .live-preview-wrapper::after {
     /* Glass sheen over the iframe so it feels like a card */
@@ -4391,12 +4389,106 @@ a.card.certification:hover .date {
 }
 
 /* Improve slider iframe interactivity on hover */
-.slide:hover .live-preview-wrapper iframe {
-    /* Slightly zoom the iframe instead of the container so it doesn't break layout */
-    transform: scale(0.26) !important;
-}
+
 
 /* Ensure the slide overlay stays on top of the iframe */
 .slide-overlay {
+    z-index: 10;
+}
+
+/* =========================================
+   CLEAR CARD SLIDER MODS
+   ========================================= */
+.clear-card-slide {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.clear-card-slide .slide-image {
+    height: 220px;
+    width: 100%;
+    position: relative;
+}
+
+.slide-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: var(--bg-card);
+    position: relative; /* Normal document flow, not overlay! */
+}
+
+.slide-content h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--text);
+    font-weight: 700;
+}
+
+.slide-content p {
+    margin: 0;
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.slide-content .slide-actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.slide-content .quick-view-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(37, 99, 235, 0.1);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    color: var(--primary);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.slide-content .quick-view-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.slide-content .slide-link {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.slide-content .slide-link:hover {
+    opacity: 0.8;
+}
+
+/* Add a Live icon to the first thumbnail if it's a web app */
+.thumbnail-grid {
+    position: relative;
+}
+.thumbnail-grid .live-thumb-indicator {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background: #ef4444;
+    color: white;
+    font-size: 8px;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-weight: bold;
+    pointer-events: none;
     z-index: 10;
 }
