@@ -43,8 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateActiveBubble() {
         // Disable bubble positioning on mobile
         if (window.innerWidth <= 768) {
-            if (activeBubble) activeBubble.style.opacity = '0';
-            if (hoverBubble) hoverBubble.style.opacity = '0';
+            if (activeBubble) 
+            if (hoverBubble) 
             return;
         }
 
@@ -53,13 +53,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const rect = activeLink.getBoundingClientRect();
             const navWrapRect = navWrap.getBoundingClientRect();
 
-            activeBubble.style.left = `${rect.left - navWrapRect.left}px`;
-            activeBubble.style.width = `${rect.width}px`;
-            activeBubble.style.height = `${rect.height}px`;
-            activeBubble.style.top = `${rect.top - navWrapRect.top + rect.height / 2}px`;
-            activeBubble.style.opacity = '1';
+            
+            
+            
+            
+            
         } else if (activeBubble) {
-            activeBubble.style.opacity = '0';
+            
         }
     }
 
@@ -71,17 +71,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 const rect = link.getBoundingClientRect();
                 const navWrapRect = navWrap.getBoundingClientRect();
 
-                hoverBubble.style.left = `${rect.left - navWrapRect.left}px`;
-                hoverBubble.style.width = `${rect.width}px`;
-                hoverBubble.style.height = `${rect.height}px`;
-                hoverBubble.style.top = `${rect.top - navWrapRect.top + rect.height / 2}px`;
-                hoverBubble.style.opacity = '1';
+                
+                
+                
+                
+                
             }
         });
 
         link.addEventListener('mouseleave', () => {
             if (hoverBubble) {
-                hoverBubble.style.opacity = '0';
+                
             }
         });
     });
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
-        updateActiveBubble();
+        
     }
 
     window.addEventListener('resize', updateActiveBubble);
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 navLinks.forEach(l => l.classList.remove('active'));
                 link.classList.add('active');
                 
-                updateActiveBubble();
+                
             });
         });
 
@@ -669,10 +669,14 @@ document.addEventListener('DOMContentLoaded', () => {
         { role: 'model', content: "Hi! I'm Avumile's AI assistant. Ask me anything about his skills, projects, or experience!" }
     ];
 
-    chatToggle.addEventListener('click', () => {
+    chatToggle.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent any default scrolling behavior
         chatWindow.classList.remove('hidden');
         chatToggle.style.display = 'none';
-        chatInput.focus();
+        // Delay focus slightly to allow animation to complete and prevent mobile keyboard from immediately pushing UI up awkwardly
+        setTimeout(() => {
+            chatInput.focus({ preventScroll: true });
+        }, 300);
     });
 
     chatClose.addEventListener('click', () => {
@@ -1051,6 +1055,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Handle PDF Download using html2pdf
+
+    // Handle Native Print to PDF
+    const btnPrint = document.getElementById('btn-print-static-cv');
+    if (btnPrint) {
+        btnPrint.addEventListener('click', () => {
+            window.print();
+        });
+    }
+
     if (btnDownload) {
         btnDownload.addEventListener('click', () => {
             const element = document.getElementById('static-cv-document');
@@ -1106,3 +1119,47 @@ document.addEventListener('DOMContentLoaded', () => {
         staggerObserver.observe(projectSliderContainer);
     }
  });
+
+// RAUL DRONCA NAV SCROLL SPY
+document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('.nav a');
+    
+    // Collect all valid target sections
+    const sections = [];
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('#') && href !== '#') {
+            const section = document.querySelector(href);
+            if (section) sections.push(section);
+        }
+    });
+
+    // Observer options to detect when a section is roughly in the middle of the screen
+    const observerOptions = {
+        root: null,
+        rootMargin: '-40% 0px -60% 0px',
+        threshold: 0
+    };
+
+    const scrollSpyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                
+                // Remove active class from all links
+                navLinks.forEach(link => link.classList.remove('active'));
+                
+                // Add active class to corresponding link
+                const activeLink = document.querySelector(`.nav a[href="#${id}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => {
+        scrollSpyObserver.observe(section);
+    });
+});
+

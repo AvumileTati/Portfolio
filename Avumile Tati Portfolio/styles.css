@@ -3426,3 +3426,709 @@ div#static-cv-modal .modal-body {
         print-color-adjust: exact !important;
     }
 }
+
+/* =========================================
+   RAUL DRONCA NAV REPLACEMENT
+   ========================================= */
+:root {
+  --nav-black: #0f0f0f;
+  --nav-gray: #3f3f3f;
+  --nav-white: #fff;
+}
+
+.nav-container {
+    padding-top: 20px;
+}
+
+.nav-wrap {
+  border: 1px solid var(--nav-gray) !important;
+  width: fit-content !important;
+  margin: 0 auto !important;
+  border-radius: 500px !important;
+  position: relative !important;
+  box-shadow: inset 10px 0 10px black !important;
+  background: linear-gradient(0deg, #141414, #242424) !important;
+  padding: 0 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.nav-wrap:after {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: -5px;
+  background: linear-gradient(180deg, var(--nav-gray), #212121);
+  border-radius: 500px;
+  z-index: -1;
+}
+
+.nav {
+  width: fit-content !important;
+  anchor-name: --nav;
+  margin: 6.7px !important;
+  display: flex !important;
+  align-items: center;
+  gap: 0 !important;
+}
+
+.nav a {
+  z-index: 10 !important;
+  position: relative !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px !important; /* Adjusted from 20x50 to fit the page */
+  color: white !important;
+  text-decoration: none !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+}
+
+.nav a:before {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+}
+
+.nav a.active {
+  anchor-name: --active;
+  color: black !important;
+}
+
+.nav a:hover:before {
+  anchor-name: --nav;
+}
+
+.nav-wrap .bubble {
+  background: white !important;
+  top: anchor(top) !important;
+  right: anchor(right) !important;
+  bottom: anchor(bottom) !important;
+  left: anchor(left) !important;
+  position: absolute !important;
+  transition: all 0.2s !important;
+  border-radius: 500px !important;
+  opacity: 1 !important;
+  pointer-events: none;
+  transform: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.nav-wrap .bubble.active {
+  position-anchor: --active;
+  z-index: 2 !important;
+  background: linear-gradient(180deg, #f2f2f2, #b3b3b3) !important;
+  box-shadow: inset 0 2px 7px #fff !important;
+}
+
+.nav-wrap .bubble.hover {
+  z-index: 1 !important;
+  background: linear-gradient(180deg, var(--nav-gray), #212121) !important;
+  box-shadow: inset 0 2px 7px #ffffff29 !important;
+  position-anchor: --nav;
+  opacity: 1 !important; /* Let CSS anchor handle it, wait: does it only show on hover? */
+}
+
+/* Fallback for browsers that don't support CSS Anchor Positioning */
+@supports not (anchor-name: --nav) {
+    .nav-wrap .bubble {
+        display: none !important;
+    }
+    .nav a.active {
+        background: white !important;
+        color: black !important;
+        border-radius: 500px !important;
+    }
+    .nav a:hover {
+        background: rgba(255,255,255,0.1) !important;
+        border-radius: 500px !important;
+    }
+}
+
+/* Ensure mobile menu still looks somewhat okay or overrides */
+@media (max-width: 768px) {
+    .nav-wrap {
+        border-radius: 16px !important;
+    }
+    .nav-wrap:after {
+        border-radius: 20px !important;
+    }
+    .nav {
+        flex-direction: column !important;
+    }
+    .nav a {
+        padding: 15px !important;
+        width: 100% !important;
+    }
+}
+
+/* The Theme Toggle */
+#theme-toggle {
+    color: white !important;
+}
+
+/* =========================================
+   LIQUID GLASS NAV UPGRADE
+   ========================================= */
+.nav-wrap {
+    /* Core glass properties */
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(24px) saturate(250%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(250%) !important;
+    
+    /* Glass reflections and physical depth */
+    box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 0.8),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.05),
+        0 8px 32px rgba(0, 0, 0, 0.1) !important;
+        
+    /* Thin, bright glass edge */
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Dark Mode Liquid Glass */
+[data-theme="dark"] .nav-wrap {
+    background: rgba(20, 20, 20, 0.4) !important;
+    box-shadow: 
+        inset 0 1px 1px rgba(255, 255, 255, 0.15),
+        inset 0 -1px 1px rgba(0, 0, 0, 0.4),
+        0 8px 32px rgba(0, 0, 0, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Remove the old solid opaque backing/border */
+.nav-wrap:after {
+    display: none !important;
+}
+
+/* Update text to adapt to the transparent glass */
+.nav a {
+    color: var(--text) !important;
+    font-weight: 500 !important;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.5) !important;
+}
+
+[data-theme="dark"] .nav a {
+    color: rgba(255, 255, 255, 0.85) !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5) !important;
+}
+
+.nav a.active {
+    color: #000 !important; 
+    text-shadow: none !important;
+}
+
+/* Soften the sliding bubbles to match the glass aesthetic */
+.nav-wrap .bubble.active {
+    background: rgba(255, 255, 255, 0.95) !important;
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.1), 
+        inset 0 1px 2px rgba(255, 255, 255, 1) !important;
+}
+
+[data-theme="dark"] .nav-wrap .bubble.active {
+    background: rgba(255, 255, 255, 0.9) !important;
+}
+
+.nav-wrap .bubble.hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    box-shadow: inset 0 0 10px rgba(255,255,255,0.2) !important;
+}
+
+/* =========================================
+   THEME TOGGLE RELOCATION (Top Right & Glassmorphism)
+   ========================================= */
+#theme-toggle {
+    position: fixed !important;
+    top: 20px !important; /* Align with nav container */
+    right: 20px !important; /* Move to the right side of the screen */
+    bottom: auto !important; /* Override the inline bottom style */
+    
+    /* Apply liquid glass aesthetic to match the nav */
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(24px) saturate(250%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(250%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    color: var(--text) !important;
+    
+    /* Smooth hover effect */
+    transition: all 0.3s ease !important;
+}
+
+#theme-toggle:hover {
+    transform: scale(1.05) !important;
+}
+
+[data-theme="dark"] #theme-toggle {
+    background: rgba(20, 20, 20, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* =========================================
+   FOOTER UPGRADE (Premium Adaptive & Glassmorphic)
+   ========================================= */
+.main-footer {
+    background: var(--bg-light) !important;
+    color: var(--text) !important;
+    padding: 5rem 0 2rem !important;
+    position: relative;
+    border-top: 1px solid var(--border) !important;
+    overflow: hidden;
+}
+
+.main-footer::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 400px;
+    background: radial-gradient(ellipse at top, rgba(37, 99, 235, 0.08) 0%, transparent 60%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+[data-theme="dark"] .main-footer::before {
+    background: radial-gradient(ellipse at top, rgba(37, 99, 235, 0.15) 0%, transparent 60%);
+}
+
+.main-footer .container {
+    position: relative;
+    z-index: 1;
+}
+
+.footer-section h3 {
+    color: var(--text) !important;
+    margin-bottom: 1.2rem !important;
+    font-size: 1.7rem !important;
+    font-weight: 700 !important;
+}
+
+.footer-section p {
+    color: var(--text-light) !important;
+    line-height: 1.7 !important;
+}
+
+.footer-section h4 {
+    color: var(--primary) !important;
+    margin-bottom: 1.5rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    font-size: 0.95rem !important;
+}
+
+.footer-nav li {
+    margin-bottom: 1rem !important;
+}
+
+.footer-nav a {
+    color: var(--text-light) !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.85, 0.15, 1.15) !important;
+    display: inline-flex !important;
+    align-items: center;
+}
+
+.footer-nav a:hover {
+    color: var(--primary) !important;
+    transform: translateX(6px) !important;
+}
+
+.footer-tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px !important;
+}
+
+.footer-tech-tags span {
+    background: rgba(37, 99, 235, 0.08) !important;
+    border: 1px solid rgba(37, 99, 235, 0.15) !important;
+    color: var(--primary) !important;
+    padding: 6px 14px !important;
+    border-radius: 99px !important;
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.85, 0.15, 1.15) !important;
+}
+
+[data-theme="dark"] .footer-tech-tags span {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: var(--text-light) !important;
+}
+
+.footer-tech-tags span:hover {
+    background: var(--primary) !important;
+    color: white !important;
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25) !important;
+    border-color: var(--primary) !important;
+}
+
+.footer-divider {
+    height: 1px !important;
+    background: var(--border) !important;
+    margin: 4rem 0 2rem !important;
+}
+
+.bottom-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-light) !important;
+    font-size: 0.95rem !important;
+    font-weight: 500;
+}
+
+.heart-icon {
+    color: #ef4444 !important;
+    display: inline-block;
+    width: 16px !important;
+    height: 16px !important;
+    margin: 0 4px;
+    vertical-align: text-bottom;
+    animation: heartPulse 2s infinite cubic-bezier(0.25, 0.85, 0.15, 1.15);
+}
+
+@keyframes heartPulse {
+    0% { transform: scale(1); }
+    10% { transform: scale(1.25); }
+    20% { transform: scale(1); }
+    30% { transform: scale(1.25); }
+    40% { transform: scale(1); }
+    100% { transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2.5rem !important;
+    }
+    .bottom-flex {
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+        text-align: center !important;
+    }
+}
+
+/* =========================================
+   TILTED "!" NAV LAYOUT (Capsule + Circle)
+   ========================================= */
+.nav-container {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important; /* Space between pill and dot */
+    position: fixed !important;
+    top: 20px !important;
+    width: 100% !important;
+    z-index: 1000 !important;
+    pointer-events: none; /* Let clicks pass through empty space */
+}
+
+/* Re-enable pointer events for the actual interactive elements */
+.nav-wrap, .hamburger, #theme-toggle {
+    pointer-events: auto !important;
+}
+
+#theme-toggle {
+    position: relative !important; /* Remove fixed positioning so it sits in the flex row */
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: 46px !important; /* Perfect circle matching nav height */
+    height: 46px !important;
+    margin: 0 !important;
+    
+    /* Keep Liquid Glass aesthetic */
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(24px) saturate(250%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(250%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 0.8),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.05),
+        0 8px 32px rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme="dark"] #theme-toggle {
+    background: rgba(20, 20, 20, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 
+        inset 0 1px 1px rgba(255, 255, 255, 0.15),
+        inset 0 -1px 1px rgba(0, 0, 0, 0.4),
+        0 8px 32px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Ensure the nav-wrap capsule matches height logic visually */
+.nav-wrap {
+    margin: 0 !important; /* Remove auto centering to work with flex gap */
+}
+
+/* =========================================
+   HAMBURGER MENU ANIMATION FIX
+   ========================================= */
+.hamburger.active .hamburger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .hamburger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+#btn-print-static-cv:hover {
+    background: rgba(37, 99, 235, 0.1) !important;
+}
+[data-theme="dark"] #btn-print-static-cv {
+    border-color: rgba(255, 255, 255, 0.5) !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+[data-theme="dark"] #btn-print-static-cv:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* =========================================
+   PERFECT CENTER ALIGNMENT FIX
+   ========================================= */
+.nav-container {
+    /* Use a grid with 3 equal columns to ensure true dead-center alignment */
+    display: grid !important;
+    grid-template-columns: 1fr auto 1fr !important;
+    align-items: center !important;
+    gap: 12px !important;
+    position: fixed !important;
+    top: 20px !important;
+    width: 100% !important;
+    z-index: 1000 !important;
+    pointer-events: none;
+}
+
+/* Place the nav pill exactly in the center column */
+.nav-wrap {
+    grid-column: 2 / 3 !important;
+    margin: 0 !important;
+}
+
+/* Place the theme toggle in the right column, aligned to the left of that column */
+#theme-toggle {
+    grid-column: 3 / 4 !important;
+    justify-self: start !important;
+    
+    position: relative !important; 
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: 46px !important;
+    height: 46px !important;
+    margin: 0 !important;
+}
+
+/* Remove rogue BR tags from HTML to fix vertical alignment */
+
+/* Ensure perfect alignment on mobile */
+@media (max-width: 768px) {
+    .nav-container {
+        /* Revert grid on mobile so theme toggle can just float next to hamburger */
+        display: flex !important;
+        justify-content: flex-start !important;
+        padding-left: 20px;
+    }
+    
+    #theme-toggle {
+        /* Float the theme toggle independently on mobile so it doesn't conflict with hamburger */
+        position: fixed !important;
+        top: 20px !important;
+        left: 20px !important;
+        grid-column: auto !important;
+    }
+    
+    .nav-wrap.active {
+        /* When mobile menu opens, it takes over the screen */
+        top: 80px !important;
+        right: 20px !important;
+        left: 20px !important;
+        width: auto !important;
+    }
+}
+
+/* =========================================
+   PREMIUM CHAT UI UPGRADE
+   ========================================= */
+.chat-messages {
+    flex: 1;
+    padding: 24px 20px !important;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px !important;
+    
+    /* Subtle inner shadow and background pattern for depth */
+    background-color: var(--bg-card);
+    background-image: radial-gradient(var(--border) 1px, transparent 1px);
+    background-size: 20px 20px;
+    box-shadow: inset 0 10px 20px rgba(0,0,0,0.02);
+}
+
+[data-theme="dark"] .chat-messages {
+    background-color: var(--bg-card);
+    background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+    box-shadow: inset 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.chat-message {
+    display: flex;
+    max-width: 90% !important;
+    animation: messagePop 0.4s cubic-bezier(0.25, 0.85, 0.15, 1.15) forwards;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+@keyframes messagePop {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.chat-message.user {
+    align-self: flex-end;
+}
+
+.chat-message.assistant {
+    align-self: flex-start;
+}
+
+.message-content {
+    padding: 12px 18px !important;
+    border-radius: 18px !important;
+    font-size: 0.95rem;
+    line-height: 1.5 !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.chat-message.user .message-content {
+    background: linear-gradient(135deg, var(--primary), #3b82f6) !important;
+    color: white !important;
+    border-bottom-right-radius: 4px !important;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25) !important;
+}
+
+.chat-message.assistant .message-content {
+    background: var(--bg-light) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border) !important;
+    border-bottom-left-radius: 4px !important;
+    /* Glass feel */
+    backdrop-filter: blur(8px);
+}
+
+[data-theme="dark"] .chat-message.assistant .message-content {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Ensure the chat widget stays fixed and doesn't cause overflow jumping */
+.chat-widget {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    z-index: 1000 !important;
+}
+
+.chat-window {
+    /* Lock the chat window to the bottom right, expanding upwards */
+    position: absolute !important;
+    bottom: 80px !important; 
+    right: 0 !important;
+    top: auto !important;
+    margin: 0 !important;
+}
+
+/* Mobile specific fixes to lock to screen */
+@media (max-width: 768px) {
+    .chat-window {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        height: 100dvh !important; /* Dynamic viewport height to prevent safari keyboard issues */
+        border-radius: 0 !important;
+        z-index: 1001 !important;
+    }
+}
+
+/* Fix chat window height for shorter screens (like the AI Studio preview iframe) */
+.chat-window {
+    height: 500px !important;
+    max-height: calc(100vh - 120px) !important; /* Ensure it never bleeds off the top of the screen */
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* Override the previous dotted chat background with a much cleaner premium frosted look */
+.chat-messages {
+    background-image: none !important;
+    background-color: var(--bg-light) !important;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.02) !important;
+}
+
+[data-theme="dark"] .chat-messages {
+    background-image: none !important;
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.2) !important;
+}
+
+/* Make the assistant bubble look a bit more distinct and softer */
+.chat-message.assistant .message-content {
+    background: white !important;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+    color: var(--text) !important;
+}
+
+[data-theme="dark"] .chat-message.assistant .message-content {
+    background: var(--bg-card) !important;
+    border: 1px solid rgba(255,255,255,0.05) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Enhance hover effect for clickable cert cards */
+a.card.certification {
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.85, 0.15, 1.15) !important;
+}
+
+a.card.certification:hover {
+    transform: translateY(-5px) scale(1.02) !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), 0 0 0 2px var(--primary) !important;
+}
+
+[data-theme="dark"] a.card.certification:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 0 2px var(--primary) !important;
+}
+
+/* Ensure the arrow changes on hover */
+a.card.certification:hover .date {
+    color: var(--text) !important;
+}
+
+[data-theme="dark"] a.card.certification:hover .date {
+    color: white !important;
+}
