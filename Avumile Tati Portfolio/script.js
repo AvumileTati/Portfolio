@@ -224,19 +224,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 5. SCROLL EFFECTS (Scroll to Top + Reveal Animations)
     const observerOptions = {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.05,
+        rootMargin: '0px 0px 50px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                // Once visible, we can stop observing if we want a one-time animation
-                // observer.unobserve(entry.target); 
-            } else {
-                // Remove this if you want animations to only happen once
-                entry.target.classList.remove('visible');
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
@@ -1283,4 +1279,122 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollSpyObserver.observe(section);
     });
 });
+
+
+// =========================================
+// CERTIFICATIONS FILTER LOGIC
+// =========================================
+// CERTIFICATIONS FILTER LOGIC & LIGHTBOX
+// =========================================
+function openCertLightbox(imgSrc, title, issuer, date, verifyUrl, pdfUrl) {
+    const modal = document.getElementById('cert-lightbox-modal');
+    if (!modal) return;
+
+    const img = document.getElementById('cert-modal-img');
+    const titleEl = document.getElementById('cert-modal-title');
+    const issuerEl = document.getElementById('cert-modal-issuer');
+    const dateEl = document.getElementById('cert-modal-date');
+    const verifyBtn = document.getElementById('cert-modal-verify');
+    const pdfBtn = document.getElementById('cert-modal-pdf');
+
+    if (img) img.src = imgSrc;
+    if (titleEl) titleEl.textContent = title;
+    if (issuerEl) issuerEl.textContent = `Issued by ${issuer}`;
+    if (dateEl) dateEl.textContent = `Completed: ${date}`;
+
+    if (verifyBtn) {
+        verifyBtn.href = verifyUrl;
+        if (verifyUrl.includes('sharepoint')) {
+            verifyBtn.innerHTML = '<i data-lucide="external-link" style="width: 15px; height: 15px;"></i> Open SharePoint Record';
+        } else if (verifyUrl.includes('share/')) {
+            verifyBtn.innerHTML = '<i data-lucide="badge-check" style="width: 15px; height: 15px;"></i> Verify Official Badge';
+        } else {
+            verifyBtn.innerHTML = '<i data-lucide="external-link" style="width: 15px; height: 15px;"></i> Verify on Coursera';
+        }
+    }
+
+    if (pdfBtn) {
+        if (pdfUrl && pdfUrl.trim() !== '') {
+            pdfBtn.href = pdfUrl;
+            pdfBtn.style.display = 'inline-flex';
+        } else {
+            pdfBtn.style.display = 'none';
+        }
+    }
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    if (window.lucide) {
+        lucide.createIcons();
+    }
+}
+
+function closeCertLightbox() {
+    const modal = document.getElementById('cert-lightbox-modal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+function handleCertLightboxBackdrop(e) {
+    if (e.target && e.target.id === 'cert-lightbox-modal') {
+        closeCertLightbox();
+    }
+}
+
+// Global escape key listener for certificate modal
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeCertLightbox();
+    }
+});
+
+function initCertGrid() {
+    const filterBtns = document.querySelectorAll('.cert-filter-btn');
+    const certItems = document.querySelectorAll('.cert-item');
+
+    // Explicitly make sure all 23 items are visible and displayed initially
+    certItems.forEach(item => {
+        item.classList.remove('hidden-cert');
+        item.style.display = 'flex';
+    });
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filterValue = btn.getAttribute('data-filter') || 'all';
+
+            certItems.forEach(item => {
+                const category = item.getAttribute('data-category') || '';
+                const categories = category.split(' ');
+                if (filterValue === 'all' || categories.includes(filterValue)) {
+                    item.classList.remove('hidden-cert');
+                    item.style.display = 'flex';
+                } else {
+                    item.classList.add('hidden-cert');
+                    item.style.display = 'none';
+                }
+            });
+
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        });
+    });
+
+    if (window.lucide) {
+        lucide.createIcons();
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCertGrid);
+} else {
+    initCertGrid();
+}
 

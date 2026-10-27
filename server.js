@@ -10,6 +10,9 @@ app.use(express.json());
 // Serve static files from the "Avumile Tati Portfolio" directory
 const staticPath = path.join(__dirname, 'Avumile Tati Portfolio');
 app.use(express.static(staticPath));
+app.use('/assets', express.static(path.join(staticPath, 'assets')));
+app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // Chat API endpoint
 app.post('/api/chat', async (req, res) => {
