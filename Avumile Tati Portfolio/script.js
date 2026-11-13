@@ -1352,40 +1352,170 @@ document.addEventListener('keydown', (e) => {
 });
 
 function initCertGrid() {
+    const grid = document.getElementById('main-cert-grid');
+    const showcaseBox = document.getElementById('cert-showcase-box');
     const filterBtns = document.querySelectorAll('.cert-filter-btn');
-    const certItems = document.querySelectorAll('.cert-item');
+    const certItems = Array.from(document.querySelectorAll('.cert-item'));
+    const searchInput = document.getElementById('cert-search-input');
+    const searchClear = document.getElementById('cert-search-clear');
+    const expandBtn = document.getElementById('cert-expand-btn');
+    const expandLabel = document.getElementById('cert-expand-label');
+    const toggleFooter = document.getElementById('cert-toggle-footer');
+    const countStatus = document.getElementById('cert-count-status');
+    const topCount = document.getElementById('cert-top-count');
+    const emptyState = document.getElementById('cert-empty-state');
+    const resetFiltersBtn = document.getElementById('cert-reset-filters-btn');
 
-    // Explicitly make sure all 23 items are visible and displayed initially
-    certItems.forEach(item => {
-        item.classList.remove('hidden-cert');
-        item.style.display = 'flex';
-    });
+    let activeFilter = 'all';
+    let searchQuery = '';
+    let isExpanded = false;
+
+    function getColumnsCount() {
+        if (!grid) return 3;
+        const computed = window.getComputedStyle(grid).gridTemplateColumns;
+        if (computed && computed !== 'none') {
+            const cols = computed.trim().split(/\s+/).length;
+            if (cols > 0) return cols;
+        }
+        const width = grid.clientWidth || window.innerWidth;
+        return Math.max(1, Math.floor((width + 22) / (285 + 22)));
+    }
+
+    function applyCertView() {
+        const cols = getColumnsCount();
+        const maxRows = 3;
+        const initialLimit = Math.max(cols * maxRows, 3);
+        const query = searchQuery.trim().toLowerCase();
+
+        const matchingItems = [];
+
+        certItems.forEach(item => {
+            const category = item.getAttribute('data-category') || '';
+            const categories = category.split(' ').filter(Boolean);
+            const matchesCategory = activeFilter === 'all' || categories.includes(activeFilter);
+
+            let matchesSearch = true;
+            if (query) {
+                const text = (item.textContent || '').toLowerCase();
+                matchesSearch = text.includes(query);
+            }
+
+            item.style.display = '';
+            if (matchesCategory && matchesSearch) {
+                item.classList.remove('hidden-cert');
+                matchingItems.push(item);
+            } else {
+                item.classList.add('hidden-cert');
+                item.classList.remove('collapsed-cert');
+            }
+        });
+
+        const totalMatching = matchingItems.length;
+        // Auto-show all matches while searching; otherwise enforce 3-row limit unless expanded
+        const shouldCap = !isExpanded && !query && totalMatching > initialLimit;
+        const visibleCount = shouldCap ? initialLimit : totalMatching;
+
+        matchingItems.forEach((item, idx) => {
+            if (shouldCap && idx >= initialLimit) {
+                item.classList.add('collapsed-cert');
+            } else {
+                item.classList.remove('collapsed-cert');
+            }
+        });
+
+        if (emptyState) {
+            emptyState.style.display = totalMatching === 0 ? 'block' : 'none';
+        }
+
+        if (topCount) {
+            topCount.textContent = totalMatching === 0
+                ? '0 matching credentials'
+                : `Showing ${visibleCount} of ${totalMatching}`;
+        }
+
+        if (countStatus) {
+            countStatus.textContent = `Showing ${visibleCount} of ${totalMatching} credentials`;
+        }
+
+        if (toggleFooter && expandBtn && expandLabel) {
+            if (query || totalMatching <= initialLimit) {
+                toggleFooter.style.display = 'none';
+            } else {
+                toggleFooter.style.display = 'flex';
+                const remaining = totalMatching - initialLimit;
+                expandBtn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+                expandLabel.textContent = isExpanded
+                    ? 'Show Less (Top 3 Rows)'
+                    : `Show All ${totalMatching} Credentials (${remaining} more)`;
+            }
+        }
+    }
 
     filterBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             filterBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-
-            const filterValue = btn.getAttribute('data-filter') || 'all';
-
-            certItems.forEach(item => {
-                const category = item.getAttribute('data-category') || '';
-                const categories = category.split(' ');
-                if (filterValue === 'all' || categories.includes(filterValue)) {
-                    item.classList.remove('hidden-cert');
-                    item.style.display = 'flex';
-                } else {
-                    item.classList.add('hidden-cert');
-                    item.style.display = 'none';
-                }
-            });
-
-            if (window.lucide) {
-                lucide.createIcons();
-            }
+            activeFilter = btn.getAttribute('data-filter') || 'all';
+            isExpanded = false;
+            applyCertView();
         });
     });
+
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value || '';
+            if (searchClear) {
+                searchClear.style.display = searchQuery.trim() ? 'flex' : 'none';
+            }
+            applyCertView();
+        });
+    }
+
+    if (searchClear && searchInput) {
+        searchClear.addEventListener('click', () => {
+            searchInput.value = '';
+            searchQuery = '';
+            searchClear.style.display = 'none';
+            applyCertView();
+            searchInput.focus();
+        });
+    }
+
+    if (resetFiltersBtn) {
+        resetFiltersBtn.addEventListener('click', () => {
+            if (searchInput) searchInput.value = '';
+            searchQuery = '';
+            if (searchClear) searchClear.style.display = 'none';
+            activeFilter = 'all';
+            isExpanded = false;
+            filterBtns.forEach(b => b.classList.toggle('active', b.getAttribute('data-filter') === 'all'));
+            applyCertView();
+        });
+    }
+
+    if (expandBtn) {
+        expandBtn.addEventListener('click', () => {
+            const wasExpanded = isExpanded;
+            isExpanded = !isExpanded;
+            applyCertView();
+
+            if (wasExpanded && showcaseBox) {
+                const rect = showcaseBox.getBoundingClientRect();
+                if (rect.top < 0) {
+                    showcaseBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(applyCertView, 120);
+    });
+
+    applyCertView();
 
     if (window.lucide) {
         lucide.createIcons();

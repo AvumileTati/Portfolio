@@ -299,19 +299,30 @@
                 </div>
 
                 <!-- Certifications Block -->
-                <div class="cert-bento bento-box">
-                    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 15px; margin-bottom: 20px;">
+                <div class="cert-bento bento-box" id="cert-showcase-box">
+                    <div class="cert-header-row">
                         <div>
-                            <h3 class="bento-title" style="margin-bottom: 4px;"><i data-lucide="shield-check"></i> Certifications & Credentials (40)</h3>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">Verified credentials in IT Support, Infrastructure, AI & ML, Leadership, and Professional Skills</p>
+                            <h3 class="bento-title" style="margin-bottom: 4px;"><i data-lucide="shield-check"></i> Certifications &amp; Credentials (40)</h3>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">Verified credentials in IT Support, Infrastructure, AI &amp; ML, Leadership, and Professional Skills</p>
                         </div>
-                        <div class="cert-filter-bar" style="display: flex; gap: 8px; flex-wrap: wrap;">
-                            <button class="cert-filter-btn active" data-filter="all">All (40)</button>
-                            <button class="cert-filter-btn" data-filter="it-support">IT Support & Infra (7)</button>
-                            <button class="cert-filter-btn" data-filter="ai-ml">AI & ML (16)</button>
-                            <button class="cert-filter-btn" data-filter="professional-skills">Leadership & Soft Skills (17)</button>
-                            <button class="cert-filter-btn" data-filter="specializations">Badges & Specializations (3)</button>
+                        <div class="cert-search-box">
+                            <i data-lucide="search" class="cert-search-icon" style="width: 16px; height: 16px;"></i>
+                            <input type="text" id="cert-search-input" class="cert-search-input" placeholder="Search credentials or providers..." aria-label="Search certifications and credentials">
+                            <button type="button" id="cert-search-clear" class="cert-search-clear" aria-label="Clear search" style="display: none;">
+                                <i data-lucide="x" style="width: 14px; height: 14px;"></i>
+                            </button>
                         </div>
+                    </div>
+
+                    <div class="cert-toolbar">
+                        <div class="cert-filter-bar">
+                            <button type="button" class="cert-filter-btn active" data-filter="all">All (40)</button>
+                            <button type="button" class="cert-filter-btn" data-filter="it-support">IT Support &amp; Infra (7)</button>
+                            <button type="button" class="cert-filter-btn" data-filter="ai-ml">AI &amp; ML (16)</button>
+                            <button type="button" class="cert-filter-btn" data-filter="professional-skills">Leadership &amp; Soft Skills (17)</button>
+                            <button type="button" class="cert-filter-btn" data-filter="specializations">Badges &amp; Specializations (3)</button>
+                        </div>
+                        <span id="cert-top-count" class="cert-count-meta">Showing 9 of 40</span>
                     </div>
                     
                     <div class="cert-grid" id="main-cert-grid">
@@ -1408,6 +1419,16 @@
         </div>
     </div>
 </div>
+                    <div id="cert-empty-state" class="cert-empty-state" style="display: none;">
+                        <p>No credentials match your search. <button type="button" id="cert-reset-filters-btn" class="cert-reset-link">Reset filters</button></p>
+                    </div>
+                    <div id="cert-toggle-footer" class="cert-toggle-footer">
+                        <span id="cert-count-status" class="cert-count-status">Showing 9 of 40 credentials</span>
+                        <button type="button" id="cert-expand-btn" class="cert-expand-btn" aria-expanded="false" aria-controls="main-cert-grid">
+                            <span id="cert-expand-label">Show All 40 Credentials (31 more)</span>
+                            <i data-lucide="chevron-down" id="cert-expand-icon" style="width: 18px; height: 18px;"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
